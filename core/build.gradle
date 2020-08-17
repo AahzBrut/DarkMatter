@@ -2,7 +2,7 @@
 eclipse.project.name = appName + '-core'
 
 ext {
-	libKtxVersion = '1.9.11-b1'
+	libKtxVersion = "1.9.11-b1"
 }
 
 dependencies {
@@ -12,4 +12,5 @@ dependencies {
 	implementation "io.github.libktx:ktx-app:$libKtxVersion"
 	implementation "io.github.libktx:ktx-log:$libKtxVersion"
 	implementation "io.github.libktx:ktx-graphics:$libKtxVersion"
+	implementation "io.github.libktx:ktx-ashley:$libKtxVersion"
 }

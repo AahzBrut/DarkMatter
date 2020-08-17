@@ -1,5 +1,6 @@
 package darkmatter
 
+import com.badlogic.ashley.core.PooledEngine
 import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.Batch
@@ -16,6 +17,7 @@ private val LOG = logger<DarkMatter>()
 class DarkMatter : KtxGame<BaseScreen>() {
 
     val batch: Batch by lazy { SpriteBatch() }
+    val engine = PooledEngine(10, 100, 10, 100)
 
     override fun create() {
         Gdx.app.logLevel = Application.LOG_DEBUG
