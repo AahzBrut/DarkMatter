@@ -28,6 +28,7 @@ run {
 	}
 }
 jar {
+	duplicatesStrategy = DuplicatesStrategy.INCLUDE
 	archiveFileName = "${appName}-${archiveVersion.get()}.jar"
 	dependsOn configurations.runtimeClasspath
 	from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } } 
