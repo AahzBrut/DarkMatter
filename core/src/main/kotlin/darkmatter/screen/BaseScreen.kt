@@ -1,7 +1,6 @@
 package darkmatter.screen
 
 import com.badlogic.ashley.core.Engine
-import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.utils.viewport.Viewport
 import darkmatter.DarkMatter
 import ktx.app.KtxScreen
