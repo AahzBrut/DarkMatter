@@ -12,7 +12,6 @@ import darkmatter.component.RollDirection
 import darkmatter.component.TransformComponent
 import ktx.ashley.allOf
 import ktx.ashley.get
-import ktx.log.debug
 import ktx.log.logger
 
 private val LOG = logger<PlayerInputSystem>()

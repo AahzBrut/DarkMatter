@@ -13,6 +13,7 @@ import darkmatter.screen.FirstScreen
 import darkmatter.screen.SecondScreen
 import darkmatter.system.PlayerAnimationSystem
 import darkmatter.system.PlayerInputSystem
+import darkmatter.system.RemoveSystem
 import darkmatter.system.RenderSystem
 import ktx.app.KtxGame
 import ktx.log.debug
@@ -37,6 +38,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
                     rightTextureRegion
             ))
             addSystem(RenderSystem(batch, gameViewport))
+            addSystem(RemoveSystem())
         }
     }
 
