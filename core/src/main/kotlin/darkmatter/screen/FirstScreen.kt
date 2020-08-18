@@ -1,19 +1,13 @@
 package darkmatter.screen
 
-import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Input
-import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.utils.viewport.FitViewport
 import darkmatter.DarkMatter
 import darkmatter.PLAYER_SIZE
-import darkmatter.WORLD_HEIGHT
-import darkmatter.WORLD_WIDTH
 import darkmatter.component.GraphicComponent
+import darkmatter.component.PlayerComponent
+import darkmatter.component.RollComponent
 import darkmatter.component.TransformComponent
 import ktx.ashley.entity
-import ktx.ashley.get
 import ktx.ashley.with
-import ktx.graphics.use
 import ktx.log.debug
 import ktx.log.logger
 
@@ -22,18 +16,14 @@ private val LOG = logger<FirstScreen>()
 
 class FirstScreen(game: DarkMatter) : BaseScreen(game) {
 
-    private val playerTexture = Texture(Gdx.files.internal("sprites/player.png"))
     private val player = engine.entity {
         with<TransformComponent> {
             position.set((gameViewport.worldWidth - PLAYER_SIZE) / 2, 1f, 0f)
             size.set(PLAYER_SIZE, PLAYER_SIZE)
         }
-        with<GraphicComponent> {
-            sprite.run {
-                setRegion(playerTexture)
-                setOriginCenter()
-            }
-        }
+        with<GraphicComponent>{}
+        with<PlayerComponent>{}
+        with<RollComponent>{}
     }
 
     override fun show() {
@@ -46,6 +36,5 @@ class FirstScreen(game: DarkMatter) : BaseScreen(game) {
 
     override fun dispose() {
         LOG.debug { "Disposing resources" }
-        playerTexture.dispose()
     }
 }
