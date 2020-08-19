@@ -11,7 +11,11 @@ import darkmatter.component.RollComponent
 import darkmatter.component.RollDirection
 import ktx.ashley.allOf
 import ktx.ashley.get
+import ktx.log.debug
+import ktx.log.logger
 
+
+private val LOG = logger<PlayerAnimationSystem>()
 
 class PlayerAnimationSystem(
         private val defaultRegion: TextureRegion,
@@ -31,10 +35,10 @@ class PlayerAnimationSystem(
         val rollComponent = requireNotNull(entity[RollComponent.mapper])
         val graphicComponent = requireNotNull(entity[GraphicComponent.mapper])
 
-        if (lastRoll == rollComponent.rollDirection && graphicComponent.sprite.texture != null) return
+        if (lastRoll == rollComponent.horizontalDirection && graphicComponent.sprite.texture != null) return
 
-        graphicComponent.setSpriteRegion(textureRegions[rollComponent.rollDirection] ?: throw RuntimeException("Texture regions are not set"))
-        lastRoll = rollComponent.rollDirection
+        graphicComponent.setSpriteRegion(textureRegions[rollComponent.horizontalDirection] ?: throw RuntimeException("Texture regions are not set"))
+        lastRoll = rollComponent.horizontalDirection
     }
 
     override fun addedToEngine(engine: Engine) {

@@ -6,10 +6,12 @@ import ktx.ashley.mapperFor
 
 class RollComponent: Component, Pool.Poolable {
 
-    var rollDirection = RollDirection.DEFAULT
+    var horizontalDirection = RollDirection.DEFAULT
+    var verticalDirection = VerticalDirection.DEFAULT
 
     override fun reset() {
-        rollDirection = RollDirection.DEFAULT
+        horizontalDirection = RollDirection.DEFAULT
+        verticalDirection = VerticalDirection.DEFAULT
     }
 
     companion object {
@@ -19,4 +21,8 @@ class RollComponent: Component, Pool.Poolable {
 
 enum class RollDirection {
     LEFT, DEFAULT, RIGHT
+}
+
+enum class VerticalDirection {
+    UP, DEFAULT, DOWN
 }

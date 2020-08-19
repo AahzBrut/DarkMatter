@@ -2,10 +2,7 @@ package darkmatter.screen
 
 import darkmatter.DarkMatter
 import darkmatter.PLAYER_SIZE
-import darkmatter.component.GraphicComponent
-import darkmatter.component.PlayerComponent
-import darkmatter.component.RollComponent
-import darkmatter.component.TransformComponent
+import darkmatter.component.*
 import ktx.ashley.entity
 import ktx.ashley.with
 import ktx.log.debug
@@ -21,6 +18,7 @@ class FirstScreen(game: DarkMatter) : BaseScreen(game) {
             position.set((gameViewport.worldWidth - PLAYER_SIZE) / 2, 1f, 0f)
             size.set(PLAYER_SIZE, PLAYER_SIZE)
         }
+        with<MoveComponent>{}
         with<GraphicComponent>{}
         with<PlayerComponent>{}
         with<RollComponent>{}

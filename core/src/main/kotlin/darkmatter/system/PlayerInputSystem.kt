@@ -6,12 +6,10 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.viewport.Viewport
 import darkmatter.TOUCH_TOLERANCE_DISTANCE
-import darkmatter.component.PlayerComponent
-import darkmatter.component.RollComponent
-import darkmatter.component.RollDirection
-import darkmatter.component.TransformComponent
+import darkmatter.component.*
 import ktx.ashley.allOf
 import ktx.ashley.get
+import ktx.log.debug
 import ktx.log.logger
 
 private val LOG = logger<PlayerInputSystem>()
@@ -26,14 +24,21 @@ class PlayerInputSystem(
         val roll = requireNotNull(entity[RollComponent.mapper])
         val transform = requireNotNull(entity[TransformComponent.mapper])
 
-        rollVector = gameViewport.unproject(Vector2(Gdx.input.x.toFloat(), 0f))
+        rollVector = gameViewport.unproject(Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()))
 
         val diffX = rollVector.x - transform.position.x - transform.size.x * .5
+        val diffY = rollVector.y - transform.position.y - transform.size.y * .5
 
-        roll.rollDirection = when {
+        roll.horizontalDirection = when {
             diffX < -TOUCH_TOLERANCE_DISTANCE -> RollDirection.LEFT
             diffX > TOUCH_TOLERANCE_DISTANCE -> RollDirection.RIGHT
             else -> RollDirection.DEFAULT
+        }
+
+        roll.verticalDirection = when {
+            diffY < -TOUCH_TOLERANCE_DISTANCE -> VerticalDirection.DOWN
+            diffY > TOUCH_TOLERANCE_DISTANCE -> VerticalDirection.UP
+            else -> VerticalDirection.DEFAULT
         }
   }
 }

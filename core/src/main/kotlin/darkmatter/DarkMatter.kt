@@ -11,10 +11,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport
 import darkmatter.screen.BaseScreen
 import darkmatter.screen.FirstScreen
 import darkmatter.screen.SecondScreen
-import darkmatter.system.PlayerAnimationSystem
-import darkmatter.system.PlayerInputSystem
-import darkmatter.system.RemoveSystem
-import darkmatter.system.RenderSystem
+import darkmatter.system.*
 import ktx.app.KtxGame
 import ktx.log.debug
 import ktx.log.logger
@@ -32,6 +29,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
     val engine by lazy {
         PooledEngine().apply {
             addSystem(PlayerInputSystem(gameViewport))
+            addSystem(MoveSystem())
             addSystem(PlayerAnimationSystem(
                     defaultTextureRegion,
                     leftTextureRegion,
