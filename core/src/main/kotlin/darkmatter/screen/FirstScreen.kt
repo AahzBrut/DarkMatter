@@ -1,5 +1,6 @@
 package darkmatter.screen
 
+import com.badlogic.gdx.graphics.FPSLogger
 import darkmatter.DarkMatter
 import darkmatter.MAX_DELTA_TIME
 import darkmatter.PLAYER_SIZE
@@ -12,6 +13,7 @@ import kotlin.math.min
 
 
 private val LOG = logger<FirstScreen>()
+private var fpsLogger = FPSLogger()
 
 class FirstScreen(game: DarkMatter) : BaseScreen(game) {
 
@@ -26,12 +28,14 @@ class FirstScreen(game: DarkMatter) : BaseScreen(game) {
         with<RollComponent>{}
     }
 
+
     override fun show() {
         LOG.debug { "First screen is showing" }
     }
 
     override fun render(delta: Float) {
         engine.update(min(MAX_DELTA_TIME, delta))
+        fpsLogger.log()
     }
 
     override fun dispose() {
