@@ -17,20 +17,30 @@ private var fpsLogger = FPSLogger()
 
 class FirstScreen(game: DarkMatter) : BaseScreen(game) {
 
-    private val player = engine.entity {
-        with<TransformComponent> {
-            setInitialPosition((gameViewport.worldWidth - PLAYER_SIZE) / 2, 1f, 0f)
-            size.set(PLAYER_SIZE, PLAYER_SIZE)
-        }
-        with<MoveComponent>{}
-        with<GraphicComponent>{}
-        with<PlayerComponent>{}
-        with<RollComponent>{}
-    }
-
-
     override fun show() {
         LOG.debug { "First screen is showing" }
+
+        engine.entity {
+            with<TransformComponent> {
+                setInitialPosition((gameViewport.worldWidth - PLAYER_SIZE) / 2, 1f, 0f)
+                size.set(PLAYER_SIZE, PLAYER_SIZE)
+            }
+            with<MoveComponent>{}
+            with<GraphicComponent>{}
+            with<PlayerComponent>{}
+            with<RollComponent>{}
+        }
+
+        engine.entity {
+            with<TransformComponent>{
+                setInitialPosition((gameViewport.worldWidth - PLAYER_SIZE) / 2, 1f, 0f)
+                size.set(PLAYER_SIZE, PLAYER_SIZE)
+            }
+            with<AnimationComponent>{
+                type = AnimationType.THRUSTER
+            }
+            with<GraphicComponent> {}
+        }
     }
 
     override fun render(delta: Float) {
