@@ -3,12 +3,12 @@ package darkmatter.system
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.math.MathUtils.clamp
+import com.badlogic.gdx.math.MathUtils.lerp
 import darkmatter.*
 import darkmatter.component.*
 import ktx.ashley.allOf
 import ktx.ashley.exclude
 import ktx.ashley.get
-import ktx.log.debug
 import ktx.log.logger
 import kotlin.math.max
 import kotlin.math.min
@@ -25,7 +25,32 @@ class MoveSystem :
         timeSinceLastUpdate += deltaTime
         while (timeSinceLastUpdate >= UPDATE_RATE) {
             timeSinceLastUpdate -= UPDATE_RATE
+
+            updatePrevPosition()
+
             super.update(UPDATE_RATE)
+        }
+        updateInterpolatedPosition()
+    }
+
+    private fun updateInterpolatedPosition() {
+        val alfa = timeSinceLastUpdate / UPDATE_RATE
+        entities.forEach { entity ->
+            entity[TransformComponent.mapper]?.let { transform ->
+                transform.interpolatedPosition.set(
+                        lerp(transform.prevPosition.x, transform.position.x, alfa),
+                        lerp(transform.prevPosition.y, transform.position.y, alfa),
+                        transform.position.z
+                )
+            }
+        }
+    }
+
+    private fun updatePrevPosition() {
+        entities.forEach { entity ->
+            entity[TransformComponent.mapper]?.let { transform ->
+                transform.prevPosition.set(transform.position)
+            }
         }
     }
 

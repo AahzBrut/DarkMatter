@@ -9,7 +9,6 @@ import darkmatter.TOUCH_TOLERANCE_DISTANCE
 import darkmatter.component.*
 import ktx.ashley.allOf
 import ktx.ashley.get
-import ktx.log.debug
 import ktx.log.logger
 
 private val LOG = logger<PlayerInputSystem>()

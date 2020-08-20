@@ -33,7 +33,7 @@ class RenderSystem(
 
         graphic.sprite.run {
             rotation = transform.rotation
-            setBounds(transform.position.x, transform.position.y, transform.size.x, transform.size.y)
+            setBounds(transform.interpolatedPosition.x, transform.interpolatedPosition.y, transform.size.x, transform.size.y)
             draw(batch)
         }
     }

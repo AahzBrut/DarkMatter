@@ -11,7 +11,6 @@ import darkmatter.component.RollComponent
 import darkmatter.component.RollDirection
 import ktx.ashley.allOf
 import ktx.ashley.get
-import ktx.log.debug
 import ktx.log.logger
 
 
