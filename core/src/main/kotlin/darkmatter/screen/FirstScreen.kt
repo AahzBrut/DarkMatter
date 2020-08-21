@@ -3,10 +3,12 @@ package darkmatter.screen
 import com.badlogic.gdx.graphics.FPSLogger
 import darkmatter.DarkMatter
 import darkmatter.MAX_DELTA_TIME
+import darkmatter.PLAYER_BOUNDING_BOX
 import darkmatter.PLAYER_SIZE
 import darkmatter.component.AnimationComponent
 import darkmatter.component.AnimationType
 import darkmatter.component.AttachmentComponent
+import darkmatter.component.BoundingBoxComponent
 import darkmatter.component.GraphicComponent
 import darkmatter.component.MoveComponent
 import darkmatter.component.PlayerComponent
@@ -32,15 +34,18 @@ class FirstScreen(game: DarkMatter) : BaseScreen(game) {
                 setInitialPosition((gameViewport.worldWidth - PLAYER_SIZE) / 2, 1f, 0f)
                 size.set(PLAYER_SIZE, PLAYER_SIZE)
             }
-            with<MoveComponent>{}
-            with<GraphicComponent>{}
-            with<PlayerComponent>{}
-            with<RollComponent>{}
+            with<BoundingBoxComponent> {
+                boundingBox.set(PLAYER_BOUNDING_BOX)
+            }
+            with<MoveComponent> {}
+            with<GraphicComponent> {}
+            with<PlayerComponent> {}
+            with<RollComponent> {}
         }
 
         engine.entity {
-            with<TransformComponent>{size.set(PLAYER_SIZE, PLAYER_SIZE)}
-            with<AnimationComponent>{
+            with<TransformComponent> { size.set(PLAYER_SIZE, PLAYER_SIZE) }
+            with<AnimationComponent> {
                 type = AnimationType.THRUSTER
             }
             with<GraphicComponent> {}

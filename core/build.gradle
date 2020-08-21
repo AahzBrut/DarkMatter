@@ -1,9 +1,7 @@
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 eclipse.project.name = appName + '-core'
 
-ext {
-    libKtxVersion = "1.9.11-b1"
-}
+ext.libKtxVersion = "1.9.11-b1"
 
 dependencies {
     api "com.badlogicgames.gdx:gdx:$gdxVersion"
@@ -13,4 +11,5 @@ dependencies {
     implementation "io.github.libktx:ktx-log:$libKtxVersion"
     implementation "io.github.libktx:ktx-graphics:$libKtxVersion"
     implementation "io.github.libktx:ktx-ashley:$libKtxVersion"
+    implementation "io.github.libktx:ktx-collections:$libKtxVersion"
 }

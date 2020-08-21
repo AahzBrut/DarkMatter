@@ -17,14 +17,14 @@ private val LOG = logger<RenderSystem>()
 class RenderSystem(
         private val batch: Batch,
         private val gameViewport: Viewport
-): SortedIteratingSystem(
+) : SortedIteratingSystem(
         allOf(TransformComponent::class, GraphicComponent::class).get(),
-        compareBy {entity -> entity[TransformComponent.mapper]}
+        compareBy { entity -> entity[TransformComponent.mapper] }
 ) {
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
         val transform = requireNotNull(entity[TransformComponent.mapper])
-        val graphic  = requireNotNull(entity[GraphicComponent.mapper])
+        val graphic = requireNotNull(entity[GraphicComponent.mapper])
 
         if (graphic.sprite.texture == null) {
             LOG.error { "Entity $entity is missing texture." }
@@ -45,4 +45,6 @@ class RenderSystem(
             super.update(deltaTime)
         }
     }
+
+
 }

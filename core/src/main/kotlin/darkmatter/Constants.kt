@@ -1,5 +1,7 @@
 package darkmatter
 
+import com.badlogic.gdx.math.Rectangle
+
 const val WORLD_WIDTH = 64f
 const val WORLD_HEIGHT = 36f
 const val PLAYER_SIZE = 4f
@@ -12,3 +14,10 @@ const val VER_ACCELERATION = WORLD_HEIGHT / 2
 const val MAX_HOR_SPEED = 16f
 const val MAX_VER_SPEED = 8f
 const val DEFAULT_ANIMATION_FRAME_DURATION = 1 / 20f
+
+//Player bounding box
+val PLAYER_BOUNDING_BOX = Rectangle(
+        PLAYER_SIZE / 7f,
+        PLAYER_SIZE / 8f,
+        PLAYER_SIZE - PLAYER_SIZE / 3.5f,
+        PLAYER_SIZE - PLAYER_SIZE / 3.8f)

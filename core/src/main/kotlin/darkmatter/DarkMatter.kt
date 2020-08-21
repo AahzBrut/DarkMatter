@@ -8,15 +8,18 @@ import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.utils.viewport.FitViewport
 import darkmatter.screen.BaseScreen
 import darkmatter.screen.FirstScreen
 import darkmatter.screen.SecondScreen
 import darkmatter.system.AnimationSystem
 import darkmatter.system.AttachmentSystem
+import darkmatter.system.BoundingBoxRenderingSystem
 import darkmatter.system.MoveSystem
 import darkmatter.system.PlayerAnimationSystem
 import darkmatter.system.PlayerInputSystem
+import darkmatter.system.PowerUpSystem
 import darkmatter.system.RemoveSystem
 import darkmatter.system.RenderSystem
 import ktx.app.KtxGame
@@ -31,14 +34,21 @@ class DarkMatter : KtxGame<BaseScreen>() {
     private val leftTextureRegion by lazy { TextureRegion(Texture(Gdx.files.internal("sprites/Player Turn Left0008.png"))) }
     private val rightTextureRegion by lazy { TextureRegion(Texture(Gdx.files.internal("sprites/Player Turn Right0008.png"))) }
 
-    private val graphicsAtlas by lazy { TextureAtlas(Gdx.files.internal("graphics/EngineAnimation.atlas"))}
+    private val graphicsAtlas by lazy { TextureAtlas(Gdx.files.internal("graphics/animations.atlas")) }
 
     val gameViewport = FitViewport(WORLD_WIDTH, WORLD_HEIGHT)
     private val batch: Batch by lazy { SpriteBatch() }
+    private val shapeRenderer by lazy {
+        val shapeRenderer = ShapeRenderer()
+        shapeRenderer.projectionMatrix = gameViewport.camera.combined
+        shapeRenderer
+    }
+
     val engine by lazy {
         PooledEngine().apply {
             addSystem(PlayerInputSystem(gameViewport))
             addSystem(MoveSystem())
+            addSystem(PowerUpSystem())
             addSystem(PlayerAnimationSystem(
                     defaultTextureRegion,
                     leftTextureRegion,
@@ -47,6 +57,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
             addSystem(AttachmentSystem())
             addSystem(AnimationSystem(graphicsAtlas))
             addSystem(RenderSystem(batch, gameViewport))
+            addSystem(BoundingBoxRenderingSystem(gameViewport, shapeRenderer))
             addSystem(RemoveSystem())
         }
     }

@@ -5,9 +5,7 @@ mainClassName = 'lwjgl3.Lwjgl3Launcher'
 eclipse.project.name = appName + '-lwjgl3'
 sourceCompatibility = 8.0
 
-ext {
-	libKtxVersion = '1.9.11-b1'
-}
+ext.libKtxVersion = "1.9.11-b1"
 
 dependencies {
 	implementation project(':core')

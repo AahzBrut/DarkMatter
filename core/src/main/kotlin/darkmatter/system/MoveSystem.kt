@@ -4,8 +4,20 @@ import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.math.MathUtils.clamp
 import com.badlogic.gdx.math.MathUtils.lerp
-import darkmatter.*
-import darkmatter.component.*
+import darkmatter.HOR_ACCELERATION
+import darkmatter.MAX_HOR_SPEED
+import darkmatter.MAX_VER_SPEED
+import darkmatter.UPDATE_RATE
+import darkmatter.VER_ACCELERATION
+import darkmatter.WORLD_HEIGHT
+import darkmatter.WORLD_WIDTH
+import darkmatter.component.MoveComponent
+import darkmatter.component.PlayerComponent
+import darkmatter.component.RemoveComponent
+import darkmatter.component.RollComponent
+import darkmatter.component.RollDirection
+import darkmatter.component.TransformComponent
+import darkmatter.component.VerticalDirection
 import ktx.ashley.allOf
 import ktx.ashley.exclude
 import ktx.ashley.get
@@ -84,18 +96,26 @@ class MoveSystem :
         move.speed.x = clamp(horizontalSpeed, -MAX_HOR_SPEED, MAX_HOR_SPEED)
         move.speed.y = clamp(verticalSpeed, -MAX_VER_SPEED, MAX_VER_SPEED)
 
-        moveEntity(transform, move, deltaTime)
+        moveEntity(transform, move, deltaTime, true)
     }
 
 
-    private fun moveEntity(transform: TransformComponent, move: MoveComponent, deltaTime: Float) {
-        transform.position.x = clamp(
-                transform.position.x + move.speed.x * deltaTime,
-                0f,
-                WORLD_WIDTH - transform.size.x)
-        transform.position.y = clamp(
-                transform.position.y + move.speed.y * deltaTime,
-                0f,
-                WORLD_HEIGHT - transform.size.y)
+    private fun moveEntity(transform: TransformComponent, move: MoveComponent, deltaTime: Float, clamp: Boolean = false) {
+
+        transform.position.x = if (clamp)
+            clamp(
+                    transform.position.x + move.speed.x * deltaTime,
+                    0f,
+                    WORLD_WIDTH - transform.size.x)
+        else
+            transform.position.x + move.speed.x * deltaTime
+
+        transform.position.y = if (clamp)
+            clamp(
+                    transform.position.y + move.speed.y * deltaTime,
+                    0f,
+                    WORLD_HEIGHT - transform.size.y)
+        else
+            transform.position.y + move.speed.y * deltaTime
     }
 }

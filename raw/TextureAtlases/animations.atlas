@@ -1,0 +1,507 @@
+
+animations.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+ShieldPowerUp
+  rotate: false
+  xy: 1024, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 0
+ShieldPowerUp
+  rotate: false
+  xy: 1024, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 15
+ShieldPowerUp
+  rotate: false
+  xy: 1536, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 1
+ShieldPowerUp
+  rotate: false
+  xy: 1536, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 2
+SpeedPowerUp
+  rotate: false
+  xy: 0, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 10
+Thruster
+  rotate: false
+  xy: 0, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 0
+Thruster
+  rotate: false
+  xy: 0, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 3
+Thruster
+  rotate: false
+  xy: 0, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 7
+Thruster
+  rotate: false
+  xy: 0, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 13
+Thruster
+  rotate: false
+  xy: 0, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 17
+Thruster
+  rotate: false
+  xy: 512, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 1
+Thruster
+  rotate: false
+  xy: 1024, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 2
+Thruster
+  rotate: false
+  xy: 512, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 4
+Thruster
+  rotate: false
+  xy: 512, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 5
+Thruster
+  rotate: false
+  xy: 1536, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 8
+Thruster
+  rotate: false
+  xy: 1024, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 9
+TripleShotPowerUp
+  rotate: false
+  xy: 0, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 7
+TripleShotPowerUp
+  rotate: false
+  xy: 0, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 8
+TripleShotPowerUp
+  rotate: false
+  xy: 512, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 9
+TripleShotPowerUp
+  rotate: false
+  xy: 1536, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 11
+TripleShotPowerUp
+  rotate: false
+  xy: 1024, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 14
+
+animations2.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+ShieldPowerUp
+  rotate: false
+  xy: 0, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 3
+ShieldPowerUp
+  rotate: false
+  xy: 0, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 4
+ShieldPowerUp
+  rotate: false
+  xy: 512, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 5
+ShieldPowerUp
+  rotate: false
+  xy: 0, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 6
+ShieldPowerUp
+  rotate: false
+  xy: 0, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 7
+ShieldPowerUp
+  rotate: false
+  xy: 512, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 8
+ShieldPowerUp
+  rotate: false
+  xy: 1024, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 9
+SpeedPowerUp
+  rotate: false
+  xy: 1024, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 2
+Thruster
+  rotate: false
+  xy: 512, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 10
+Thruster
+  rotate: false
+  xy: 512, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 11
+Thruster
+  rotate: false
+  xy: 1024, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 12
+Thruster
+  rotate: false
+  xy: 1536, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 14
+Thruster
+  rotate: false
+  xy: 1024, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 15
+Thruster
+  rotate: false
+  xy: 1536, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 18
+Thruster
+  rotate: false
+  xy: 1536, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 19
+TripleShotPowerUp
+  rotate: false
+  xy: 1536, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 15
+TripleShotPowerUp
+  rotate: false
+  xy: 1536, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 0
+
+animations3.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+ShieldPowerUp
+  rotate: false
+  xy: 0, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 10
+ShieldPowerUp
+  rotate: false
+  xy: 0, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 11
+ShieldPowerUp
+  rotate: false
+  xy: 512, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 12
+ShieldPowerUp
+  rotate: false
+  xy: 0, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 13
+ShieldPowerUp
+  rotate: false
+  xy: 0, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 14
+SpeedPowerUp
+  rotate: false
+  xy: 512, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 3
+SpeedPowerUp
+  rotate: false
+  xy: 1024, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 4
+SpeedPowerUp
+  rotate: false
+  xy: 1536, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 5
+SpeedPowerUp
+  rotate: false
+  xy: 512, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 6
+SpeedPowerUp
+  rotate: false
+  xy: 512, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 7
+SpeedPowerUp
+  rotate: false
+  xy: 1024, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 8
+SpeedPowerUp
+  rotate: false
+  xy: 1536, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 9
+Thruster
+  rotate: false
+  xy: 1024, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 20
+Thruster
+  rotate: false
+  xy: 1536, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 6
+TripleShotPowerUp
+  rotate: false
+  xy: 1024, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 13
+TripleShotPowerUp
+  rotate: false
+  xy: 1536, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 10
+
+animations4.png
+size: 2048,2048
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+SpeedPowerUp
+  rotate: false
+  xy: 512, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 11
+SpeedPowerUp
+  rotate: false
+  xy: 0, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 12
+SpeedPowerUp
+  rotate: false
+  xy: 0, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 13
+SpeedPowerUp
+  rotate: false
+  xy: 512, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 14
+SpeedPowerUp
+  rotate: false
+  xy: 1024, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 15
+SpeedPowerUp
+  rotate: false
+  xy: 1024, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 0
+SpeedPowerUp
+  rotate: false
+  xy: 1536, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 1
+Thruster
+  rotate: false
+  xy: 0, 1536
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 16
+TripleShotPowerUp
+  rotate: false
+  xy: 0, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 3
+TripleShotPowerUp
+  rotate: false
+  xy: 512, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 12
+TripleShotPowerUp
+  rotate: false
+  xy: 512, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 1
+TripleShotPowerUp
+  rotate: false
+  xy: 1024, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 2
+TripleShotPowerUp
+  rotate: false
+  xy: 1536, 1024
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 4
+TripleShotPowerUp
+  rotate: false
+  xy: 1024, 512
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 5
+TripleShotPowerUp
+  rotate: false
+  xy: 1024, 0
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 6
