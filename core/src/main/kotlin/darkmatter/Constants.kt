@@ -14,6 +14,9 @@ const val VER_ACCELERATION = WORLD_HEIGHT / 2
 const val MAX_HOR_SPEED = 16f
 const val MAX_VER_SPEED = 8f
 const val DEFAULT_ANIMATION_FRAME_DURATION = 1 / 20f
+const val POWERUP_SIZE = 4f
+const val POWERUP_SPEED = 4f
+
 
 //Player bounding box
 val PLAYER_BOUNDING_BOX = Rectangle(
@@ -21,3 +24,9 @@ val PLAYER_BOUNDING_BOX = Rectangle(
         PLAYER_SIZE / 8f,
         PLAYER_SIZE - PLAYER_SIZE / 3.5f,
         PLAYER_SIZE - PLAYER_SIZE / 3.8f)
+
+val POWERUP_BOUNDING_BOX = Rectangle(
+        POWERUP_SIZE / 4f,
+        POWERUP_SIZE / 5f,
+        POWERUP_SIZE - POWERUP_SIZE / 2f,
+        POWERUP_SIZE - POWERUP_SIZE / 2.5f)

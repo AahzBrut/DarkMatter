@@ -3,7 +3,6 @@ package darkmatter
 import com.badlogic.ashley.core.PooledEngine
 import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
@@ -30,11 +29,11 @@ private val LOG = logger<DarkMatter>()
 
 class DarkMatter : KtxGame<BaseScreen>() {
 
-    private val defaultTextureRegion by lazy { TextureRegion(Texture(Gdx.files.internal("sprites/player.png"))) }
-    private val leftTextureRegion by lazy { TextureRegion(Texture(Gdx.files.internal("sprites/Player Turn Left0008.png"))) }
-    private val rightTextureRegion by lazy { TextureRegion(Texture(Gdx.files.internal("sprites/Player Turn Right0008.png"))) }
+    private val defaultTextureRegion: TextureRegion by lazy { graphicsAtlas.findRegion("player/player") }
+    private val leftTextureRegion: TextureRegion by lazy { graphicsAtlas.findRegion("player/turn-left/TurnLeft", 8) }
+    private val rightTextureRegion: TextureRegion by lazy { graphicsAtlas.findRegion("player/turn-right/TurnRight", 8) }
 
-    private val graphicsAtlas by lazy { TextureAtlas(Gdx.files.internal("graphics/animations.atlas")) }
+    private val graphicsAtlas by lazy { TextureAtlas(Gdx.files.internal("graphics/textures.atlas")) }
 
     val gameViewport = FitViewport(WORLD_WIDTH, WORLD_HEIGHT)
     private val batch: Batch by lazy { SpriteBatch() }
