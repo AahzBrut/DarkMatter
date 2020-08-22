@@ -14,10 +14,10 @@ enum class AnimationType(
         val playMode: Animation.PlayMode = Animation.PlayMode.LOOP,
         val playRate: Float = 1f) {
     NONE(""),
-    THRUSTER("Thruster"),
-    POWERUP_SHIELD("ShieldPowerUp", playRate=.5f),
-    POWERUP_SPEED("SpeedPowerUp"),
-    POWERUP_TRIPLE_SHOT("TripleShotPowerUp")
+    THRUSTER("player/thruster/Thruster"),
+    POWERUP_SHIELD("power_ups/shield/ShieldPowerUp", playRate=.5f),
+    POWERUP_SPEED("power_ups/speed/SpeedPowerUp", playRate=.5f),
+    POWERUP_TRIPLE_SHOT("power_ups/triple_shot/TripleShotPowerUp", playRate=.5f)
 }
 
 class Animation2D(

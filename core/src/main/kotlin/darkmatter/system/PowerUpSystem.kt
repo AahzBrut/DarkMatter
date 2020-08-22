@@ -3,8 +3,10 @@ package darkmatter.system
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.math.Rectangle
-import darkmatter.PLAYER_BOUNDING_BOX
 import darkmatter.PLAYER_SIZE
+import darkmatter.POWERUP_BOUNDING_BOX
+import darkmatter.POWERUP_SIZE
+import darkmatter.POWERUP_SPEED
 import darkmatter.WORLD_HEIGHT
 import darkmatter.WORLD_WIDTH
 import darkmatter.component.AnimationComponent
@@ -33,14 +35,17 @@ class PowerUpSystem :
         IteratingSystem(
                 allOf(
                         PowerUpComponent::class,
-                        TransformComponent::class)
+                        TransformComponent::class,
+                        BoundingBoxComponent::class)
                         .exclude(RemoveComponent::class).get()) {
 
     private val playerBoundingRect = Rectangle()
     private val powerUpBoundingRect = Rectangle()
     private val playerEntities by lazy {
         engine.getEntitiesFor(
-                allOf(PlayerComponent::class).exclude(RemoveComponent::class).get()
+                allOf(PlayerComponent::class,
+                        BoundingBoxComponent::class)
+                        .exclude(RemoveComponent::class).get()
         )
     }
 
@@ -57,16 +62,16 @@ class PowerUpSystem :
     }
 
     private fun spawnPowerUp() {
-        engine.entity {
+        val entity = engine.entity {
             with<TransformComponent> {
                 setInitialPosition(WORLD_WIDTH / 2, WORLD_HEIGHT + PLAYER_SIZE, 0f)
-                size.set(PLAYER_SIZE, PLAYER_SIZE)
+                size.set(POWERUP_SIZE, POWERUP_SIZE)
             }
             with<BoundingBoxComponent> {
-                boundingBox.set(PLAYER_BOUNDING_BOX)
+                boundingBox.set(POWERUP_BOUNDING_BOX)
             }
             with<MoveComponent> {
-                speed.set(0f, -40f)
+                speed.set(0f, -POWERUP_SPEED)
             }
             with<PowerUpComponent> {}
             with<AnimationComponent> {
@@ -74,17 +79,20 @@ class PowerUpSystem :
             }
             with<GraphicComponent> {}
         }
+
+        LOG.debug { "PowerUp $entity spawned" }
     }
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
 
         val transform = requireNotNull(entity[TransformComponent.mapper])
+        val boundingBox = requireNotNull(entity[BoundingBoxComponent.mapper])
 
-        powerUpBoundingRect.set(transform)
+        powerUpBoundingRect.set(transform, boundingBox)
 
         checkCollideWithPlayer(entity)
 
-        if (transform.position.y <= 0f) {
+        if (transform.position.y <= -transform.size.y) {
             entity.add(RemoveComponent())
             LOG.debug { "Entity $entity was marked for removal" }
         }
@@ -93,12 +101,14 @@ class PowerUpSystem :
     private fun checkCollideWithPlayer(entity: Entity) {
 
         playerEntities.forEach { player ->
-            player[TransformComponent.mapper]?.let { playerTransform ->
+            player[TransformComponent.mapper]?.let { transform ->
+                player[BoundingBoxComponent.mapper]?.let { boundingBox ->
 
-                playerBoundingRect.set(playerTransform)
+                    playerBoundingRect.set(transform, boundingBox)
 
-                if (playerBoundingRect.overlaps(powerUpBoundingRect))
-                    collectPowerUp(player, entity)
+                    if (playerBoundingRect.overlaps(powerUpBoundingRect))
+                        collectPowerUp(player, entity)
+                }
             }
         }
     }
