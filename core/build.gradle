@@ -1,8 +1,6 @@
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 eclipse.project.name = appName + '-core'
 
-ext.libKtxVersion = "1.9.11-b1"
-
 dependencies {
     api "com.badlogicgames.gdx:gdx:$gdxVersion"
     api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
