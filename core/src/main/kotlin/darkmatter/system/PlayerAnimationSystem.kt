@@ -20,7 +20,14 @@ class PlayerAnimationSystem(
         private val defaultRegion: TextureRegion,
         leftRegion: TextureRegion,
         rightRegion: TextureRegion
-) : IteratingSystem(allOf(PlayerComponent::class, RollComponent::class, GraphicComponent::class).get()), EntityListener {
+) :
+        IteratingSystem(
+                allOf(
+                        PlayerComponent::class,
+                        RollComponent::class,
+                        GraphicComponent::class)
+                        .get()),
+        EntityListener {
 
     private var lastRoll = RollDirection.DEFAULT
 
@@ -36,7 +43,8 @@ class PlayerAnimationSystem(
 
         if (lastRoll == rollComponent.horizontalDirection && graphicComponent.sprite.texture != null) return
 
-        graphicComponent.setSpriteRegion(textureRegions[rollComponent.horizontalDirection] ?: throw RuntimeException("Texture regions are not set"))
+        graphicComponent.setSpriteRegion(textureRegions[rollComponent.horizontalDirection]
+                ?: throw RuntimeException("Texture regions are not set"))
         lastRoll = rollComponent.horizontalDirection
     }
 
