@@ -5,6 +5,8 @@ import darkmatter.DarkMatter
 import darkmatter.MAX_DELTA_TIME
 import darkmatter.PLAYER_BOUNDING_BOX
 import darkmatter.PLAYER_SIZE
+import darkmatter.WORLD_HEIGHT
+import darkmatter.WORLD_WIDTH
 import darkmatter.component.AnimationComponent
 import darkmatter.component.AnimationType
 import darkmatter.component.AttachmentComponent
@@ -28,6 +30,16 @@ class FirstScreen(game: DarkMatter) : BaseScreen(game) {
 
     override fun show() {
         LOG.debug { "First screen is showing" }
+
+        engine.entity {
+            with<TransformComponent>{
+                setInitialPosition(0f,0f,-1f)
+                size.set(WORLD_WIDTH, WORLD_HEIGHT)
+            }
+            with<GraphicComponent>{
+                setSpriteRegion(graphicsAtlas.findRegion("background/SpaceBG_Overlay"))
+            }
+        }
 
         val player = engine.entity {
             with<TransformComponent> {
