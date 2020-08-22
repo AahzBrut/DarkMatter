@@ -34,7 +34,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
     private val leftTextureRegion: TextureRegion by lazy { graphicsAtlas.findRegion("player/turn-left/TurnLeft", 8) }
     private val rightTextureRegion: TextureRegion by lazy { graphicsAtlas.findRegion("player/turn-right/TurnRight", 8) }
 
-    private val graphicsAtlas by lazy { TextureAtlas(Gdx.files.internal("graphics/textures.atlas")) }
+    val graphicsAtlas by lazy { TextureAtlas(Gdx.files.internal("graphics/textures.atlas")) }
 
     val gameViewport = FitViewport(WORLD_WIDTH, WORLD_HEIGHT)
     private val batch: Batch by lazy { SpriteBatch() }
