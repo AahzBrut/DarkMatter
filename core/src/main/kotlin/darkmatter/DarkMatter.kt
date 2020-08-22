@@ -15,6 +15,7 @@ import darkmatter.screen.SecondScreen
 import darkmatter.system.AnimationSystem
 import darkmatter.system.AttachmentSystem
 import darkmatter.system.BoundingBoxRenderingSystem
+import darkmatter.system.EnemySystem
 import darkmatter.system.MoveSystem
 import darkmatter.system.PlayerAnimationSystem
 import darkmatter.system.PlayerInputSystem
@@ -48,6 +49,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
             addSystem(PlayerInputSystem(gameViewport))
             addSystem(MoveSystem())
             addSystem(PowerUpSystem())
+            addSystem(EnemySystem(graphicsAtlas))
             addSystem(PlayerAnimationSystem(
                     defaultTextureRegion,
                     leftTextureRegion,
@@ -76,6 +78,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
         defaultTextureRegion.texture.dispose()
         leftTextureRegion.texture.dispose()
         rightTextureRegion.texture.dispose()
+        graphicsAtlas.dispose()
         batch.dispose()
     }
 }

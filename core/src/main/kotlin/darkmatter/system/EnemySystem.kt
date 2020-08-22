@@ -2,20 +2,19 @@ package darkmatter.system
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
+import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.math.Rectangle
-import darkmatter.PLAYER_SIZE
-import darkmatter.POWERUP_BOUNDING_BOX
-import darkmatter.POWERUP_SIZE
-import darkmatter.POWERUP_SPEED
+import darkmatter.ENEMY_BOUNDING_BOX
+import darkmatter.ENEMY_SIZE
+import darkmatter.ENEMY_SPAWN_DELAY
+import darkmatter.ENEMY_SPEED
 import darkmatter.WORLD_HEIGHT
 import darkmatter.WORLD_WIDTH
-import darkmatter.component.AnimationComponent
-import darkmatter.component.AnimationType
 import darkmatter.component.BoundingBoxComponent
+import darkmatter.component.EnemyComponent
 import darkmatter.component.GraphicComponent
 import darkmatter.component.MoveComponent
 import darkmatter.component.PlayerComponent
-import darkmatter.component.PowerUpComponent
 import darkmatter.component.RemoveComponent
 import darkmatter.component.TransformComponent
 import darkmatter.set
@@ -28,19 +27,19 @@ import ktx.ashley.with
 import ktx.log.debug
 import ktx.log.logger
 
+private val LOG = logger<EnemySystem>()
 
-private val LOG = logger<PowerUpSystem>()
-
-class PowerUpSystem :
+class EnemySystem(
+        private val graphicsAtlas: TextureAtlas) :
         IteratingSystem(
                 allOf(
-                        PowerUpComponent::class,
+                        EnemyComponent::class,
                         TransformComponent::class,
                         BoundingBoxComponent::class)
                         .exclude(RemoveComponent::class).get()) {
 
     private val playerBoundingRect = Rectangle()
-    private val powerUpBoundingRect = Rectangle()
+    private val enemyBoundingRect = Rectangle()
     private val playerEntities by lazy {
         engine.getEntitiesFor(
                 allOf(PlayerComponent::class,
@@ -54,48 +53,49 @@ class PowerUpSystem :
     override fun update(deltaTime: Float) {
         super.update(deltaTime)
         timer += deltaTime
-        if (timer >= 2f) {
-            spawnPowerUp()
+        if (timer >= ENEMY_SPAWN_DELAY) {
+            spawnEnemy()
             timer = 0f
         }
-
     }
+
+    private fun spawnEnemy() {
+        val entity = engine.entity {
+            with<EnemyComponent>{}
+            with<TransformComponent> {
+                setInitialPosition(getSpawnXPosition(), WORLD_HEIGHT + ENEMY_SIZE, 0f)
+                size.set(ENEMY_SIZE, ENEMY_SIZE)
+            }
+            with<BoundingBoxComponent> {
+                boundingBox.set(ENEMY_BOUNDING_BOX)
+            }
+            with<MoveComponent> {
+                speed.set(0f, -ENEMY_SPEED)
+            }
+            with<GraphicComponent> {
+                setSpriteRegion(graphicsAtlas.findRegion("debris/Asteroid"))
+            }
+        }
+
+        LOG.debug { "Enemy $entity spawned" }
+    }
+
+    private fun getSpawnXPosition() = (0..(WORLD_WIDTH - ENEMY_SIZE).toInt()).random().toFloat()
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
 
         val transform = requireNotNull(entity[TransformComponent.mapper])
         val boundingBox = requireNotNull(entity[BoundingBoxComponent.mapper])
 
-        powerUpBoundingRect.set(transform, boundingBox)
+        enemyBoundingRect.set(transform, boundingBox)
 
         checkCollideWithPlayer(entity)
 
         if (transform.position.y <= -transform.size.y) {
             entity.add(RemoveComponent())
-            LOG.debug { "PowerUp $entity was marked for removal" }
-        }
-    }
-
-    private fun spawnPowerUp() {
-        val entity = engine.entity {
-            with<TransformComponent> {
-                setInitialPosition(WORLD_WIDTH / 2, WORLD_HEIGHT + PLAYER_SIZE, 0f)
-                size.set(POWERUP_SIZE, POWERUP_SIZE)
-            }
-            with<BoundingBoxComponent> {
-                boundingBox.set(POWERUP_BOUNDING_BOX)
-            }
-            with<MoveComponent> {
-                speed.set(0f, -POWERUP_SPEED)
-            }
-            with<PowerUpComponent> {}
-            with<AnimationComponent> {
-                type = AnimationType.POWERUP_SHIELD
-            }
-            with<GraphicComponent> {}
+            LOG.debug { "Enemy $entity was marked for removal" }
         }
 
-        LOG.debug { "PowerUp $entity spawned" }
     }
 
     private fun checkCollideWithPlayer(entity: Entity) {
@@ -106,18 +106,16 @@ class PowerUpSystem :
 
                     playerBoundingRect.set(transform, boundingBox)
 
-                    if (playerBoundingRect.overlaps(powerUpBoundingRect))
-                        collectPowerUp(player, entity)
+                    if (playerBoundingRect.overlaps(enemyBoundingRect))
+                    damagePlayer(player, entity)
                 }
             }
         }
     }
 
-    private fun collectPowerUp(player: Entity, powerUp: Entity) {
-        val powerUpComponent = requireNotNull(powerUp[PowerUpComponent.mapper])
-
-        // add power up to player
-
-        powerUp.addComponent<RemoveComponent>(engine)
+    private fun damagePlayer(player: Entity, enemy: Entity) {
+        enemy.addComponent<RemoveComponent>(engine)
     }
+
+
 }
