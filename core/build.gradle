@@ -4,10 +4,12 @@ eclipse.project.name = appName + '-core'
 dependencies {
     api "com.badlogicgames.gdx:gdx:$gdxVersion"
     api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCoroutinesVersion"
     api "com.badlogicgames.ashley:ashley:$ashleyVersion"
-    implementation "io.github.libktx:ktx-app:$libKtxVersion"
-    implementation "io.github.libktx:ktx-log:$libKtxVersion"
-    implementation "io.github.libktx:ktx-graphics:$libKtxVersion"
-    implementation "io.github.libktx:ktx-ashley:$libKtxVersion"
-    implementation "io.github.libktx:ktx-collections:$libKtxVersion"
+    api "io.github.libktx:ktx-app:$libKtxVersion"
+    api "io.github.libktx:ktx-log:$libKtxVersion"
+    api "io.github.libktx:ktx-graphics:$libKtxVersion"
+    api "io.github.libktx:ktx-ashley:$libKtxVersion"
+    api "io.github.libktx:ktx-collections:$libKtxVersion"
+    api "io.github.libktx:ktx-assets-async:$libKtxVersion"
 }
