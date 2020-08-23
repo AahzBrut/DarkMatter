@@ -10,7 +10,6 @@ import ktx.ashley.entity
 import ktx.ashley.exclude
 import ktx.ashley.get
 import ktx.ashley.with
-import ktx.log.debug
 import ktx.log.logger
 import org.aahzbrut.darkmatter.ENEMY_BOUNDING_BOX
 import org.aahzbrut.darkmatter.ENEMY_SIZE
@@ -54,14 +53,16 @@ class EnemySystem(
         super.update(deltaTime)
         timer += deltaTime
         if (timer >= ENEMY_SPAWN_DELAY) {
-            spawnEnemy()
+            repeat((timer / ENEMY_SPAWN_DELAY).toInt()) {
+                spawnEnemy()
+            }
             timer = 0f
         }
     }
 
     private fun spawnEnemy() {
         val entity = engine.entity {
-            with<EnemyComponent>{}
+            with<EnemyComponent> {}
             with<TransformComponent> {
                 setInitialPosition(getSpawnXPosition(), WORLD_HEIGHT + ENEMY_SIZE, 0f)
                 size.set(ENEMY_SIZE, ENEMY_SIZE)
@@ -76,8 +77,6 @@ class EnemySystem(
                 setSpriteRegion(graphicsAtlas.findRegion("debris/Asteroid"))
             }
         }
-
-        LOG.debug { "Enemy $entity spawned" }
     }
 
     private fun getSpawnXPosition() = (0..(WORLD_WIDTH - ENEMY_SIZE).toInt()).random().toFloat()
@@ -93,7 +92,6 @@ class EnemySystem(
 
         if (transform.position.y <= -transform.size.y) {
             entity.add(RemoveComponent())
-            LOG.debug { "Enemy $entity was marked for removal" }
         }
 
     }
@@ -107,7 +105,7 @@ class EnemySystem(
                     playerBoundingRect.set(transform, boundingBox)
 
                     if (playerBoundingRect.overlaps(enemyBoundingRect))
-                    damagePlayer(player, entity)
+                        damagePlayer(player, entity)
                 }
             }
         }
