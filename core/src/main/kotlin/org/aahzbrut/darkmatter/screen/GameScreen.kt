@@ -12,6 +12,7 @@ import org.aahzbrut.darkmatter.PLAYER_BOUNDING_BOX
 import org.aahzbrut.darkmatter.PLAYER_SIZE
 import org.aahzbrut.darkmatter.WORLD_HEIGHT
 import org.aahzbrut.darkmatter.WORLD_WIDTH
+import org.aahzbrut.darkmatter.asset.MusicAsset
 import org.aahzbrut.darkmatter.asset.TextureAtlasAsset
 import org.aahzbrut.darkmatter.component.AnimationComponent
 import org.aahzbrut.darkmatter.component.AnimationType
@@ -33,10 +34,12 @@ class GameScreen(
         val engine: Engine = game.engine) :
         BaseScreen(game) {
 
-    private val graphicsAtlas = game.assetStorage[TextureAtlasAsset.TEXTURE_ATLAS.descriptior]
+    private val graphicsAtlas = game.assetStorage[TextureAtlasAsset.TEXTURE_ATLAS.descriptor]
 
     override fun show() {
         LOG.debug { "First screen is showing" }
+
+        game.audioService.play(MusicAsset.BACKGROUND_MUSIC, 1f)
 
         engine.entity {
             with<TransformComponent>{

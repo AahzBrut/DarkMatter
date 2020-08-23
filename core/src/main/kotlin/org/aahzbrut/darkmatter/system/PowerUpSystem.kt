@@ -9,7 +9,6 @@ import ktx.ashley.entity
 import ktx.ashley.exclude
 import ktx.ashley.get
 import ktx.ashley.with
-import ktx.log.debug
 import ktx.log.logger
 import org.aahzbrut.darkmatter.PLAYER_SIZE
 import org.aahzbrut.darkmatter.POWERUP_BOUNDING_BOX
@@ -72,7 +71,6 @@ class PowerUpSystem :
 
         if (transform.position.y <= -transform.size.y) {
             entity.add(RemoveComponent())
-            LOG.debug { "PowerUp $entity was marked for removal" }
         }
     }
 
@@ -94,8 +92,6 @@ class PowerUpSystem :
             }
             with<GraphicComponent> {}
         }
-
-        LOG.debug { "PowerUp $entity spawned" }
     }
 
     private fun checkCollideWithPlayer(entity: Entity) {

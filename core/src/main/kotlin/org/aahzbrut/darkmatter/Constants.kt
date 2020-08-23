@@ -2,6 +2,7 @@ package org.aahzbrut.darkmatter
 
 import com.badlogic.gdx.math.Rectangle
 
+const val MAX_SOUND_INSTANCES = 32
 const val WORLD_WIDTH = 64f
 const val WORLD_HEIGHT = 36f
 const val PLAYER_SIZE = 4f
@@ -16,7 +17,7 @@ const val MAX_VER_SPEED = 8f
 const val DEFAULT_ANIMATION_FRAME_DURATION = 1 / 20f
 const val POWERUP_SIZE = 4f
 const val POWERUP_SPEED = 4f
-const val ENEMY_SPAWN_DELAY = 1f
+const val ENEMY_SPAWN_DELAY = .01f
 const val ENEMY_SIZE = 3f
 const val ENEMY_SPEED = 3f
 

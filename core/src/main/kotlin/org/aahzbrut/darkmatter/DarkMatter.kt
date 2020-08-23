@@ -13,6 +13,8 @@ import ktx.async.KtxAsync
 import ktx.log.debug
 import ktx.log.logger
 import org.aahzbrut.darkmatter.asset.TextureAtlasAsset
+import org.aahzbrut.darkmatter.audio.AudioService
+import org.aahzbrut.darkmatter.audio.DefaultAudioService
 import org.aahzbrut.darkmatter.screen.BaseScreen
 import org.aahzbrut.darkmatter.screen.LoadingScreen
 import org.aahzbrut.darkmatter.system.AnimationSystem
@@ -32,12 +34,14 @@ class DarkMatter : KtxGame<BaseScreen>() {
 
     val gameViewport = FitViewport(WORLD_WIDTH, WORLD_HEIGHT)
 
-    val graphicsAtlas by lazy { assetStorage[TextureAtlasAsset.TEXTURE_ATLAS.descriptior] }
-
     val assetStorage by lazy {
         KtxAsync.initiate()
         AssetStorage()
     }
+
+    val audioService: AudioService by lazy { DefaultAudioService(assetStorage) }
+
+    private val graphicsAtlas by lazy { assetStorage[TextureAtlasAsset.TEXTURE_ATLAS.descriptor] }
 
     private val batch: Batch by lazy { SpriteBatch() }
 
