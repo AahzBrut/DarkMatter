@@ -17,12 +17,16 @@ const val MAX_VER_SPEED = 8f
 const val DEFAULT_ANIMATION_FRAME_DURATION = 1 / 20f
 const val POWERUP_SIZE = 4f
 const val POWERUP_SPEED = 4f
-const val ENEMY_SPAWN_DELAY = .01f
+const val POWER_UP_SPAWN_SCORE = 1000
+const val ENEMY_SPAWN_DELAY = 1f
+const val ENEMY_SPAWN_DELAY_DELTA = .99f
 const val ENEMY_SIZE = 3f
 const val ENEMY_SPEED = 3f
 const val MAX_WEAPON_DELAY = .5f
 const val PROJECTILE_SIZE = 2f
 const val PROJECTILE_SPEED = 10f
+const val ENEMY_KILL_SCORE = 100
+const val ENEMY_ESCAPE_SCORE = -10
 
 // Player bounding box
 val PLAYER_BOUNDING_BOX = Rectangle(

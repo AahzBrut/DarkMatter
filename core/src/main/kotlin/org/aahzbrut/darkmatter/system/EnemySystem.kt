@@ -3,7 +3,6 @@ package org.aahzbrut.darkmatter.system
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.ashley.utils.ImmutableArray
-import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.utils.Array
 import ktx.ashley.addComponent
@@ -12,10 +11,14 @@ import ktx.ashley.entity
 import ktx.ashley.exclude
 import ktx.ashley.get
 import ktx.ashley.with
+import ktx.log.debug
 import ktx.log.logger
 import org.aahzbrut.darkmatter.ENEMY_BOUNDING_BOX
+import org.aahzbrut.darkmatter.ENEMY_ESCAPE_SCORE
+import org.aahzbrut.darkmatter.ENEMY_KILL_SCORE
 import org.aahzbrut.darkmatter.ENEMY_SIZE
 import org.aahzbrut.darkmatter.ENEMY_SPAWN_DELAY
+import org.aahzbrut.darkmatter.ENEMY_SPAWN_DELAY_DELTA
 import org.aahzbrut.darkmatter.ENEMY_SPEED
 import org.aahzbrut.darkmatter.WORLD_HEIGHT
 import org.aahzbrut.darkmatter.WORLD_WIDTH
@@ -30,6 +33,7 @@ import org.aahzbrut.darkmatter.component.RemoveComponent
 import org.aahzbrut.darkmatter.component.TransformComponent
 import org.aahzbrut.darkmatter.set
 
+@Suppress("UNUSED")
 private val LOG = logger<EnemySystem>()
 
 object EmptyEntityArray : ImmutableArray<Entity>(Array())
@@ -56,19 +60,28 @@ class EnemySystem(
     private var projectiles: ImmutableArray<Entity> = EmptyEntityArray
 
     private var timer = 0f
+    private var spawnAccelTimer = 0f
+    private var spawnDelay = ENEMY_SPAWN_DELAY
 
     override fun update(deltaTime: Float) {
         cacheProjectiles()
         super.update(deltaTime)
+
         timer += deltaTime
-        while (timer >= ENEMY_SPAWN_DELAY) {
+        while (timer >= spawnDelay) {
             spawnEnemy()
-            timer -= ENEMY_SPAWN_DELAY
+            timer -= spawnDelay
+        }
+
+        spawnAccelTimer += deltaTime
+        while (spawnAccelTimer >= 1f) {
+            spawnDelay *= ENEMY_SPAWN_DELAY_DELTA
+            spawnAccelTimer -= 1f
         }
     }
 
     private fun spawnEnemy() {
-        val entity = engine.entity {
+        engine.entity {
             with<EnemyComponent> {}
             with<TransformComponent> {
                 setInitialPosition(getSpawnXPosition(), WORLD_HEIGHT + ENEMY_SIZE, 0f)
@@ -100,6 +113,12 @@ class EnemySystem(
 
         if (transform.position.y <= -transform.size.y) {
             entity.addComponent<RemoveComponent>(engine)
+            playerEntities.forEach { player ->
+                player[PlayerComponent.mapper]?.let {
+                    it.score += ENEMY_ESCAPE_SCORE
+                    LOG.debug { "Score: ${it.score}" }
+                }
+            }
         }
 
     }
@@ -116,6 +135,12 @@ class EnemySystem(
                             if (projectileBoundingRect.overlaps(enemyBoundingRect)) {
                                 enemy.addComponent<RemoveComponent>(engine)
                                 projectile.addComponent<RemoveComponent>(engine)
+                                playerEntities.forEach {player->
+                                    player[PlayerComponent.mapper]?.let {
+                                        it.score += ENEMY_KILL_SCORE
+                                        LOG.debug { "Score: ${it.score}" }
+                                    }
+                                }
                             }
                         }
                     }
@@ -147,6 +172,10 @@ class EnemySystem(
 
     private fun damagePlayer(player: Entity, enemy: Entity) {
         enemy.addComponent<RemoveComponent>(engine)
+        player[PlayerComponent.mapper]?.let {
+            it.score += ENEMY_KILL_SCORE
+            LOG.debug { "Score: ${it.score}" }
+        }
     }
 
 

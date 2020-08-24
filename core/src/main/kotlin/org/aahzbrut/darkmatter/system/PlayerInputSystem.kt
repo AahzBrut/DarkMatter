@@ -15,6 +15,7 @@ import org.aahzbrut.darkmatter.component.RollDirection
 import org.aahzbrut.darkmatter.component.TransformComponent
 import org.aahzbrut.darkmatter.component.VerticalDirection
 
+@Suppress("UNUSED")
 private val LOG = logger<PlayerInputSystem>()
 
 class PlayerInputSystem(
