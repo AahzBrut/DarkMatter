@@ -20,6 +20,9 @@ const val POWERUP_SPEED = 4f
 const val ENEMY_SPAWN_DELAY = .01f
 const val ENEMY_SIZE = 3f
 const val ENEMY_SPEED = 3f
+const val MAX_WEAPON_DELAY = .5f
+const val PROJECTILE_SIZE = 2f
+const val PROJECTILE_SPEED = 10f
 
 // Player bounding box
 val PLAYER_BOUNDING_BOX = Rectangle(
@@ -41,3 +44,10 @@ val ENEMY_BOUNDING_BOX = Rectangle(
         ENEMY_SIZE / 5f,
         ENEMY_SIZE - ENEMY_SIZE / 2f,
         ENEMY_SIZE - ENEMY_SIZE / 2.5f)
+
+// Projectile bounding box
+val PROJECTILE_BOUNDING_BOX = Rectangle(
+        PROJECTILE_SIZE / 16f,
+        PROJECTILE_SIZE / 18f,
+        PROJECTILE_SIZE / 8f,
+        PROJECTILE_SIZE - PROJECTILE_SIZE / 10f)

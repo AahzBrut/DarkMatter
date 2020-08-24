@@ -37,5 +37,6 @@ class LoadingScreen(game: DarkMatter) : BaseScreen(game) {
         game.setScreen<GameScreen>()
         game.removeScreen<LoadingScreen>()
         dispose()
+        System.gc() // to free garbage after load
     }
 }

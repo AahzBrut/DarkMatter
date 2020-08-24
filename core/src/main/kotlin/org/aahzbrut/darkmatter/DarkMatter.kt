@@ -26,8 +26,10 @@ import org.aahzbrut.darkmatter.system.MoveSystem
 import org.aahzbrut.darkmatter.system.PlayerAnimationSystem
 import org.aahzbrut.darkmatter.system.PlayerInputSystem
 import org.aahzbrut.darkmatter.system.PowerUpSystem
+import org.aahzbrut.darkmatter.system.ProjectileSystem
 import org.aahzbrut.darkmatter.system.RemoveSystem
 import org.aahzbrut.darkmatter.system.RenderSystem
+import org.aahzbrut.darkmatter.system.WeaponSystem
 
 private val LOG = logger<DarkMatter>()
 
@@ -66,7 +68,9 @@ class DarkMatter : KtxGame<BaseScreen>() {
             addSystem(AttachmentSystem())
             addSystem(AnimationSystem(spriteCache))
             addSystem(RenderSystem(batch, gameViewport))
-           // addSystem(BoundingBoxRenderingSystem(gameViewport, shapeRenderer))
+            addSystem(BoundingBoxRenderingSystem(gameViewport, shapeRenderer))
+            addSystem(WeaponSystem(spriteCache))
+            addSystem(ProjectileSystem())
             addSystem(RemoveSystem())
         }
     }
