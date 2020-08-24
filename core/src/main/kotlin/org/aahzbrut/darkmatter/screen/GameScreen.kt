@@ -47,7 +47,7 @@ class GameScreen(
                 size.set(WORLD_WIDTH, WORLD_HEIGHT)
             }
             with<GraphicComponent>{
-                setSpriteRegion(graphicsAtlas.findRegion("background/SpaceBG_Overlay"))
+                resetSprite(game.spriteCache.getSprite("background/SpaceBG_Overlay"))
             }
         }
 
