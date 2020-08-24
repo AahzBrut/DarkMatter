@@ -10,10 +10,10 @@ import ktx.ashley.exclude
 import ktx.ashley.get
 import ktx.ashley.with
 import ktx.log.logger
-import org.aahzbrut.darkmatter.PLAYER_SIZE
 import org.aahzbrut.darkmatter.POWERUP_BOUNDING_BOX
 import org.aahzbrut.darkmatter.POWERUP_SIZE
 import org.aahzbrut.darkmatter.POWERUP_SPEED
+import org.aahzbrut.darkmatter.POWER_UP_SPAWN_SCORE
 import org.aahzbrut.darkmatter.WORLD_HEIGHT
 import org.aahzbrut.darkmatter.WORLD_WIDTH
 import org.aahzbrut.darkmatter.component.AnimationComponent
@@ -27,7 +27,7 @@ import org.aahzbrut.darkmatter.component.RemoveComponent
 import org.aahzbrut.darkmatter.component.TransformComponent
 import org.aahzbrut.darkmatter.set
 
-
+@Suppress("UNUSED")
 private val LOG = logger<PowerUpSystem>()
 
 class PowerUpSystem :
@@ -48,14 +48,18 @@ class PowerUpSystem :
         )
     }
 
-    private var timer = 0f
+    private var lastScore = 0f
+    private fun getSpawnXPosition() = (0..(WORLD_WIDTH - POWERUP_SIZE).toInt()).random().toFloat()
 
     override fun update(deltaTime: Float) {
         super.update(deltaTime)
-        timer += deltaTime
-        if (timer >= 2f) {
-            spawnPowerUp()
-            timer = 0f
+        playerEntities.forEach { player ->
+            player[PlayerComponent.mapper]?.let {
+                if (it.score - lastScore >= POWER_UP_SPAWN_SCORE) {
+                    spawnPowerUp()
+                    lastScore += POWER_UP_SPAWN_SCORE
+                }
+            }
         }
 
     }
@@ -75,9 +79,9 @@ class PowerUpSystem :
     }
 
     private fun spawnPowerUp() {
-        val entity = engine.entity {
+        engine.entity {
             with<TransformComponent> {
-                setInitialPosition(WORLD_WIDTH / 2, WORLD_HEIGHT + PLAYER_SIZE, 0f)
+                setInitialPosition(getSpawnXPosition(), WORLD_HEIGHT + POWERUP_SIZE, 0f)
                 size.set(POWERUP_SIZE, POWERUP_SIZE)
             }
             with<BoundingBoxComponent> {

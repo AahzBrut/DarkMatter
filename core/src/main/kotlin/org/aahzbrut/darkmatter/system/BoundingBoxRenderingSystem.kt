@@ -2,6 +2,8 @@ package org.aahzbrut.darkmatter.system
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Input
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.utils.viewport.Viewport
 import ktx.ashley.allOf
@@ -19,6 +21,8 @@ class BoundingBoxRenderingSystem(
                         BoundingBoxComponent::class,
                         TransformComponent::class).get()) {
 
+    private var showBoundingBoxes: Boolean = false
+
     override fun processEntity(entity: Entity, deltaTime: Float) {
         val transform = requireNotNull(entity[TransformComponent.mapper])
 
@@ -28,9 +32,14 @@ class BoundingBoxRenderingSystem(
     }
 
     override fun update(deltaTime: Float) {
-        shapeRenderer.projectionMatrix = viewport.camera.combined
-        shapeRenderer.use(ShapeRenderer.ShapeType.Line) {
-            super.update(deltaTime)
+        if (showBoundingBoxes) {
+            shapeRenderer.projectionMatrix = viewport.camera.combined
+            shapeRenderer.use(ShapeRenderer.ShapeType.Line) {
+                super.update(deltaTime)
+            }
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
+            showBoundingBoxes = showBoundingBoxes.xor(true)
         }
     }
 }
