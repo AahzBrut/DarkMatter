@@ -4,8 +4,11 @@ import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import ktx.collections.GdxArray
 import ktx.log.logger
+import org.aahzbrut.darkmatter.component.EmptySprite
 
 private val LOG = logger<SpriteCache>()
+
+object EmptySpriteArray : GdxArray<Sprite>()
 
 class SpriteCache(private val textureAtlas: TextureAtlas) {
 
@@ -14,9 +17,9 @@ class SpriteCache(private val textureAtlas: TextureAtlas) {
             { GdxArray<Sprite>(textureAtlas.createSprites(it.name)) }
     )
 
-    fun getSprite(name: String, index: Int) = cache[name]?.get(index)?:Sprite()
+    fun getSprite(name: String, index: Int) = cache[name]?.get(index) ?: EmptySprite
 
-    fun getSprite(name: String) = cache[name]?.get(0)?:Sprite()
+    fun getSprite(name: String) = cache[name]?.get(0) ?: EmptySprite
 
-    fun getSprites(name: String) = cache[name]?:GdxArray()
+    fun getSprites(name: String) = cache[name] ?: EmptySpriteArray
 }
