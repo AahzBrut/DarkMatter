@@ -23,6 +23,7 @@ import org.aahzbrut.darkmatter.component.MoveComponent
 import org.aahzbrut.darkmatter.component.PlayerComponent
 import org.aahzbrut.darkmatter.component.RollComponent
 import org.aahzbrut.darkmatter.component.TransformComponent
+import org.aahzbrut.darkmatter.component.WeaponComponent
 import kotlin.math.min
 
 
@@ -63,6 +64,9 @@ class GameScreen(
             with<GraphicComponent> {}
             with<PlayerComponent> {}
             with<RollComponent> {}
+            with<WeaponComponent>{
+                mainGunPosition.set(1.75f, 3.5f)
+            }
         }
 
         engine.entity {
