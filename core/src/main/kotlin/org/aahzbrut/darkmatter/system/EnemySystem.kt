@@ -2,8 +2,10 @@ package org.aahzbrut.darkmatter.system
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
+import com.badlogic.ashley.utils.ImmutableArray
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.math.Rectangle
+import com.badlogic.gdx.utils.Array
 import ktx.ashley.addComponent
 import ktx.ashley.allOf
 import ktx.ashley.entity
@@ -23,11 +25,14 @@ import org.aahzbrut.darkmatter.component.EnemyComponent
 import org.aahzbrut.darkmatter.component.GraphicComponent
 import org.aahzbrut.darkmatter.component.MoveComponent
 import org.aahzbrut.darkmatter.component.PlayerComponent
+import org.aahzbrut.darkmatter.component.ProjectileComponent
 import org.aahzbrut.darkmatter.component.RemoveComponent
 import org.aahzbrut.darkmatter.component.TransformComponent
 import org.aahzbrut.darkmatter.set
 
 private val LOG = logger<EnemySystem>()
+
+object EmptyEntityArray : ImmutableArray<Entity>(Array())
 
 class EnemySystem(
         private val spriteCache: SpriteCache) :
@@ -40,6 +45,7 @@ class EnemySystem(
 
     private val playerBoundingRect = Rectangle()
     private val enemyBoundingRect = Rectangle()
+    private val projectileBoundingRect = Rectangle()
     private val playerEntities by lazy {
         engine.getEntitiesFor(
                 allOf(PlayerComponent::class,
@@ -47,17 +53,17 @@ class EnemySystem(
                         .exclude(RemoveComponent::class).get()
         )
     }
+    private var projectiles: ImmutableArray<Entity> = EmptyEntityArray
 
     private var timer = 0f
 
     override fun update(deltaTime: Float) {
+        cacheProjectiles()
         super.update(deltaTime)
         timer += deltaTime
-        if (timer >= ENEMY_SPAWN_DELAY) {
-            repeat((timer / ENEMY_SPAWN_DELAY).toInt()) {
-                spawnEnemy()
-            }
-            timer = 0f
+        while (timer >= ENEMY_SPAWN_DELAY) {
+            spawnEnemy()
+            timer -= ENEMY_SPAWN_DELAY
         }
     }
 
@@ -90,11 +96,38 @@ class EnemySystem(
         enemyBoundingRect.set(transform, boundingBox)
 
         checkCollideWithPlayer(entity)
+        checkCollideWithProjectile(entity)
 
         if (transform.position.y <= -transform.size.y) {
             entity.add(RemoveComponent())
         }
 
+    }
+
+    private fun checkCollideWithProjectile(enemy: Entity) {
+        projectiles
+                .filter { it[RemoveComponent.mapper] == null }
+                .forEach { projectile ->
+                    projectile[TransformComponent.mapper]?.let { transform ->
+                        projectile[BoundingBoxComponent.mapper]?.let { boundingBox ->
+
+                            projectileBoundingRect.set(transform, boundingBox)
+
+                            if (projectileBoundingRect.overlaps(enemyBoundingRect)) {
+                                enemy.addComponent<RemoveComponent>(engine)
+                                projectile.addComponent<RemoveComponent>(engine)
+                            }
+                        }
+                    }
+                }
+    }
+
+    private fun cacheProjectiles() {
+        projectiles = engine.getEntitiesFor(
+                allOf(ProjectileComponent::class,
+                        TransformComponent::class,
+                        BoundingBoxComponent::class)
+                        .exclude(RemoveComponent::class).get())
     }
 
     private fun checkCollideWithPlayer(entity: Entity) {
