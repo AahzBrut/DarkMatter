@@ -2,6 +2,7 @@ package org.aahzbrut.darkmatter.component
 
 import com.badlogic.ashley.core.Component
 import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.utils.Pool
 import ktx.ashley.mapperFor
@@ -22,10 +23,10 @@ enum class AnimationType(
 
 class Animation2D(
         val type: AnimationType,
-        keyFrames: GdxArray<out TextureRegion>,
+        keyFrames: GdxArray<out Sprite>,
         playMode: PlayMode = PlayMode.LOOP,
         playRate: Float = 1f
-) : Animation<TextureRegion>(DEFAULT_ANIMATION_FRAME_DURATION / playRate, keyFrames, playMode)
+) : Animation<Sprite>(DEFAULT_ANIMATION_FRAME_DURATION / playRate, keyFrames, playMode)
 
 class AnimationComponent : Component, Pool.Poolable {
 

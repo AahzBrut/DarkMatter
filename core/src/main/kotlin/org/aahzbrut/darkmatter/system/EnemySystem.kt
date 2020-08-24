@@ -17,6 +17,7 @@ import org.aahzbrut.darkmatter.ENEMY_SPAWN_DELAY
 import org.aahzbrut.darkmatter.ENEMY_SPEED
 import org.aahzbrut.darkmatter.WORLD_HEIGHT
 import org.aahzbrut.darkmatter.WORLD_WIDTH
+import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.component.BoundingBoxComponent
 import org.aahzbrut.darkmatter.component.EnemyComponent
 import org.aahzbrut.darkmatter.component.GraphicComponent
@@ -29,7 +30,7 @@ import org.aahzbrut.darkmatter.set
 private val LOG = logger<EnemySystem>()
 
 class EnemySystem(
-        private val graphicsAtlas: TextureAtlas) :
+        private val spriteCache: SpriteCache) :
         IteratingSystem(
                 allOf(
                         EnemyComponent::class,
@@ -74,7 +75,7 @@ class EnemySystem(
                 speed.set(0f, -ENEMY_SPEED)
             }
             with<GraphicComponent> {
-                setSpriteRegion(graphicsAtlas.findRegion("debris/Asteroid"))
+                resetSprite(spriteCache.getSprite("debris/Asteroid"))
             }
         }
     }

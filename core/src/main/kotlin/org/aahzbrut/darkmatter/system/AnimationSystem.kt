@@ -10,6 +10,7 @@ import ktx.ashley.get
 import ktx.log.debug
 import ktx.log.error
 import ktx.log.logger
+import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.component.Animation2D
 import org.aahzbrut.darkmatter.component.AnimationComponent
 import org.aahzbrut.darkmatter.component.AnimationType
@@ -20,7 +21,7 @@ import java.util.*
 private val LOG = logger<AnimationSystem>()
 
 class AnimationSystem(
-        private val atlas: TextureAtlas) :
+        private val spriteCache: SpriteCache) :
         IteratingSystem(allOf(AnimationComponent::class).get()), EntityListener {
 
     private val cache = EnumMap<AnimationType, Animation2D>(AnimationType::class.java)
@@ -39,15 +40,14 @@ class AnimationSystem(
         entity[AnimationComponent.mapper]?.let { animComponent ->
             animComponent.animation = getAnimation(animComponent.type)
             val frame = animComponent.animation.getKeyFrame(animComponent.stateTime)
-            entity[GraphicComponent.mapper]?.setSpriteRegion(frame)
-
+            entity[GraphicComponent.mapper]?.resetSprite(frame)
         }
     }
 
     private fun getAnimation(type: AnimationType): Animation2D {
         var animation = cache[type]
         if (animation == null) {
-            val regions = atlas.findRegions(type.atlasKey)
+            val regions = spriteCache.getSprites(type.atlasKey)
             if (regions.isEmpty) {
                 LOG.error { "Regions with key ${type.atlasKey} was not found in atlas" }
             } else {
@@ -76,6 +76,6 @@ class AnimationSystem(
         }
 
         val frame = animComponent.animation.getKeyFrame(animComponent.stateTime)
-        graphicComponent.setSpriteRegion(frame)
+        graphicComponent.resetSprite(frame)
     }
 }
