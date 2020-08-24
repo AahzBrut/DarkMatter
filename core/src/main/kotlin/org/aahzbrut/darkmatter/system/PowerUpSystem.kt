@@ -70,7 +70,7 @@ class PowerUpSystem :
         checkCollideWithPlayer(entity)
 
         if (transform.position.y <= -transform.size.y) {
-            entity.add(RemoveComponent())
+            entity.addComponent<RemoveComponent>(engine)
         }
     }
 

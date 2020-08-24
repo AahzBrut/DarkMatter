@@ -2,6 +2,7 @@ package org.aahzbrut.darkmatter.system
 
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
+import ktx.ashley.addComponent
 import ktx.ashley.allOf
 import ktx.ashley.exclude
 import ktx.ashley.get
@@ -27,7 +28,7 @@ class ProjectileSystem :
         val transform = requireNotNull(entity[TransformComponent.mapper])
 
         if (transform.position.y >= WORLD_HEIGHT + transform.size.y) {
-            entity.add(RemoveComponent())
+            entity.addComponent<RemoveComponent>(engine)
         }
     }
 }

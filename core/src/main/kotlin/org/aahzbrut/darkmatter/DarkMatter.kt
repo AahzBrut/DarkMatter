@@ -59,7 +59,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
     }
 
     val engine by lazy {
-        PooledEngine().apply {
+        PooledEngine(1000, 10000, 5000, 50000).apply {
             addSystem(PlayerInputSystem(gameViewport))
             addSystem(MoveSystem())
             addSystem(PowerUpSystem())
