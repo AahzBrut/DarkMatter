@@ -27,7 +27,7 @@ class BoundingBoxRenderingSystem(
         val transform = requireNotNull(entity[TransformComponent.mapper])
 
         entity[BoundingBoxComponent.mapper]?.let { bbox ->
-            shapeRenderer.rect(transform.position.x + bbox.boundingBox.x, transform.position.y + bbox.boundingBox.y, bbox.boundingBox.width, bbox.boundingBox.height)
+            shapeRenderer.rect(transform.interpolatedPosition.x + bbox.boundingBox.x, transform.interpolatedPosition.y + bbox.boundingBox.y, bbox.boundingBox.width, bbox.boundingBox.height)
         }
     }
 
