@@ -11,7 +11,6 @@ import ktx.collections.GdxArray
 import ktx.log.logger
 import org.aahzbrut.darkmatter.PLAYER_ROLL_MAX_VALUE
 import org.aahzbrut.darkmatter.asset.SpriteCache
-import org.aahzbrut.darkmatter.component.EmptySprite
 import org.aahzbrut.darkmatter.component.GraphicComponent
 import org.aahzbrut.darkmatter.component.PlayerComponent
 import org.aahzbrut.darkmatter.component.RollComponent
@@ -42,10 +41,9 @@ class PlayerAnimationSystem(spriteCache: SpriteCache) :
         val rollComponent = requireNotNull(entity[RollComponent.mapper])
         val graphicComponent = requireNotNull(entity[GraphicComponent.mapper])
 
-        if (rollComponent.rollAmount == 0f && graphicComponent.sprite != EmptySprite) return
-
         graphicComponent.resetSprite(sprites[rollComponent.rollAmount.toInt() + PLAYER_ROLL_MAX_VALUE]
                 ?: throw RuntimeException("Texture regions are not set"))
+        graphicComponent.sprite.setOriginCenter()
     }
 
     override fun addedToEngine(engine: Engine) {
