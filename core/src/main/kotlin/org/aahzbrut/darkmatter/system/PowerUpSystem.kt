@@ -88,7 +88,7 @@ class PowerUpSystem :
                 boundingBox.set(POWERUP_BOUNDING_BOX)
             }
             with<MoveComponent> {
-                speed.set(0f, -POWERUP_SPEED)
+                velocity.set(0f, -POWERUP_SPEED)
             }
             with<PowerUpComponent> {}
             with<AnimationComponent> {

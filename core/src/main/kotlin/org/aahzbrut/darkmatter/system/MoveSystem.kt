@@ -4,34 +4,45 @@ import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.math.MathUtils.clamp
 import com.badlogic.gdx.math.MathUtils.lerp
+import com.badlogic.gdx.math.Vector2
 import ktx.ashley.allOf
 import ktx.ashley.exclude
 import ktx.ashley.get
+import ktx.log.debug
 import ktx.log.logger
-import org.aahzbrut.darkmatter.HOR_ACCELERATION
-import org.aahzbrut.darkmatter.MAX_HOR_SPEED
-import org.aahzbrut.darkmatter.MAX_VER_SPEED
+import org.aahzbrut.darkmatter.MAX_ACCELERATION
+import org.aahzbrut.darkmatter.MAX_SPEED
+import org.aahzbrut.darkmatter.PLAYER_DISTANCE_TO_TARGET_ALLOWANCE
+import org.aahzbrut.darkmatter.PLAYER_ROLL_MAX_VALUE
+import org.aahzbrut.darkmatter.PLAYER_ROLL_SPEED
+import org.aahzbrut.darkmatter.PLAYER_ROLL_TOLERANCE
 import org.aahzbrut.darkmatter.UPDATE_RATE
-import org.aahzbrut.darkmatter.VER_ACCELERATION
 import org.aahzbrut.darkmatter.WORLD_HEIGHT
 import org.aahzbrut.darkmatter.WORLD_WIDTH
 import org.aahzbrut.darkmatter.component.MoveComponent
 import org.aahzbrut.darkmatter.component.PlayerComponent
 import org.aahzbrut.darkmatter.component.RemoveComponent
 import org.aahzbrut.darkmatter.component.RollComponent
-import org.aahzbrut.darkmatter.component.RollDirection
 import org.aahzbrut.darkmatter.component.TransformComponent
-import org.aahzbrut.darkmatter.component.VerticalDirection
-import kotlin.math.max
-import kotlin.math.min
+import kotlin.math.abs
+import kotlin.math.sign
 
-
+@Suppress("UNUSED")
 private val LOG = logger<MoveSystem>()
 
 class MoveSystem :
-        IteratingSystem(allOf(TransformComponent::class, MoveComponent::class).exclude(RemoveComponent::class).get()) {
+        IteratingSystem(
+                allOf(
+                        TransformComponent::class,
+                        MoveComponent::class)
+                        .exclude(
+                                RemoveComponent::class)
+                        .get()) {
 
     private var timeSinceLastUpdate = 0f
+    private val vectorToTarget = Vector2()
+    private val directionToTarget = Vector2()
+    private var newSpeed = 0f
 
     override fun update(deltaTime: Float) {
         timeSinceLastUpdate += deltaTime
@@ -72,29 +83,51 @@ class MoveSystem :
         val player = entity[PlayerComponent.mapper]
 
         if (player != null) {
-            entity[RollComponent.mapper]?.let {
-                movePlayer(transformComponent, moveComponent, it, deltaTime)
-            }
+            updateRoll(entity, transformComponent, moveComponent, deltaTime)
+            movePlayer(transformComponent, moveComponent, deltaTime)
         } else {
             moveEntity(transformComponent, moveComponent, deltaTime)
         }
+
     }
 
-    private fun movePlayer(transform: TransformComponent, move: MoveComponent, roll: RollComponent, deltaTime: Float) {
-        val horizontalSpeed = when (roll.horizontalDirection) {
-            RollDirection.LEFT -> min(0f, move.speed.x - HOR_ACCELERATION * deltaTime)
-            RollDirection.RIGHT -> max(0f, move.speed.x + HOR_ACCELERATION * deltaTime)
-            else -> 0f
+    private fun updateRoll(player: Entity, transform: TransformComponent, move: MoveComponent, deltaTime: Float) {
+        vectorToTarget.set(move.target.x - transform.position.x - transform.size.x / 2, move.target.y - transform.position.y - transform.size.y / 2)
+        val roll = requireNotNull(player[RollComponent.mapper])
+        if (abs(vectorToTarget.x) < PLAYER_ROLL_TOLERANCE) {
+            // return to center
+            if (abs(roll.rollAmount) < PLAYER_ROLL_SPEED * deltaTime) {
+                roll.rollAmount = 0f
+            } else {
+                roll.rollAmount -= sign(roll.rollAmount) * (PLAYER_ROLL_SPEED * deltaTime)
+            }
+        } else {
+            // roll
+            roll.rollAmount += sign(vectorToTarget.x) * (PLAYER_ROLL_SPEED * deltaTime)
+            roll.rollAmount = clamp(roll.rollAmount, -PLAYER_ROLL_MAX_VALUE.toFloat(), PLAYER_ROLL_MAX_VALUE.toFloat())
         }
 
-        val verticalSpeed = when (roll.verticalDirection) {
-            VerticalDirection.DOWN -> min(0f, move.speed.y - VER_ACCELERATION * deltaTime)
-            VerticalDirection.UP -> max(0f, move.speed.y + VER_ACCELERATION * deltaTime)
-            else -> 0f
-        }
+        LOG.debug { "Roll amount: ${roll.rollAmount}" }
+    }
 
-        move.speed.x = clamp(horizontalSpeed, -MAX_HOR_SPEED, MAX_HOR_SPEED)
-        move.speed.y = clamp(verticalSpeed, -MAX_VER_SPEED, MAX_VER_SPEED)
+    private fun movePlayer(transform: TransformComponent, move: MoveComponent, deltaTime: Float) {
+        vectorToTarget.set(move.target.x - transform.position.x - transform.size.x / 2, move.target.y - transform.position.y - transform.size.y / 2)
+        val distanceToTarget = vectorToTarget.len()
+        if (distanceToTarget <= PLAYER_DISTANCE_TO_TARGET_ALLOWANCE) return
+
+        vectorToTarget.nor()
+        directionToTarget.set(vectorToTarget)
+
+        newSpeed = move.velocity.len() + MAX_ACCELERATION * deltaTime
+        newSpeed = clamp(newSpeed, -MAX_SPEED, MAX_SPEED)
+        move.velocity.set(vectorToTarget.scl(newSpeed))
+
+        //LOG.debug { "Target: ${move.target}, position: ${transform.position}, velocity: ${move.velocity}, distance:$distanceToTarget" }
+
+        // clamp speed to not overshoot target
+        if (distanceToTarget < move.velocity.len() * deltaTime) {
+            move.velocity.set(directionToTarget.scl(distanceToTarget * deltaTime))
+        }
 
         moveEntity(transform, move, deltaTime, true)
     }
@@ -104,18 +137,18 @@ class MoveSystem :
 
         transform.position.x = if (clamp)
             clamp(
-                    transform.position.x + move.speed.x * deltaTime,
+                    transform.position.x + move.velocity.x * deltaTime,
                     0f,
                     WORLD_WIDTH - transform.size.x)
         else
-            transform.position.x + move.speed.x * deltaTime
+            transform.position.x + move.velocity.x * deltaTime
 
         transform.position.y = if (clamp)
             clamp(
-                    transform.position.y + move.speed.y * deltaTime,
+                    transform.position.y + move.velocity.y * deltaTime,
                     0f,
                     WORLD_HEIGHT - transform.size.y)
         else
-            transform.position.y + move.speed.y * deltaTime
+            transform.position.y + move.velocity.y * deltaTime
     }
 }

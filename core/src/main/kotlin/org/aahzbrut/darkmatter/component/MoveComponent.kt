@@ -7,10 +7,12 @@ import ktx.ashley.mapperFor
 
 class MoveComponent: Component, Pool.Poolable {
 
-    val speed = Vector2()
+    val velocity = Vector2()
+    val target = Vector2()
 
     override fun reset() {
-        speed.set(Vector2.Zero)
+        velocity.set(Vector2.Zero)
+        target.set(Vector2.Zero)
     }
 
     companion object {

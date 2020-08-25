@@ -91,7 +91,7 @@ class EnemySystem(
                 boundingBox.set(ENEMY_BOUNDING_BOX)
             }
             with<MoveComponent> {
-                speed.set(0f, -ENEMY_SPEED)
+                velocity.set(0f, -ENEMY_SPEED)
             }
             with<GraphicComponent> {
                 resetSprite(spriteCache.getSprite("debris/Asteroid"))

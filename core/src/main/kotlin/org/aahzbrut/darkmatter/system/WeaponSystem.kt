@@ -63,7 +63,7 @@ class WeaponSystem(private val spriteCache: SpriteCache) :
                 boundingBox.set(PROJECTILE_BOUNDING_BOX)
             }
             with<MoveComponent> {
-                speed.set(0f, PROJECTILE_SPEED)
+                velocity.set(0f, PROJECTILE_SPEED)
             }
             with<GraphicComponent> {
                 resetSprite(spriteCache.getSprite("projectiles/laser"))
