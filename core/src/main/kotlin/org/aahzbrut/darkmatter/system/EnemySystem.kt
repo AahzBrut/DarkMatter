@@ -110,17 +110,20 @@ class EnemySystem(
 
         checkCollideWithPlayer(entity)
         checkCollideWithProjectile(entity)
+        checkEnemyEscaped(transform, entity)
+    }
 
+    private fun checkEnemyEscaped(transform: TransformComponent, enemy: Entity) {
         if (transform.position.y <= -transform.size.y) {
-            entity.addComponent<RemoveComponent>(engine)
+            enemy.addComponent<RemoveComponent>(engine)
             playerEntities.forEach { player ->
                 player[PlayerComponent.mapper]?.let {
                     it.score += ENEMY_ESCAPE_SCORE
+                    it.enemiesLost++
                     LOG.debug { "Score: ${it.score}" }
                 }
             }
         }
-
     }
 
     private fun checkCollideWithProjectile(enemy: Entity) {
@@ -138,6 +141,7 @@ class EnemySystem(
                                 playerEntities.forEach {player->
                                     player[PlayerComponent.mapper]?.let {
                                         it.score += ENEMY_KILL_SCORE
+                                        it.enemiesKilled++
                                         LOG.debug { "Score: ${it.score}" }
                                     }
                                 }
@@ -174,9 +178,9 @@ class EnemySystem(
         enemy.addComponent<RemoveComponent>(engine)
         player[PlayerComponent.mapper]?.let {
             it.score += ENEMY_KILL_SCORE
+            it.numLives--
+            it.enemiesKilled++
             LOG.debug { "Score: ${it.score}" }
         }
     }
-
-
 }
