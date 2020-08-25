@@ -10,7 +10,6 @@ import ktx.ashley.get
 import ktx.log.logger
 import org.aahzbrut.darkmatter.component.MoveComponent
 import org.aahzbrut.darkmatter.component.PlayerComponent
-import org.aahzbrut.darkmatter.component.TransformComponent
 
 @Suppress("UNUSED")
 private val LOG = logger<PlayerInputSystem>()
