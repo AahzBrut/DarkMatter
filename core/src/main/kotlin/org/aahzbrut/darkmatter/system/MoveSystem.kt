@@ -8,7 +8,6 @@ import com.badlogic.gdx.math.Vector2
 import ktx.ashley.allOf
 import ktx.ashley.exclude
 import ktx.ashley.get
-import ktx.log.debug
 import ktx.log.logger
 import org.aahzbrut.darkmatter.MAX_ACCELERATION
 import org.aahzbrut.darkmatter.MAX_SPEED
@@ -106,8 +105,6 @@ class MoveSystem :
             roll.rollAmount += sign(vectorToTarget.x) * (PLAYER_ROLL_SPEED * deltaTime)
             roll.rollAmount = clamp(roll.rollAmount, -PLAYER_ROLL_MAX_VALUE.toFloat(), PLAYER_ROLL_MAX_VALUE.toFloat())
         }
-
-        LOG.debug { "Roll amount: ${roll.rollAmount}" }
     }
 
     private fun movePlayer(transform: TransformComponent, move: MoveComponent, deltaTime: Float) {
