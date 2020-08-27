@@ -13,25 +13,9 @@ import ktx.ashley.get
 import ktx.ashley.with
 import ktx.log.debug
 import ktx.log.logger
-import org.aahzbrut.darkmatter.ENEMY_BOUNDING_BOX
-import org.aahzbrut.darkmatter.ENEMY_ESCAPE_SCORE
-import org.aahzbrut.darkmatter.ENEMY_KILL_SCORE
-import org.aahzbrut.darkmatter.ENEMY_SIZE
-import org.aahzbrut.darkmatter.ENEMY_SPAWN_DELAY
-import org.aahzbrut.darkmatter.ENEMY_SPAWN_DELAY_DELTA
-import org.aahzbrut.darkmatter.ENEMY_SPEED
-import org.aahzbrut.darkmatter.WORLD_HEIGHT
-import org.aahzbrut.darkmatter.WORLD_WIDTH
+import org.aahzbrut.darkmatter.*
 import org.aahzbrut.darkmatter.asset.SpriteCache
-import org.aahzbrut.darkmatter.component.BoundingBoxComponent
-import org.aahzbrut.darkmatter.component.EnemyComponent
-import org.aahzbrut.darkmatter.component.GraphicComponent
-import org.aahzbrut.darkmatter.component.MoveComponent
-import org.aahzbrut.darkmatter.component.PlayerComponent
-import org.aahzbrut.darkmatter.component.ProjectileComponent
-import org.aahzbrut.darkmatter.component.RemoveComponent
-import org.aahzbrut.darkmatter.component.TransformComponent
-import org.aahzbrut.darkmatter.set
+import org.aahzbrut.darkmatter.component.*
 
 @Suppress("UNUSED")
 private val LOG = logger<EnemySystem>()
@@ -138,7 +122,7 @@ class EnemySystem(
                             if (projectileBoundingRect.overlaps(enemyBoundingRect)) {
                                 enemy.addComponent<RemoveComponent>(engine)
                                 projectile.addComponent<RemoveComponent>(engine)
-                                playerEntities.forEach {player->
+                                playerEntities.forEach { player ->
                                     player[PlayerComponent.mapper]?.let {
                                         it.score += ENEMY_KILL_SCORE
                                         it.enemiesKilled++
@@ -181,6 +165,47 @@ class EnemySystem(
             it.numLives--
             it.enemiesKilled++
             LOG.debug { "Score: ${it.score}" }
+
+            if (it.numLives > 0) {
+                addEngineOnFireAnimation(player, it.numLives)
+            } else {
+                destroyPlayer(player)
+            }
+        }
+
+
+    }
+
+    private fun destroyPlayer(player: Entity) {
+        val attachments = engine.getEntitiesFor(
+                allOf(AttachmentComponent::class)
+                        .exclude(RemoveComponent::class).get())
+
+        attachments.forEach {
+            val attachment = requireNotNull(it[AttachmentComponent.mapper])
+            if (attachment.entity == player)
+                it.addComponent<RemoveComponent>(engine)
+        }
+
+        player.addComponent<RemoveComponent>(engine)
+    }
+
+    private fun addEngineOnFireAnimation(player: Entity, numLives: Int) {
+
+        engine.entity {
+            with<TransformComponent> { size.set(PLAYER_SIZE, PLAYER_SIZE) }
+            with<AnimationComponent> {
+                type = AnimationType.ENGINE_ON_FIRE
+            }
+            with<GraphicComponent> {}
+            with<AttachmentComponent> {
+                entity = player
+                if (numLives == 1)
+                    offset.set(-1f, -3f)
+                else
+                    offset.set(1f, -3f)
+            }
+
         }
     }
 }
