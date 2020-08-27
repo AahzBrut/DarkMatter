@@ -205,7 +205,6 @@ class EnemySystem(
                 else
                     offset.set(1f, -3f)
             }
-
         }
     }
 }
