@@ -120,7 +120,10 @@ class EnemySystem(
                             projectileBoundingRect.set(transform, boundingBox)
 
                             if (projectileBoundingRect.overlaps(enemyBoundingRect)) {
-                                enemy.addComponent<RemoveComponent>(engine)
+                                enemy.addComponent<AnimationComponent>(engine) {
+                                    type = AnimationType.ENEMY_EXPLOSION
+                                }
+                                enemy.addComponent<RemoveComponent>(engine) { delay = 3f}
                                 projectile.addComponent<RemoveComponent>(engine)
                                 playerEntities.forEach { player ->
                                     player[PlayerComponent.mapper]?.let {
