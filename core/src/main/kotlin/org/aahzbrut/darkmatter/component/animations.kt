@@ -19,7 +19,8 @@ enum class AnimationType(
     POWERUP_SHIELD("power_ups/shield/ShieldPowerUp", playRate=.5f),
     POWERUP_SPEED("power_ups/speed/SpeedPowerUp", playRate=.5f),
     POWERUP_TRIPLE_SHOT("power_ups/triple_shot/TripleShotPowerUp", playRate=.5f),
-    ENGINE_ON_FIRE("player/engine-on-fire/Fire")
+    ENGINE_ON_FIRE("player/engine-on-fire/Fire"),
+    ENEMY_EXPLOSION("explosion/Explosion")
 }
 
 class Animation2D(
