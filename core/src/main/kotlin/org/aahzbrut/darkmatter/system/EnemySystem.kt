@@ -18,6 +18,7 @@ import org.aahzbrut.darkmatter.asset.SoundAsset
 import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.audio.AudioService
 import org.aahzbrut.darkmatter.component.*
+import org.aahzbrut.darkmatter.factory.EnemyFactory
 
 @Suppress("UNUSED")
 private val LOG = logger<EnemySystem>()
@@ -44,6 +45,10 @@ class EnemySystem(
                         .exclude(RemoveComponent::class).get()
         )
     }
+    private val enemyFactory by lazy {
+        EnemyFactory(engine, spriteCache)
+    }
+
     private var projectiles: ImmutableArray<Entity> = EmptyEntityArray
 
     private var timer = 0f
@@ -68,25 +73,8 @@ class EnemySystem(
     }
 
     private fun spawnEnemy() {
-        engine.entity {
-            with<EnemyComponent> {}
-            with<TransformComponent> {
-                setInitialPosition(getSpawnXPosition(), WORLD_HEIGHT + ENEMY_SIZE, 0f)
-                size.set(ENEMY_SIZE, ENEMY_SIZE)
-            }
-            with<BoundingBoxComponent> {
-                boundingBox.set(ENEMY_BOUNDING_BOX)
-            }
-            with<MoveComponent> {
-                velocity.set(0f, -ENEMY_SPEED)
-            }
-            with<GraphicComponent> {
-                resetSprite(spriteCache.getSprite("debris/Asteroid"))
-            }
-        }
+        enemyFactory.spawn()
     }
-
-    private fun getSpawnXPosition() = (0..(WORLD_WIDTH - ENEMY_SIZE).toInt()).random().toFloat()
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
 
