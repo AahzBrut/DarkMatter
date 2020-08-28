@@ -17,21 +17,9 @@ import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.asset.TextureAtlasAsset
 import org.aahzbrut.darkmatter.audio.AudioService
 import org.aahzbrut.darkmatter.audio.DefaultAudioService
-import org.aahzbrut.darkmatter.factory.ProjectileFactory
 import org.aahzbrut.darkmatter.screen.BaseScreen
 import org.aahzbrut.darkmatter.screen.LoadingScreen
-import org.aahzbrut.darkmatter.system.AnimationSystem
-import org.aahzbrut.darkmatter.system.AttachmentSystem
-import org.aahzbrut.darkmatter.system.BoundingBoxRenderingSystem
-import org.aahzbrut.darkmatter.system.EnemySystem
-import org.aahzbrut.darkmatter.system.MoveSystem
-import org.aahzbrut.darkmatter.system.PlayerAnimationSystem
-import org.aahzbrut.darkmatter.system.PlayerInputSystem
-import org.aahzbrut.darkmatter.system.PowerUpSystem
-import org.aahzbrut.darkmatter.system.ProjectileSystem
-import org.aahzbrut.darkmatter.system.RemoveSystem
-import org.aahzbrut.darkmatter.system.RenderSystem
-import org.aahzbrut.darkmatter.system.WeaponSystem
+import org.aahzbrut.darkmatter.system.*
 
 private val LOG = logger<DarkMatter>()
 
