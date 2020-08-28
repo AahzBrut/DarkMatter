@@ -17,6 +17,7 @@ import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.asset.TextureAtlasAsset
 import org.aahzbrut.darkmatter.audio.AudioService
 import org.aahzbrut.darkmatter.audio.DefaultAudioService
+import org.aahzbrut.darkmatter.factory.ProjectileFactory
 import org.aahzbrut.darkmatter.screen.BaseScreen
 import org.aahzbrut.darkmatter.screen.LoadingScreen
 import org.aahzbrut.darkmatter.system.AnimationSystem
