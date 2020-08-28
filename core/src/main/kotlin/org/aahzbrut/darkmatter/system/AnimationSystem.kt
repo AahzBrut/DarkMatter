@@ -4,7 +4,6 @@ import com.badlogic.ashley.core.Engine
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.core.EntityListener
 import com.badlogic.ashley.systems.IteratingSystem
-import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import ktx.ashley.allOf
 import ktx.ashley.get
 import ktx.log.debug

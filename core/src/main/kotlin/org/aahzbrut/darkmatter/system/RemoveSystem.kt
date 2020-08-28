@@ -7,6 +7,7 @@ import ktx.ashley.get
 import ktx.log.logger
 import org.aahzbrut.darkmatter.component.RemoveComponent
 
+@Suppress("UNUSED")
 private val LOG = logger<RemoveSystem>()
 
 class RemoveSystem : IteratingSystem(
