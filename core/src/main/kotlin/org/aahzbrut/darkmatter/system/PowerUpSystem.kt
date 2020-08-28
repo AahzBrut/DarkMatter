@@ -16,6 +16,8 @@ import org.aahzbrut.darkmatter.POWERUP_SPEED
 import org.aahzbrut.darkmatter.POWER_UP_SPAWN_SCORE
 import org.aahzbrut.darkmatter.WORLD_HEIGHT
 import org.aahzbrut.darkmatter.WORLD_WIDTH
+import org.aahzbrut.darkmatter.asset.SoundAsset
+import org.aahzbrut.darkmatter.audio.AudioService
 import org.aahzbrut.darkmatter.component.AnimationComponent
 import org.aahzbrut.darkmatter.component.AnimationType
 import org.aahzbrut.darkmatter.component.BoundingBoxComponent
@@ -30,7 +32,7 @@ import org.aahzbrut.darkmatter.set
 @Suppress("UNUSED")
 private val LOG = logger<PowerUpSystem>()
 
-class PowerUpSystem :
+class PowerUpSystem (private val audioService: AudioService) :
         IteratingSystem(
                 allOf(
                         PowerUpComponent::class,
@@ -119,5 +121,7 @@ class PowerUpSystem :
         // add power up to player
 
         powerUp.addComponent<RemoveComponent>(engine)
+
+        audioService.play(SoundAsset.POWER_UP)
     }
 }

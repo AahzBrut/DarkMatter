@@ -18,12 +18,13 @@ class SpriteCache(textureAtlas: TextureAtlas) {
     private val cache: GdxMap<String, GdxArray<Sprite>> = GdxMap(textureAtlas.regions.size)
 
     init {
-        textureAtlas.regions.associateBy(
-                { it.name },
-                { GdxArray<Sprite>(textureAtlas.createSprites(it.name)) }
-        ).forEach {
-            cache[it.key] = it.value
+        textureAtlas.regions.map {
+            it.name
         }
+                .distinct()
+                .forEach {
+                    cache[it] = textureAtlas.createSprites(it)
+                }
     }
 
     fun getSprite(name: String) = cache[name]?.get(0) ?: EmptySprite

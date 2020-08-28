@@ -11,13 +11,16 @@ import org.aahzbrut.darkmatter.MAX_WEAPON_DELAY
 import org.aahzbrut.darkmatter.PROJECTILE_BOUNDING_BOX
 import org.aahzbrut.darkmatter.PROJECTILE_SIZE
 import org.aahzbrut.darkmatter.PROJECTILE_SPEED
+import org.aahzbrut.darkmatter.asset.SoundAsset
 import org.aahzbrut.darkmatter.asset.SpriteCache
+import org.aahzbrut.darkmatter.audio.AudioService
 import org.aahzbrut.darkmatter.component.*
 
 @Suppress("UNUSED")
 private val LOG = logger<WeaponSystem>()
 
-class WeaponSystem(private val spriteCache: SpriteCache) :
+class WeaponSystem(private val spriteCache: SpriteCache,
+                   private val audioService: AudioService) :
         IteratingSystem(
                 allOf(
                         PlayerComponent::class,
@@ -59,5 +62,7 @@ class WeaponSystem(private val spriteCache: SpriteCache) :
             }
             with<ProjectileComponent> {}
         }
+
+        audioService.play(SoundAsset.SHOT, .4f)
     }
 }
