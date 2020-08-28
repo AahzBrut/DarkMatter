@@ -3,21 +3,28 @@ package org.aahzbrut.darkmatter.asset
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import ktx.collections.GdxArray
+import ktx.collections.GdxMap
+import ktx.collections.set
 import ktx.log.logger
 import org.aahzbrut.darkmatter.component.EmptySprite
 
+@Suppress("UNUSED")
 private val LOG = logger<SpriteCache>()
 
 object EmptySpriteArray : GdxArray<Sprite>()
 
-class SpriteCache(private val textureAtlas: TextureAtlas) {
+class SpriteCache(textureAtlas: TextureAtlas) {
 
-    private val cache = textureAtlas.regions.associateBy(
-            { it.name },
-            { GdxArray<Sprite>(textureAtlas.createSprites(it.name)) }
-    )
+    private val cache: GdxMap<String, GdxArray<Sprite>> = GdxMap(textureAtlas.regions.size)
 
-    fun getSprite(name: String, index: Int) = cache[name]?.get(index) ?: EmptySprite
+    init {
+        textureAtlas.regions.associateBy(
+                { it.name },
+                { GdxArray<Sprite>(textureAtlas.createSprites(it.name)) }
+        ).forEach {
+            cache[it.key] = it.value
+        }
+    }
 
     fun getSprite(name: String) = cache[name]?.get(0) ?: EmptySprite
 
