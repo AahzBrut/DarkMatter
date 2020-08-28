@@ -2,6 +2,8 @@ package org.aahzbrut.darkmatter
 
 import com.badlogic.gdx.math.Rectangle
 
+const val ASSET_STORAGE_LOADER_THREAD_NUMBER = 4
+
 const val MAX_SOUND_INSTANCES = 32
 const val WORLD_WIDTH = 64f
 const val WORLD_HEIGHT = 36f
