@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport
 import ktx.app.KtxGame
 import ktx.assets.async.AssetStorage
 import ktx.async.KtxAsync
+import ktx.async.newAsyncContext
 import ktx.log.debug
 import ktx.log.logger
 import org.aahzbrut.darkmatter.asset.SpriteCache
@@ -39,7 +40,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
 
     val assetStorage by lazy {
         KtxAsync.initiate()
-        AssetStorage()
+        AssetStorage(newAsyncContext(ASSET_STORAGE_LOADER_THREAD_NUMBER, "AssetStorage-Thread"))
     }
 
     val audioService: AudioService by lazy { DefaultAudioService(assetStorage) }
@@ -62,14 +63,14 @@ class DarkMatter : KtxGame<BaseScreen>() {
         PooledEngine(1000, 10000, 5000, 50000).apply {
             addSystem(PlayerInputSystem(gameViewport))
             addSystem(MoveSystem())
-            addSystem(PowerUpSystem())
-            addSystem(EnemySystem(spriteCache))
+            addSystem(PowerUpSystem(audioService))
+            addSystem(EnemySystem(spriteCache, audioService))
             addSystem(PlayerAnimationSystem(spriteCache))
             addSystem(AttachmentSystem())
             addSystem(AnimationSystem(spriteCache))
             addSystem(RenderSystem(batch, gameViewport))
             addSystem(BoundingBoxRenderingSystem(gameViewport, shapeRenderer))
-            addSystem(WeaponSystem(spriteCache))
+            addSystem(WeaponSystem(spriteCache, audioService))
             addSystem(ProjectileSystem())
             addSystem(RemoveSystem())
         }

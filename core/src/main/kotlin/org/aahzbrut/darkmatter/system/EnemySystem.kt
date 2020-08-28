@@ -14,7 +14,9 @@ import ktx.ashley.with
 import ktx.log.debug
 import ktx.log.logger
 import org.aahzbrut.darkmatter.*
+import org.aahzbrut.darkmatter.asset.SoundAsset
 import org.aahzbrut.darkmatter.asset.SpriteCache
+import org.aahzbrut.darkmatter.audio.AudioService
 import org.aahzbrut.darkmatter.component.*
 
 @Suppress("UNUSED")
@@ -23,7 +25,8 @@ private val LOG = logger<EnemySystem>()
 object EmptyEntityArray : ImmutableArray<Entity>(Array())
 
 class EnemySystem(
-        private val spriteCache: SpriteCache) :
+        private val spriteCache: SpriteCache,
+        private val audioService: AudioService) :
         IteratingSystem(
                 allOf(
                         EnemyComponent::class,
@@ -125,6 +128,7 @@ class EnemySystem(
                                 }
                                 enemy.addComponent<RemoveComponent>(engine) { delay = 3f}
                                 projectile.addComponent<RemoveComponent>(engine)
+                                audioService.play(SoundAsset.EXPLOSION)
                                 playerEntities.forEach { player ->
                                     player[PlayerComponent.mapper]?.let {
                                         it.score += ENEMY_KILL_SCORE

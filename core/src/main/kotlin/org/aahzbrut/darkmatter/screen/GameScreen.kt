@@ -6,24 +6,9 @@ import ktx.ashley.entity
 import ktx.ashley.with
 import ktx.log.debug
 import ktx.log.logger
-import org.aahzbrut.darkmatter.DarkMatter
-import org.aahzbrut.darkmatter.MAX_DELTA_TIME
-import org.aahzbrut.darkmatter.PLAYER_BOUNDING_BOX
-import org.aahzbrut.darkmatter.PLAYER_SIZE
-import org.aahzbrut.darkmatter.WORLD_HEIGHT
-import org.aahzbrut.darkmatter.WORLD_WIDTH
+import org.aahzbrut.darkmatter.*
 import org.aahzbrut.darkmatter.asset.MusicAsset
-import org.aahzbrut.darkmatter.asset.TextureAtlasAsset
-import org.aahzbrut.darkmatter.component.AnimationComponent
-import org.aahzbrut.darkmatter.component.AnimationType
-import org.aahzbrut.darkmatter.component.AttachmentComponent
-import org.aahzbrut.darkmatter.component.BoundingBoxComponent
-import org.aahzbrut.darkmatter.component.GraphicComponent
-import org.aahzbrut.darkmatter.component.MoveComponent
-import org.aahzbrut.darkmatter.component.PlayerComponent
-import org.aahzbrut.darkmatter.component.RollComponent
-import org.aahzbrut.darkmatter.component.TransformComponent
-import org.aahzbrut.darkmatter.component.WeaponComponent
+import org.aahzbrut.darkmatter.component.*
 import kotlin.math.min
 
 
@@ -34,8 +19,6 @@ class GameScreen(
         game: DarkMatter,
         val engine: Engine = game.engine) :
         BaseScreen(game) {
-
-    private val graphicsAtlas = game.assetStorage[TextureAtlasAsset.TEXTURE_ATLAS.descriptor]
 
     override fun show() {
         LOG.debug { "First screen is showing" }
