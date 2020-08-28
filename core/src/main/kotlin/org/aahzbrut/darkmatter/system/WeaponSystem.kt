@@ -6,26 +6,15 @@ import ktx.ashley.allOf
 import ktx.ashley.entity
 import ktx.ashley.get
 import ktx.ashley.with
-import ktx.log.debug
 import ktx.log.logger
-import org.aahzbrut.darkmatter.ENEMY_BOUNDING_BOX
-import org.aahzbrut.darkmatter.ENEMY_SIZE
-import org.aahzbrut.darkmatter.ENEMY_SPEED
 import org.aahzbrut.darkmatter.MAX_WEAPON_DELAY
 import org.aahzbrut.darkmatter.PROJECTILE_BOUNDING_BOX
 import org.aahzbrut.darkmatter.PROJECTILE_SIZE
 import org.aahzbrut.darkmatter.PROJECTILE_SPEED
-import org.aahzbrut.darkmatter.WORLD_HEIGHT
 import org.aahzbrut.darkmatter.asset.SpriteCache
-import org.aahzbrut.darkmatter.component.BoundingBoxComponent
-import org.aahzbrut.darkmatter.component.GraphicComponent
-import org.aahzbrut.darkmatter.component.MoveComponent
-import org.aahzbrut.darkmatter.component.PlayerComponent
-import org.aahzbrut.darkmatter.component.ProjectileComponent
-import org.aahzbrut.darkmatter.component.RemoveComponent
-import org.aahzbrut.darkmatter.component.TransformComponent
-import org.aahzbrut.darkmatter.component.WeaponComponent
+import org.aahzbrut.darkmatter.component.*
 
+@Suppress("UNUSED")
 private val LOG = logger<WeaponSystem>()
 
 class WeaponSystem(private val spriteCache: SpriteCache) :
