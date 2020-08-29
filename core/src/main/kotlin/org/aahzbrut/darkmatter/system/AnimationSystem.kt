@@ -6,7 +6,6 @@ import com.badlogic.ashley.core.EntityListener
 import com.badlogic.ashley.systems.IteratingSystem
 import ktx.ashley.allOf
 import ktx.ashley.get
-import ktx.log.debug
 import ktx.log.error
 import ktx.log.logger
 import org.aahzbrut.darkmatter.asset.SpriteCache
@@ -47,11 +46,8 @@ class AnimationSystem(
         var animation = cache[type]
         if (animation == null) {
             val regions = spriteCache.getSprites(type.atlasKey)
-            if (regions.isEmpty) {
+            if (regions.isEmpty)
                 LOG.error { "Regions with key ${type.atlasKey} was not found in atlas" }
-            } else {
-                LOG.debug { "Animation of type $type was loaded into cache" }
-            }
             animation = Animation2D(type, regions, type.playMode, type.playRate)
             cache[type] = animation
         }

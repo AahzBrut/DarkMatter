@@ -1,8 +1,11 @@
 package org.aahzbrut.darkmatter
 
+import com.badlogic.ashley.core.Entity
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.utils.Pool
+import ktx.ashley.get
 import org.aahzbrut.darkmatter.component.BoundingBoxComponent
+import org.aahzbrut.darkmatter.component.PlayerComponent
 import org.aahzbrut.darkmatter.component.TransformComponent
 
 fun Rectangle.set(transform: TransformComponent, boundingBox: BoundingBoxComponent) {
@@ -16,4 +19,11 @@ inline fun <T> Pool<T>.pooled(block: (T) -> Unit) {
     val element = obtain()
     block(element)
     free(element)
+}
+
+fun playerScore(player: Entity, score: Int) {
+    player[PlayerComponent.mapper]?.let {
+        it.score += score
+        it.enemiesKilled++
+    }
 }

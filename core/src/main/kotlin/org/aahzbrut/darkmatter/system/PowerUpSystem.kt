@@ -3,22 +3,21 @@ package org.aahzbrut.darkmatter.system
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.gdx.math.Rectangle
-import ktx.ashley.addComponent
-import ktx.ashley.allOf
-import ktx.ashley.exclude
-import ktx.ashley.get
+import ktx.ashley.*
+import ktx.log.debug
 import ktx.log.logger
 import org.aahzbrut.darkmatter.POWER_UP_SPAWN_SCORE
 import org.aahzbrut.darkmatter.asset.SoundAsset
 import org.aahzbrut.darkmatter.audio.AudioService
 import org.aahzbrut.darkmatter.component.*
 import org.aahzbrut.darkmatter.factory.PowerUpFactory
+import org.aahzbrut.darkmatter.factory.ShieldEffectFactory
 import org.aahzbrut.darkmatter.set
 
 @Suppress("UNUSED")
 private val LOG = logger<PowerUpSystem>()
 
-class PowerUpSystem (private val audioService: AudioService) :
+class PowerUpSystem(private val audioService: AudioService) :
         IteratingSystem(
                 allOf(
                         PowerUpComponent::class,
@@ -37,6 +36,10 @@ class PowerUpSystem (private val audioService: AudioService) :
     }
     private val powerUpFactory by lazy {
         PowerUpFactory(engine)
+    }
+
+    private val shieldEffectFactory by lazy {
+        ShieldEffectFactory(engine)
     }
 
     private var lastScore = 0f
@@ -86,6 +89,34 @@ class PowerUpSystem (private val audioService: AudioService) :
         val powerUpComponent = requireNotNull(powerUp[PowerUpComponent.mapper])
 
         // add power up to player
+        when (powerUpComponent.type) {
+            PowerUpType.NONE -> Unit
+            PowerUpType.POWERUP_SHIELD -> {
+                if (player.has(ShieldComponent.mapper)) {
+                    player[ShieldComponent.mapper]?.activeTime = 0f
+                } else {
+                    player.addComponent<ShieldComponent>(engine)
+                    shieldEffectFactory.spawn(player)
+                }
+                LOG.debug { "Shield effect added" }
+            }
+            PowerUpType.POWERUP_SPEED -> {
+                if (player.has(SpeedComponent.mapper)) {
+                    player[SpeedComponent.mapper]?.activeTime = 0f
+                } else {
+                    player.addComponent<SpeedComponent>(engine)
+                }
+                LOG.debug { "Speed effect added" }
+            }
+            PowerUpType.POWERUP_TRIPLE_SHOT -> {
+                if (player.has(TripleShotComponent.mapper)) {
+                    player[TripleShotComponent.mapper]?.activeTime = 0f
+                } else {
+                    player.addComponent<TripleShotComponent>(engine)
+                }
+                LOG.debug { "Triple shot effect added" }
+            }
+        }
 
         powerUp.addComponent<RemoveComponent>(engine)
 

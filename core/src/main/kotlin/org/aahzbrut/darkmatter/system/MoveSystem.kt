@@ -8,21 +8,10 @@ import com.badlogic.gdx.math.Vector2
 import ktx.ashley.allOf
 import ktx.ashley.exclude
 import ktx.ashley.get
+import ktx.ashley.has
 import ktx.log.logger
-import org.aahzbrut.darkmatter.MAX_ACCELERATION
-import org.aahzbrut.darkmatter.MAX_SPEED
-import org.aahzbrut.darkmatter.PLAYER_DISTANCE_TO_TARGET_ALLOWANCE
-import org.aahzbrut.darkmatter.PLAYER_ROLL_MAX_VALUE
-import org.aahzbrut.darkmatter.PLAYER_ROLL_SPEED
-import org.aahzbrut.darkmatter.PLAYER_ROLL_TOLERANCE
-import org.aahzbrut.darkmatter.UPDATE_RATE
-import org.aahzbrut.darkmatter.WORLD_HEIGHT
-import org.aahzbrut.darkmatter.WORLD_WIDTH
-import org.aahzbrut.darkmatter.component.MoveComponent
-import org.aahzbrut.darkmatter.component.PlayerComponent
-import org.aahzbrut.darkmatter.component.RemoveComponent
-import org.aahzbrut.darkmatter.component.RollComponent
-import org.aahzbrut.darkmatter.component.TransformComponent
+import org.aahzbrut.darkmatter.*
+import org.aahzbrut.darkmatter.component.*
 import kotlin.math.abs
 import kotlin.math.sign
 
@@ -83,7 +72,7 @@ class MoveSystem :
 
         if (player != null) {
             updateRoll(entity, transformComponent, moveComponent, deltaTime)
-            movePlayer(transformComponent, moveComponent, deltaTime)
+            movePlayer(entity, transformComponent, moveComponent, deltaTime)
         } else {
             moveEntity(transformComponent, moveComponent, deltaTime)
         }
@@ -107,7 +96,7 @@ class MoveSystem :
         }
     }
 
-    private fun movePlayer(transform: TransformComponent, move: MoveComponent, deltaTime: Float) {
+    private fun movePlayer(player: Entity, transform: TransformComponent, move: MoveComponent, deltaTime: Float) {
         vectorToTarget.set(move.target.x - transform.position.x - transform.size.x / 2, move.target.y - transform.position.y - transform.size.y / 2)
         val distanceToTarget = vectorToTarget.len()
         if (distanceToTarget <= PLAYER_DISTANCE_TO_TARGET_ALLOWANCE) return
@@ -115,8 +104,10 @@ class MoveSystem :
         vectorToTarget.nor()
         directionToTarget.set(vectorToTarget)
 
-        newSpeed = move.velocity.len() + MAX_ACCELERATION * deltaTime
-        newSpeed = clamp(newSpeed, -MAX_SPEED, MAX_SPEED)
+        val speedIndex = if (player.has(SpeedComponent.mapper)) 2f else 1f
+
+        newSpeed = move.velocity.len() + speedIndex * MAX_ACCELERATION * deltaTime
+        newSpeed = clamp(newSpeed, -MAX_SPEED * speedIndex, MAX_SPEED * speedIndex)
         move.velocity.set(vectorToTarget.scl(newSpeed))
 
         //LOG.debug { "Target: ${move.target}, position: ${transform.position}, velocity: ${move.velocity}, distance:$distanceToTarget" }

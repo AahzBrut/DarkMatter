@@ -4,15 +4,13 @@ import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import ktx.ashley.allOf
 import ktx.ashley.get
+import ktx.ashley.has
 import ktx.log.logger
 import org.aahzbrut.darkmatter.MAX_WEAPON_DELAY
 import org.aahzbrut.darkmatter.asset.SoundAsset
 import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.audio.AudioService
-import org.aahzbrut.darkmatter.component.PlayerComponent
-import org.aahzbrut.darkmatter.component.RemoveComponent
-import org.aahzbrut.darkmatter.component.TransformComponent
-import org.aahzbrut.darkmatter.component.WeaponComponent
+import org.aahzbrut.darkmatter.component.*
 import org.aahzbrut.darkmatter.factory.ProjectileFactory
 
 @Suppress("UNUSED")
@@ -43,13 +41,24 @@ class WeaponSystem(private val spriteCache: SpriteCache,
         }
     }
 
-    private fun spawnProjectile(entity: Entity, weapon: WeaponComponent) {
-        val transform = requireNotNull(entity[TransformComponent.mapper])
+    private fun spawnProjectile(player: Entity, weapon: WeaponComponent) {
+        val transform = requireNotNull(player[TransformComponent.mapper])
 
         projectileFactory.spawn(
                 transform.position.x + weapon.mainGunPosition.x,
                 transform.position.y + weapon.mainGunPosition.y,
                 0f)
+
+        if (player.has(TripleShotComponent.mapper)){
+            projectileFactory.spawn(
+                    transform.position.x + weapon.leftGunPosition.x,
+                    transform.position.y + weapon.leftGunPosition.y,
+                    0f)
+            projectileFactory.spawn(
+                    transform.position.x + weapon.rightGunPosition.x,
+                    transform.position.y + weapon.rightGunPosition.y,
+                    0f)
+        }
 
         audioService.play(SoundAsset.SHOT, .4f)
     }
