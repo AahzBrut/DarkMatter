@@ -3,15 +3,10 @@ package org.aahzbrut.darkmatter.system
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.ashley.utils.ImmutableArray
+import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.utils.Array
-import ktx.ashley.addComponent
-import ktx.ashley.allOf
-import ktx.ashley.entity
-import ktx.ashley.exclude
-import ktx.ashley.get
-import ktx.ashley.with
-import ktx.log.debug
+import ktx.ashley.*
 import ktx.log.logger
 import org.aahzbrut.darkmatter.*
 import org.aahzbrut.darkmatter.asset.SoundAsset
@@ -90,13 +85,10 @@ class EnemySystem(
 
     private fun checkEnemyEscaped(transform: TransformComponent, enemy: Entity) {
         if (transform.position.y <= -transform.size.y) {
-            enemy.addComponent<RemoveComponent>(engine)
-            playerEntities.forEach { player ->
-                player[PlayerComponent.mapper]?.let {
-                    it.score += ENEMY_ESCAPE_SCORE
-                    it.enemiesLost++
-                    LOG.debug { "Score: ${it.score}" }
-                }
+            destroyEnemy(enemy, false)
+
+            playerEntities.forEach {
+                playerScore(it, ENEMY_ESCAPE_SCORE)
             }
         }
     }
@@ -111,18 +103,10 @@ class EnemySystem(
                             projectileBoundingRect.set(transform, boundingBox)
 
                             if (projectileBoundingRect.overlaps(enemyBoundingRect)) {
-                                enemy.addComponent<AnimationComponent>(engine) {
-                                    type = AnimationType.ENEMY_EXPLOSION
-                                }
-                                enemy.addComponent<RemoveComponent>(engine) { delay = 3f}
+                                destroyEnemy(enemy, true)
                                 projectile.addComponent<RemoveComponent>(engine)
-                                audioService.play(SoundAsset.EXPLOSION)
-                                playerEntities.forEach { player ->
-                                    player[PlayerComponent.mapper]?.let {
-                                        it.score += ENEMY_KILL_SCORE
-                                        it.enemiesKilled++
-                                        LOG.debug { "Score: ${it.score}" }
-                                    }
+                                playerEntities.forEach {
+                                    playerScore(it, ENEMY_KILL_SCORE)
                                 }
                             }
                         }
@@ -154,12 +138,14 @@ class EnemySystem(
     }
 
     private fun damagePlayer(player: Entity, enemy: Entity) {
-        enemy.addComponent<RemoveComponent>(engine)
+        destroyEnemy(enemy, true)
+
         player[PlayerComponent.mapper]?.let {
             it.score += ENEMY_KILL_SCORE
             it.numLives--
             it.enemiesKilled++
-            LOG.debug { "Score: ${it.score}" }
+
+            if (player.has(ShieldComponent.mapper)) return
 
             if (it.numLives > 0) {
                 addEngineOnFireAnimation(player, it.numLives)
@@ -167,8 +153,6 @@ class EnemySystem(
                 destroyPlayer(player)
             }
         }
-
-
     }
 
     private fun destroyPlayer(player: Entity) {
@@ -200,6 +184,20 @@ class EnemySystem(
                 else
                     offset.set(1f, -3f)
             }
+        }
+    }
+
+    private fun destroyEnemy(enemy: Entity, withExplosion: Boolean) {
+        if (withExplosion) {
+            enemy.addComponent<RemoveComponent>(engine) {
+                delay = 3f
+            }
+            enemy.addComponent<AnimationComponent>(engine) {
+                type = AnimationType.ENEMY_EXPLOSION
+            }
+            audioService.play(SoundAsset.EXPLOSION, pitch = MathUtils.random(.5f, 2f))
+        } else {
+            enemy.addComponent<RemoveComponent>(engine)
         }
     }
 }

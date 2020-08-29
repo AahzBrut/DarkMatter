@@ -20,7 +20,9 @@ class PowerUpFactory(private val engine: Engine) {
             with<MoveComponent> {
                 velocity.set(0f, -POWERUP_SPEED)
             }
-            with<PowerUpComponent> {}
+            with<PowerUpComponent> {
+                type = powerUpType
+            }
             with<AnimationComponent> {
                 type = powerUpType.animationType
             }

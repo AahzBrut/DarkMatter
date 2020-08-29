@@ -3,7 +3,6 @@ package org.aahzbrut.darkmatter.component
 import com.badlogic.ashley.core.Component
 import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.Sprite
-import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.utils.Pool
 import ktx.ashley.mapperFor
 import ktx.collections.GdxArray
@@ -20,7 +19,8 @@ enum class AnimationType(
     POWERUP_SPEED("power_ups/speed/SpeedPowerUp", playRate=.5f),
     POWERUP_TRIPLE_SHOT("power_ups/triple_shot/TripleShotPowerUp", playRate=.5f),
     ENGINE_ON_FIRE("player/engine-on-fire/Fire"),
-    ENEMY_EXPLOSION("explosion/Explosion")
+    ENEMY_EXPLOSION("explosion/Explosion"),
+    SHIELD_EFFECT("player/shield/Shields")
 }
 
 class Animation2D(

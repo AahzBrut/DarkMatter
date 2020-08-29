@@ -26,11 +26,11 @@ class GameScreen(
         game.audioService.play(MusicAsset.BACKGROUND_MUSIC, 1f)
 
         engine.entity {
-            with<TransformComponent>{
-                setInitialPosition(0f,0f,-1f)
+            with<TransformComponent> {
+                setInitialPosition(0f, 0f, -1f)
                 size.set(WORLD_WIDTH, WORLD_HEIGHT)
             }
-            with<GraphicComponent>{
+            with<GraphicComponent> {
                 resetSprite(game.spriteCache.getSprite("background/SpaceBG_Overlay"))
             }
         }
@@ -47,8 +47,10 @@ class GameScreen(
             with<GraphicComponent> {}
             with<PlayerComponent> {}
             with<RollComponent> {}
-            with<WeaponComponent>{
+            with<WeaponComponent> {
                 mainGunPosition.set(1.75f, 3.5f)
+                leftGunPosition.set(.5f, 1f)
+                rightGunPosition.set(PLAYER_SIZE - 1f, 1f)
             }
         }
 
@@ -68,7 +70,7 @@ class GameScreen(
     override fun render(delta: Float) {
         engine.update(min(MAX_DELTA_TIME, delta))
         game.audioService.update()
-        fpsLogger.log()
+        // fpsLogger.log()
     }
 
     override fun dispose() {
