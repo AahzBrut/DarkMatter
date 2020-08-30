@@ -10,8 +10,10 @@ import ktx.graphics.use
 import org.aahzbrut.darkmatter.*
 import org.aahzbrut.darkmatter.asset.BitmapFontAsset.SCORE_FONT
 import org.aahzbrut.darkmatter.asset.SpriteCache
-import org.aahzbrut.darkmatter.event.*
-import java.util.*
+import org.aahzbrut.darkmatter.event.GameEventListener
+import org.aahzbrut.darkmatter.event.GameEventManagers
+import org.aahzbrut.darkmatter.event.PlayerDamageEvent
+import org.aahzbrut.darkmatter.event.ScoreEvent
 
 class UIRenderSystem(
         private val batch: Batch,
@@ -46,6 +48,7 @@ class UIRenderSystem(
 
     init {
         font.color.a = .4f
+        font.data.setScale(.8f)
 
         playerLivesUI.forEach {
             it.setBounds(10f, WORLD_HEIGHT_UI - LIVES_INDICATOR_HEIGHT - 10f, LIVES_INDICATOR_WIDTH, LIVES_INDICATOR_HEIGHT)
@@ -76,7 +79,7 @@ class UIRenderSystem(
                 draw(batch)
             }
 
-            font.draw(batch, "%06d".format(score), WORLD_WIDTH_UI - 110f, WORLD_HEIGHT_UI - 10f)
+            font.draw(batch, "%06d".format(score), WORLD_WIDTH_UI - 100f, WORLD_HEIGHT_UI - 10f)
         }
     }
 }
