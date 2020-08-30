@@ -11,18 +11,36 @@ import org.aahzbrut.darkmatter.*
 import org.aahzbrut.darkmatter.asset.BitmapFontAsset.SCORE_FONT
 import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.event.*
+import java.util.*
 
 class UIRenderSystem(
         private val batch: Batch,
         private val uiViewport: Viewport,
         spriteCache: SpriteCache,
         assetStorage: AssetStorage
-) : EntitySystem(),
-        GameEventListener<ScoreEvent> {
+) : EntitySystem() {
+
+    private class ScoreEventListener(private val receiver: UIRenderSystem) : GameEventListener<ScoreEvent> {
+        override fun onEvent(event: ScoreEvent) {
+            receiver.score = event.score
+        }
+    }
+
+    private class PlayerDamageEventListener(private val receiver: UIRenderSystem) : GameEventListener<PlayerDamageEvent> {
+        override fun onEvent(event: PlayerDamageEvent) {
+            receiver.numLives = event.numLivesLeft
+        }
+    }
+
+    private val scoreEventListener = ScoreEventListener(this)
+
+    private val playerDamageEventListener = PlayerDamageEventListener(this)
 
     private val playerLivesUI = spriteCache.getSprites("player/lives/LivesIndicator")
 
     private val scoreEventManager = GameEventManagers[ScoreEvent::class]
+
+    private val playerDamageEventManager = GameEventManagers[PlayerDamageEvent::class]
 
     private val font: BitmapFont = assetStorage[SCORE_FONT.descriptor]
 
@@ -41,17 +59,14 @@ class UIRenderSystem(
 
     override fun addedToEngine(engine: Engine?) {
         super.addedToEngine(engine)
-        scoreEventManager.addEventListener(this)
+        scoreEventManager.addEventListener(scoreEventListener)
+        playerDamageEventManager.addEventListener(playerDamageEventListener)
     }
 
     override fun removedFromEngine(engine: Engine?) {
         super.removedFromEngine(engine)
-        scoreEventManager.removeEventListener(this)
-    }
-
-    override fun onEvent(event: ScoreEvent) {
-        score = event.score
-        numLives = event.numLivesLeft
+        scoreEventManager.removeEventListener(scoreEventListener)
+        playerDamageEventManager.removeEventListener(playerDamageEventListener)
     }
 
     override fun update(deltaTime: Float) {
