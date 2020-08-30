@@ -42,18 +42,6 @@ class AnimationSystem(
         }
     }
 
-    private fun getAnimation(type: AnimationType): Animation2D {
-        var animation = cache[type]
-        if (animation == null) {
-            val regions = spriteCache.getSprites(type.atlasKey)
-            if (regions.isEmpty)
-                LOG.error { "Regions with key ${type.atlasKey} was not found in atlas" }
-            animation = Animation2D(type, regions, type.playMode, type.playRate)
-            cache[type] = animation
-        }
-        return animation
-    }
-
     override fun entityRemoved(entity: Entity?) = Unit
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
@@ -72,5 +60,17 @@ class AnimationSystem(
 
         val frame = animComponent.animation.getKeyFrame(animComponent.stateTime)
         graphicComponent.resetSprite(frame)
+    }
+
+    private fun getAnimation(type: AnimationType): Animation2D {
+        var animation = cache[type]
+        if (animation == null) {
+            val regions = spriteCache.getSprites(type.atlasKey)
+            if (regions.isEmpty)
+                LOG.error { "Regions with key ${type.atlasKey} was not found in atlas" }
+            animation = Animation2D(type, regions, type.playMode, type.playRate)
+            cache[type] = animation
+        }
+        return animation
     }
 }

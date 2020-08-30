@@ -5,7 +5,6 @@ import com.badlogic.gdx.utils.Pools
 import ktx.collections.GdxSet
 import ktx.log.debug
 import ktx.log.logger
-import org.aahzbrut.darkmatter.pooled
 import kotlin.reflect.KClass
 
 class GameEventManager<T : GameEvent>(type: KClass<T>) {
@@ -32,4 +31,10 @@ class GameEventManager<T : GameEvent>(type: KClass<T>) {
     companion object {
         val LOG = logger<GameEventManager<*>>()
     }
+}
+
+inline fun <T> Pool<T>.pooled(block: (T) -> Unit) {
+    val element = obtain()
+    block(element)
+    free(element)
 }

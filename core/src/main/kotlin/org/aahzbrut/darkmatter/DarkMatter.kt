@@ -27,6 +27,8 @@ class DarkMatter : KtxGame<BaseScreen>() {
 
     val gameViewport = FitViewport(WORLD_WIDTH, WORLD_HEIGHT)
 
+    val uiViewport = FitViewport(WORLD_WIDTH_UI, WORLD_HEIGHT_UI)
+
     val assetStorage by lazy {
         KtxAsync.initiate()
         AssetStorage(newAsyncContext(ASSET_STORAGE_LOADER_THREAD_NUMBER, "AssetStorage-Thread"))
@@ -59,6 +61,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
             addSystem(AnimationSystem(spriteCache))
             addSystem(RenderSystem(batch, gameViewport))
             addSystem(BoundingBoxRenderingSystem(gameViewport, shapeRenderer))
+            addSystem(UIRenderSystem(batch, uiViewport, spriteCache))
             addSystem(WeaponSystem(spriteCache, audioService))
             addSystem(ProjectileSystem())
             addSystem(PowerUpEffectSystem())

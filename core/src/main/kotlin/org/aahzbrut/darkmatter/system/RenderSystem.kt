@@ -39,6 +39,10 @@ class RenderSystem(
     }
 
     override fun update(deltaTime: Float) {
+        drawGame(deltaTime)
+    }
+
+    private fun drawGame(deltaTime: Float) {
         forceSort()
         gameViewport.apply()
         batch.use(gameViewport.camera.combined) {
