@@ -7,6 +7,7 @@ import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.utils.Disposable
+import org.aahzbrut.darkmatter.asset.TextureAtlasAsset.*
 
 
 open class BaseAsset<T : Disposable>(
@@ -39,4 +40,13 @@ class BaseBitmapFontAsset(
         directory: String = "fonts",
         fileName: String,
         asset: Class<BitmapFont> = BitmapFont::class.java
-) : BaseAsset<BitmapFont>(directory, fileName = fileName, asset = asset)
+) : BaseAsset<BitmapFont>(directory, fileName = fileName, asset = asset) {
+
+    override val descriptor: AssetDescriptor<BitmapFont> = AssetDescriptor(
+            "$directory/$fileName",
+            asset,
+            BitmapFontLoader.BitmapFontParameter().apply {
+                atlasName = TEXTURE_ATLAS.descriptor.fileName
+            }
+    )
+}

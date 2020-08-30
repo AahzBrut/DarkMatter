@@ -19,18 +19,11 @@ background/SpaceBG_Overlay
   index: -1
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 500, 1703
+  xy: 499, 1703
   size: 284, 318
   orig: 512, 512
   offset: 114, 97
   index: 8
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 818, 1597
-  size: 442, 470
-  orig: 512, 512
-  offset: 35, 21
-  index: 14
 enemy/explode/EnemyExplosion
   rotate: false
   xy: 818, 1083
@@ -40,91 +33,119 @@ enemy/explode/EnemyExplosion
   index: 18
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 1332, 1438
+  xy: 1332, 1083
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 19
 explosion/Explosion
   rotate: false
-  xy: 1846, 1937
+  xy: 1975, 1582
   size: 3, 3
   orig: 512, 512
   offset: 0, 509
   index: 0
 explosion/Explosion
   rotate: false
-  xy: 1846, 1937
+  xy: 1975, 1582
   size: 3, 3
   orig: 512, 512
   offset: 0, 509
   index: 1
 explosion/Explosion
   rotate: false
-  xy: 1846, 1937
+  xy: 1975, 1582
   size: 3, 3
   orig: 512, 512
   offset: 0, 509
   index: 2
 explosion/Explosion
   rotate: false
-  xy: 1846, 1937
+  xy: 1975, 1582
   size: 3, 3
   orig: 512, 512
   offset: 0, 509
   index: 3
 explosion/Explosion
   rotate: false
-  xy: 1846, 1937
+  xy: 1975, 1582
   size: 3, 3
   orig: 512, 512
   offset: 0, 509
   index: 4
 explosion/Explosion
   rotate: false
-  xy: 1846, 1937
+  xy: 1975, 1582
   size: 3, 3
   orig: 512, 512
   offset: 0, 509
   index: 5
-fonts/font
-  rotate: true
-  xy: 1923, 1
-  size: 1435, 32
-  orig: 2048, 512
-  offset: 0, 480
-  index: -1
+player/engine-on-fire/Fire
+  rotate: false
+  xy: 1846, 1582
+  size: 127, 465
+  orig: 512, 512
+  offset: 191, 32
+  index: 15
 player/engine-on-fire/Fire
   rotate: true
-  xy: 1, 1838
+  xy: 1, 1839
   size: 139, 487
   orig: 512, 512
   offset: 191, 11
   index: 40
 player/engine-on-fire/Fire
+  rotate: true
+  xy: 1, 1703
+  size: 134, 496
+  orig: 512, 512
+  offset: 195, 7
+  index: 44
+player/engine-on-fire/Fire
   rotate: false
-  xy: 1846, 1438
+  xy: 1846, 1083
   size: 134, 497
   orig: 512, 512
   offset: 195, 6
   index: 45
 player/engine-on-fire/Fire
   rotate: true
-  xy: 1, 1703
+  xy: 818, 1597
   size: 133, 497
   orig: 512, 512
   offset: 195, 5
   index: 46
+player/engine-on-fire/Fire
+  rotate: false
+  xy: 1923, 495
+  size: 122, 490
+  orig: 512, 512
+  offset: 199, 8
+  index: 52
+player/engine-on-fire/Fire
+  rotate: false
+  xy: 1923, 1
+  size: 119, 492
+  orig: 512, 512
+  offset: 195, 7
+  index: 55
+player/shield/Shields
+  rotate: true
+  xy: 1317, 1597
+  size: 401, 482
+  orig: 512, 512
+  offset: 55, 15
+  index: 0
 player/turn-left/TurnLeft
   rotate: true
-  xy: 1332, 1083
+  xy: 785, 1732
   size: 258, 441
   orig: 512, 512
   offset: 152, 25
   index: 8
 projectiles/laser
   rotate: false
-  xy: 1775, 1083
+  xy: 1228, 1732
   size: 82, 294
   orig: 100, 300
   offset: 8, 5
@@ -609,7 +630,7 @@ filter: Linear,Linear
 repeat: none
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 1543, 996
+  xy: 1543, 994
   size: 462, 490
   orig: 512, 512
   offset: 25, 11
@@ -707,25 +728,25 @@ explosion/Explosion
   index: 93
 explosion/Explosion
   rotate: false
-  xy: 1543, 499
+  xy: 1543, 1
   size: 484, 495
   orig: 512, 512
   offset: 14, 11
   index: 97
 player/engine-on-fire/Fire
   rotate: false
-  xy: 1543, 1
-  size: 134, 496
+  xy: 1543, 498
+  size: 127, 494
   orig: 512, 512
-  offset: 195, 7
-  index: 44
+  offset: 198, 5
+  index: 50
 player/turn-left/TurnLeft
   rotate: false
-  xy: 1679, 1
-  size: 304, 428
+  xy: 1672, 498
+  size: 312, 424
   orig: 512, 512
-  offset: 119, 35
-  index: 5
+  offset: 111, 38
+  index: 4
 
 textures-6.png
 size: 2048, 2048
@@ -796,89 +817,103 @@ enemy/explode/EnemyExplosion
   offset: 0, 0
   index: 73
 explosion/Explosion
-  rotate: false
-  xy: 1543, 985
-  size: 437, 466
-  orig: 512, 512
-  offset: 32, 24
-  index: 14
-explosion/Explosion
   rotate: true
-  xy: 1477, 1543
+  xy: 1476, 1543
+  size: 466, 469
+  orig: 512, 512
+  offset: 19, 24
+  index: 99
+explosion/Explosion
+  rotate: false
+  xy: 1543, 979
   size: 460, 469
   orig: 512, 512
   offset: 25, 24
   index: 100
 player/engine-on-fire/Fire
   rotate: true
-  xy: 493, 1543
-  size: 126, 490
+  xy: 1, 1670
+  size: 122, 488
   orig: 512, 512
-  offset: 191, 17
-  index: 28
+  offset: 194, 19
+  index: 26
 player/engine-on-fire/Fire
   rotate: true
   xy: 985, 1543
+  size: 123, 489
+  orig: 512, 512
+  offset: 193, 18
+  index: 27
+player/engine-on-fire/Fire
+  rotate: true
+  xy: 1, 1543
   size: 125, 490
   orig: 512, 512
   offset: 191, 16
   index: 29
 player/engine-on-fire/Fire
   rotate: true
-  xy: 1, 1543
-  size: 131, 490
+  xy: 1, 1794
+  size: 139, 486
   orig: 512, 512
-  offset: 197, 4
-  index: 48
+  offset: 191, 12
+  index: 39
 player/engine-on-fire/Fire
   rotate: false
   xy: 1543, 1
+  size: 138, 487
+  orig: 512, 512
+  offset: 192, 10
+  index: 41
+player/engine-on-fire/Fire
+  rotate: true
+  xy: 493, 1543
   size: 125, 490
   orig: 512, 512
   offset: 198, 9
   index: 51
 player/engine-on-fire/Fire
   rotate: false
-  xy: 1543, 493
-  size: 122, 490
+  xy: 1543, 490
+  size: 121, 487
   orig: 512, 512
-  offset: 199, 8
-  index: 52
-player/turn-left/TurnLeft
+  offset: 195, 7
+  index: 54
+player/lives/LivesIndicator
   rotate: false
-  xy: 1670, 1
+  xy: 1, 1935
+  size: 254, 107
+  orig: 256, 128
+  offset: 1, 10
+  index: 0
+player/turn-left/TurnLeft
+  rotate: true
+  xy: 985, 1668
   size: 320, 417
   orig: 512, 512
   offset: 100, 44
   index: 2
 player/turn-left/TurnLeft
   rotate: true
-  xy: 493, 1671
-  size: 318, 421
+  xy: 491, 1670
+  size: 304, 428
   orig: 512, 512
-  offset: 104, 41
-  index: 3
+  offset: 119, 35
+  index: 5
 player/turn-right/TurnRight
   rotate: false
-  xy: 1667, 493
-  size: 321, 418
+  xy: 1666, 490
+  size: 322, 415
   orig: 512, 512
-  offset: 92, 43
-  index: 2
+  offset: 94, 45
+  index: 1
 player/turn-right/TurnRight
-  rotate: true
-  xy: 1, 1676
-  size: 318, 421
+  rotate: false
+  xy: 1683, 1
+  size: 302, 428
   orig: 512, 512
-  offset: 90, 41
-  index: 3
-player/turn-right/TurnRight
-  rotate: true
-  xy: 985, 1670
-  size: 312, 424
-  orig: 512, 512
-  offset: 89, 38
-  index: 4
+  offset: 90, 35
+  index: 5
 
 textures-7.png
 size: 2048, 2048
@@ -908,206 +943,53 @@ enemy/explode/EnemyExplosion
   index: 76
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 515, 1
+  xy: 521, 1
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 77
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 515, 515
+  xy: 1035, 1
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 78
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 515, 1029
+  xy: 515, 532
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 79
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 1029, 1
+  xy: 1029, 515
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 80
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 1029, 515
+  xy: 521, 1514
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
   index: 81
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 1029, 1029
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 82
-player/engine-on-fire/Fire
-  rotate: true
-  xy: 492, 1543
-  size: 122, 488
-  orig: 512, 512
-  offset: 194, 19
-  index: 26
-player/engine-on-fire/Fire
-  rotate: true
-  xy: 1, 1543
-  size: 123, 489
-  orig: 512, 512
-  offset: 193, 18
-  index: 27
-player/engine-on-fire/Fire
-  rotate: false
-  xy: 1543, 490
-  size: 139, 486
-  orig: 512, 512
-  offset: 191, 12
-  index: 39
-player/engine-on-fire/Fire
-  rotate: true
-  xy: 982, 1543
-  size: 138, 487
-  orig: 512, 512
-  offset: 192, 10
-  index: 41
-player/engine-on-fire/Fire
-  rotate: false
-  xy: 1543, 1
-  size: 121, 487
-  orig: 512, 512
-  offset: 195, 7
-  index: 54
-player/player
-  rotate: false
-  xy: 1666, 1
-  size: 321, 414
-  orig: 512, 512
-  offset: 96, 46
-  index: -1
-player/shield/Shields
-  rotate: true
-  xy: 1471, 1543
-  size: 401, 482
-  orig: 512, 512
-  offset: 55, 15
-  index: 0
-player/shield/Shields
-  rotate: false
-  xy: 1543, 978
-  size: 401, 482
-  orig: 512, 512
-  offset: 55, 15
-  index: 1
-player/turn-left/TurnLeft
-  rotate: false
-  xy: 1666, 1
-  size: 321, 414
-  orig: 512, 512
-  offset: 96, 46
-  index: 0
-player/turn-left/TurnLeft
-  rotate: true
-  xy: 1, 1668
-  size: 321, 415
-  orig: 512, 512
-  offset: 97, 45
-  index: 1
-player/turn-right/TurnRight
-  rotate: true
-  xy: 492, 1667
-  size: 322, 415
-  orig: 512, 512
-  offset: 94, 45
-  index: 1
-player/turn-right/TurnRight
-  rotate: false
-  xy: 1684, 417
-  size: 290, 433
-  orig: 512, 512
-  offset: 92, 31
-  index: 6
-player/turn-right/TurnRight
-  rotate: true
-  xy: 909, 1683
-  size: 273, 437
-  orig: 512, 512
-  offset: 97, 28
-  index: 7
-
-textures-8.png
-size: 2048, 2048
-format: RGBA8888
-filter: Linear,Linear
-repeat: none
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1, 1
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 83
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1, 515
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 84
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1, 1029
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 85
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 521, 1
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 86
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1035, 1
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 87
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 515, 532
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 88
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1029, 515
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 89
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 521, 1530
-  size: 512, 512
-  orig: 512, 512
-  offset: 0, 0
-  index: 90
-enemy/explode/EnemyExplosion
-  rotate: false
   xy: 1035, 1480
   size: 512, 512
   orig: 512, 512
   offset: 0, 0
-  index: 91
+  index: 82
+explosion/Explosion
+  rotate: false
+  xy: 515, 1046
+  size: 437, 466
+  orig: 512, 512
+  offset: 32, 24
+  index: 14
 player/engine-on-fire/Fire
   rotate: false
   xy: 135, 1543
@@ -1143,62 +1025,194 @@ player/engine-on-fire/Fire
   orig: 512, 512
   offset: 200, 7
   index: 53
+player/player
+  rotate: true
+  xy: 1571, 532
+  size: 321, 414
+  orig: 512, 512
+  offset: 96, 46
+  index: -1
 player/shield/Shields
   rotate: true
   xy: 1549, 129
   size: 401, 482
   orig: 512, 512
   offset: 55, 15
-  index: 2
-player/shield/Shields
-  rotate: false
-  xy: 515, 1046
-  size: 401, 482
+  index: 1
+player/turn-left/TurnLeft
+  rotate: true
+  xy: 1571, 532
+  size: 321, 414
   orig: 512, 512
-  offset: 55, 15
-  index: 3
+  offset: 96, 46
+  index: 0
 player/turn-left/TurnLeft
   rotate: false
-  xy: 918, 1046
+  xy: 1248, 1029
+  size: 321, 415
+  orig: 512, 512
+  offset: 97, 45
+  index: 1
+player/turn-left/TurnLeft
+  rotate: false
+  xy: 954, 1046
   size: 292, 432
   orig: 512, 512
   offset: 129, 32
   index: 6
 player/turn-right/TurnRight
-  rotate: false
-  xy: 1516, 1029
+  rotate: true
+  xy: 1571, 855
   size: 321, 414
   orig: 512, 512
   offset: 96, 46
   index: 0
-player/turn-right/TurnRight
-  rotate: false
-  xy: 1212, 1029
-  size: 302, 428
-  orig: 512, 512
-  offset: 90, 35
-  index: 5
 power_ups/triple_shot/TripleShotPowerUp
-  rotate: true
-  xy: 1543, 532
+  rotate: false
+  xy: 1571, 1178
   size: 407, 360
   orig: 512, 512
   offset: 53, 94
   index: 0
 power_ups/triple_shot/TripleShotPowerUp
   rotate: false
-  xy: 1549, 1445
-  size: 407, 360
-  orig: 512, 512
-  offset: 53, 94
-  index: 1
-power_ups/triple_shot/TripleShotPowerUp
-  rotate: true
-  xy: 1543, 532
+  xy: 1571, 1178
   size: 407, 360
   orig: 512, 512
   offset: 53, 94
   index: 15
+
+textures-8.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 83
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1, 515
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 84
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1, 1029
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 85
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 515, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 86
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 515, 515
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 87
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 515, 1029
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 88
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1029, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 89
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1029, 515
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 90
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1029, 1029
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 91
+player/lives/LivesIndicator
+  rotate: true
+  xy: 1937, 1453
+  size: 254, 107
+  orig: 256, 128
+  offset: 1, 10
+  index: 1
+player/lives/LivesIndicator
+  rotate: true
+  xy: 1937, 1709
+  size: 254, 107
+  orig: 256, 128
+  offset: 1, 10
+  index: 2
+player/shield/Shields
+  rotate: true
+  xy: 1, 1543
+  size: 401, 482
+  orig: 512, 512
+  offset: 55, 15
+  index: 2
+player/shield/Shields
+  rotate: true
+  xy: 485, 1543
+  size: 401, 482
+  orig: 512, 512
+  offset: 55, 15
+  index: 3
+player/shield/Shields
+  rotate: true
+  xy: 969, 1543
+  size: 401, 482
+  orig: 512, 512
+  offset: 55, 15
+  index: 4
+player/shield/Shields
+  rotate: true
+  xy: 1453, 1543
+  size: 401, 482
+  orig: 512, 512
+  offset: 55, 15
+  index: 5
+player/shield/Shields
+  rotate: false
+  xy: 1543, 1
+  size: 401, 482
+  orig: 512, 512
+  offset: 55, 15
+  index: 6
+player/shield/Shields
+  rotate: false
+  xy: 1543, 485
+  size: 401, 482
+  orig: 512, 512
+  offset: 55, 15
+  index: 7
+player/shield/Shields
+  rotate: false
+  xy: 1543, 969
+  size: 401, 482
+  orig: 512, 512
+  offset: 55, 15
+  index: 8
 
 textures-9.png
 size: 2048, 2048
@@ -1261,55 +1275,62 @@ enemy/explode/EnemyExplosion
   orig: 512, 512
   offset: 0, 0
   index: 99
+player/lives/LivesIndicator
+  rotate: true
+  xy: 1937, 1453
+  size: 254, 107
+  orig: 256, 128
+  offset: 1, 10
+  index: 3
 player/shield/Shields
   rotate: true
   xy: 1, 1543
   size: 401, 482
   orig: 512, 512
   offset: 55, 15
-  index: 4
+  index: 9
 player/shield/Shields
   rotate: true
   xy: 485, 1543
   size: 401, 482
   orig: 512, 512
   offset: 55, 15
-  index: 5
+  index: 10
 player/shield/Shields
   rotate: true
   xy: 969, 1543
   size: 401, 482
   orig: 512, 512
   offset: 55, 15
-  index: 6
+  index: 11
 player/shield/Shields
   rotate: true
   xy: 1453, 1543
   size: 401, 482
   orig: 512, 512
   offset: 55, 15
-  index: 7
+  index: 12
 player/shield/Shields
   rotate: false
   xy: 1543, 1
   size: 401, 482
   orig: 512, 512
   offset: 55, 15
-  index: 8
+  index: 13
 player/shield/Shields
   rotate: false
   xy: 1543, 485
   size: 401, 482
   orig: 512, 512
   offset: 55, 15
-  index: 9
+  index: 14
 player/shield/Shields
   rotate: false
   xy: 1543, 969
   size: 401, 482
   orig: 512, 512
   offset: 55, 15
-  index: 10
+  index: 15
 player/thruster/Thruster
   rotate: false
   xy: 1029, 1029
@@ -1352,61 +1373,75 @@ format: RGBA8888
 filter: Linear,Linear
 repeat: none
 enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1543, 969
+  rotate: true
+  xy: 1450, 1543
   size: 420, 448
   orig: 512, 512
   offset: 46, 32
   index: 13
+explosion/Explosion
+  rotate: false
+  xy: 1543, 964
+  size: 420, 448
+  orig: 512, 512
+  offset: 38, 31
+  index: 13
+font
+  rotate: false
+  xy: 1292, 1684
+  size: 127, 360
+  orig: 128, 1024
+  offset: 0, 664
+  index: -1
 player/engine-on-fire/Fire
   rotate: false
-  xy: 1543, 485
+  xy: 1900, 1543
+  size: 125, 479
+  orig: 512, 512
+  offset: 189, 23
+  index: 0
+player/engine-on-fire/Fire
+  rotate: true
+  xy: 1543, 1414
+  size: 127, 479
+  orig: 512, 512
+  offset: 188, 23
+  index: 1
+player/engine-on-fire/Fire
+  rotate: false
+  xy: 1543, 1
+  size: 123, 480
+  orig: 512, 512
+  offset: 193, 20
+  index: 25
+player/engine-on-fire/Fire
+  rotate: true
+  xy: 1, 1543
   size: 130, 482
   orig: 512, 512
   offset: 190, 17
   index: 32
 player/engine-on-fire/Fire
-  rotate: true
-  xy: 1543, 1419
-  size: 122, 476
+  rotate: false
+  xy: 1543, 483
+  size: 136, 479
   orig: 512, 512
-  offset: 193, 25
-  index: 57
-player/shield/Shields
+  offset: 191, 18
+  index: 36
+player/engine-on-fire/Fire
   rotate: true
-  xy: 1, 1543
-  size: 401, 482
+  xy: 968, 1543
+  size: 139, 480
   orig: 512, 512
-  offset: 55, 15
-  index: 11
-player/shield/Shields
+  offset: 190, 16
+  index: 37
+player/engine-on-fire/Fire
   rotate: true
   xy: 485, 1543
-  size: 401, 482
+  size: 138, 481
   orig: 512, 512
-  offset: 55, 15
-  index: 12
-player/shield/Shields
-  rotate: true
-  xy: 969, 1543
-  size: 401, 482
-  orig: 512, 512
-  offset: 55, 15
-  index: 13
-player/shield/Shields
-  rotate: true
-  xy: 1453, 1543
-  size: 401, 482
-  orig: 512, 512
-  offset: 55, 15
-  index: 14
-player/shield/Shields
-  rotate: false
-  xy: 1543, 1
-  size: 401, 482
-  orig: 512, 512
-  offset: 55, 15
-  index: 15
+  offset: 191, 14
+  index: 38
 player/thruster/Thruster
   rotate: false
   xy: 1, 1
@@ -1470,9 +1505,37 @@ player/thruster/Thruster
   orig: 512, 512
   offset: 0, 0
   index: 11
+player/turn-left/TurnLeft
+  rotate: true
+  xy: 853, 1684
+  size: 276, 437
+  orig: 512, 512
+  offset: 140, 28
+  index: 7
+player/turn-right/TurnRight
+  rotate: false
+  xy: 1681, 410
+  size: 273, 437
+  orig: 512, 512
+  offset: 97, 28
+  index: 7
+player/turn-right/TurnRight
+  rotate: true
+  xy: 410, 1683
+  size: 258, 441
+  orig: 512, 512
+  offset: 102, 25
+  index: 8
+power_ups/triple_shot/TripleShotPowerUp
+  rotate: false
+  xy: 1, 1675
+  size: 407, 360
+  orig: 512, 512
+  offset: 53, 94
+  index: 1
 power_ups/triple_shot/TripleShotPowerUp
   rotate: true
-  xy: 1675, 485
+  xy: 1668, 1
   size: 407, 360
   orig: 512, 512
   offset: 53, 94
@@ -1497,27 +1560,13 @@ enemy/explode/EnemyExplosion
   orig: 512, 512
   offset: 1, 0
   index: 100
-explosion/Explosion
+enemy/explode/EnemyExplosion
   rotate: false
-  xy: 819, 1869
-  size: 132, 167
+  xy: 1440, 1543
+  size: 440, 440
   orig: 512, 512
-  offset: 188, 182
-  index: 6
-explosion/Explosion
-  rotate: false
-  xy: 819, 1684
-  size: 132, 183
-  orig: 512, 512
-  offset: 188, 171
-  index: 7
-explosion/Explosion
-  rotate: true
-  xy: 1448, 1543
-  size: 420, 448
-  orig: 512, 512
-  offset: 38, 31
-  index: 13
+  offset: 33, 34
+  index: 102
 explosion/Explosion
   rotate: false
   xy: 1537, 1029
@@ -1541,32 +1590,46 @@ explosion/Explosion
   index: 90
 player/engine-on-fire/Fire
   rotate: true
-  xy: 966, 1543
-  size: 123, 480
+  xy: 481, 1543
+  size: 123, 478
   orig: 512, 512
-  offset: 193, 20
-  index: 25
-player/engine-on-fire/Fire
-  rotate: false
-  xy: 1898, 1543
-  size: 136, 479
-  orig: 512, 512
-  offset: 191, 18
-  index: 36
+  offset: 193, 22
+  index: 24
 player/engine-on-fire/Fire
   rotate: true
-  xy: 484, 1543
-  size: 139, 480
+  xy: 410, 1793
+  size: 134, 475
   orig: 512, 512
-  offset: 190, 16
-  index: 37
+  offset: 190, 23
+  index: 34
+player/engine-on-fire/Fire
+  rotate: false
+  xy: 1882, 1543
+  size: 134, 476
+  orig: 512, 512
+  offset: 191, 21
+  index: 35
+player/engine-on-fire/Fire
+  rotate: true
+  xy: 961, 1543
+  size: 123, 477
+  orig: 512, 512
+  offset: 192, 24
+  index: 58
+player/engine-on-fire/Fire
+  rotate: true
+  xy: 481, 1668
+  size: 123, 477
+  orig: 512, 512
+  offset: 192, 23
+  index: 59
 player/engine-on-fire/Fire
   rotate: true
   xy: 1, 1543
-  size: 138, 481
+  size: 124, 478
   orig: 512, 512
-  offset: 191, 14
-  index: 38
+  offset: 190, 24
+  index: 60
 player/thruster/Thruster
   rotate: false
   xy: 1, 1
@@ -1618,25 +1681,18 @@ player/thruster/Thruster
   index: 20
 power_ups/triple_shot/TripleShotPowerUp
   rotate: false
-  xy: 1, 1683
+  xy: 1, 1669
   size: 407, 360
   orig: 512, 512
   offset: 53, 94
   index: 3
 power_ups/triple_shot/TripleShotPowerUp
   rotate: false
-  xy: 966, 1668
+  xy: 960, 1668
   size: 407, 360
   orig: 512, 512
   offset: 53, 94
   index: 4
-power_ups/triple_shot/TripleShotPowerUp
-  rotate: false
-  xy: 410, 1684
-  size: 407, 360
-  orig: 512, 512
-  offset: 53, 94
-  index: 5
 
 textures-12.png
 size: 2048, 2048
@@ -1923,14 +1979,14 @@ filter: Linear,Linear
 repeat: none
 enemy/explode/EnemyExplosion
   rotate: true
-  xy: 1, 1650
-  size: 396, 426
+  xy: 985, 1529
+  size: 442, 470
   orig: 512, 512
-  offset: 58, 43
-  index: 12
+  offset: 35, 21
+  index: 14
 explosion/Explosion
   rotate: false
-  xy: 1536, 1505
+  xy: 1536, 1502
   size: 456, 472
   orig: 512, 512
   offset: 23, 21
@@ -2005,90 +2061,62 @@ explosion/Explosion
   orig: 512, 512
   offset: 0, 0
   index: 82
-explosion/Explosion
+player/engine-on-fire/Fire
   rotate: true
-  xy: 988, 1529
-  size: 466, 469
+  xy: 493, 1529
+  size: 126, 490
   orig: 512, 512
-  offset: 19, 24
-  index: 99
+  offset: 191, 17
+  index: 28
 player/engine-on-fire/Fire
   rotate: false
-  xy: 1536, 1011
+  xy: 1536, 515
   size: 134, 492
   orig: 512, 512
   offset: 194, 8
   index: 43
 player/engine-on-fire/Fire
   rotate: true
-  xy: 495, 1529
+  xy: 1, 1529
+  size: 131, 490
+  orig: 512, 512
+  offset: 197, 4
+  index: 48
+player/engine-on-fire/Fire
+  rotate: false
+  xy: 1536, 1009
   size: 130, 491
   orig: 512, 512
   offset: 197, 5
   index: 49
-player/engine-on-fire/Fire
+player/turn-left/TurnLeft
   rotate: false
-  xy: 1536, 515
-  size: 127, 494
+  xy: 1672, 515
+  size: 318, 421
   orig: 512, 512
-  offset: 198, 5
-  index: 50
-player/engine-on-fire/Fire
-  rotate: true
-  xy: 1, 1529
-  size: 119, 492
-  orig: 512, 512
-  offset: 195, 7
-  index: 55
-player/lives/LivesIndicator
-  rotate: false
-  xy: 1672, 1384
-  size: 254, 107
-  orig: 256, 128
-  offset: 1, 10
-  index: 0
-player/lives/LivesIndicator
-  rotate: true
-  xy: 1932, 941
-  size: 254, 107
-  orig: 256, 128
-  offset: 1, 10
-  index: 1
-player/lives/LivesIndicator
-  rotate: true
-  xy: 1932, 1197
-  size: 254, 107
-  orig: 256, 128
-  offset: 1, 10
-  index: 2
-player/lives/LivesIndicator
-  rotate: true
-  xy: 868, 1661
-  size: 254, 107
-  orig: 256, 128
-  offset: 1, 10
+  offset: 104, 41
   index: 3
-player/turn-left/TurnLeft
-  rotate: false
-  xy: 1665, 515
-  size: 312, 424
-  orig: 512, 512
-  offset: 111, 38
-  index: 4
-player/turn-left/TurnLeft
+player/turn-right/TurnRight
   rotate: true
-  xy: 429, 1661
-  size: 276, 437
+  xy: 493, 1657
+  size: 321, 418
   orig: 512, 512
-  offset: 140, 28
-  index: 7
+  offset: 92, 43
+  index: 2
+player/turn-right/TurnRight
+  rotate: true
+  xy: 1, 1662
+  size: 318, 421
+  orig: 512, 512
+  offset: 90, 41
+  index: 3
 player/turn-right/TurnRight
   rotate: false
-  xy: 1672, 941
-  size: 258, 441
+  xy: 1668, 1009
+  size: 312, 424
   orig: 512, 512
-  offset: 102, 25
-  index: 8
+  offset: 89, 38
+  index: 4
 
 textures-15.png
 size: 2048, 2048
@@ -2097,301 +2125,308 @@ filter: Linear,Linear
 repeat: none
 enemy/explode/EnemyExplosion
   rotate: true
-  xy: 1684, 1351
-  size: 322, 352
+  xy: 1531, 1452
+  size: 396, 426
   orig: 512, 512
-  offset: 95, 80
-  index: 9
+  offset: 58, 43
+  index: 12
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 1334, 1351
-  size: 348, 378
-  orig: 512, 512
-  offset: 82, 67
-  index: 10
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1030, 1
+  xy: 1265, 129
   size: 440, 439
   orig: 512, 512
   offset: 33, 35
   index: 101
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 889, 934
-  size: 440, 440
-  orig: 512, 512
-  offset: 33, 34
-  index: 102
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 893, 1376
+  xy: 1265, 570
   size: 440, 439
   orig: 512, 512
   offset: 33, 35
   index: 103
 enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1331, 909
+  rotate: false
+  xy: 823, 571
   size: 440, 439
   orig: 512, 512
   offset: 33, 35
   index: 104
 enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1331, 909
+  rotate: false
+  xy: 823, 571
   size: 440, 439
   orig: 512, 512
   offset: 33, 35
   index: 105
 explosion/Explosion
   rotate: true
-  xy: 1352, 443
+  xy: 186, 1894
+  size: 132, 167
+  orig: 512, 512
+  offset: 188, 182
+  index: 6
+explosion/Explosion
+  rotate: true
+  xy: 1, 1901
+  size: 132, 183
+  orig: 512, 512
+  offset: 188, 171
+  index: 7
+explosion/Explosion
+  rotate: true
+  xy: 649, 1374
   size: 440, 439
   orig: 512, 512
   offset: 25, 34
   index: 101
 explosion/Explosion
   rotate: false
-  xy: 910, 467
+  xy: 823, 129
   size: 440, 440
   orig: 512, 512
   offset: 25, 33
   index: 102
 explosion/Explosion
   rotate: true
-  xy: 1471, 1
+  xy: 1090, 1374
   size: 440, 439
   orig: 512, 512
   offset: 25, 34
   index: 103
-player/engine-on-fire/Fire
+explosion/Explosion
   rotate: false
-  xy: 1, 482
-  size: 125, 479
+  xy: 1564, 1011
+  size: 440, 439
   orig: 512, 512
-  offset: 189, 23
-  index: 0
-player/engine-on-fire/Fire
+  offset: 25, 34
+  index: 104
+explosion/Explosion
   rotate: false
-  xy: 1, 1
-  size: 127, 479
+  xy: 1564, 1011
+  size: 440, 439
   orig: 512, 512
-  offset: 188, 23
-  index: 1
+  offset: 25, 34
+  index: 105
 player/engine-on-fire/Fire
   rotate: false
-  xy: 781, 468
+  xy: 520, 1407
   size: 127, 464
   orig: 512, 512
   offset: 188, 37
   index: 2
 player/engine-on-fire/Fire
   rotate: true
-  xy: 476, 1888
+  xy: 1289, 1
+  size: 126, 462
+  orig: 512, 512
+  offset: 188, 36
+  index: 3
+player/engine-on-fire/Fire
+  rotate: true
+  xy: 355, 1892
   size: 128, 466
   orig: 512, 512
   offset: 187, 35
   index: 4
 player/engine-on-fire/Fire
   rotate: false
-  xy: 652, 470
+  xy: 507, 939
   size: 127, 466
   orig: 512, 512
   offset: 187, 35
   index: 5
 player/engine-on-fire/Fire
   rotate: false
-  xy: 264, 475
+  xy: 250, 1
   size: 127, 470
   orig: 512, 512
   offset: 188, 35
   index: 6
 player/engine-on-fire/Fire
   rotate: false
-  xy: 764, 1405
+  xy: 649, 1
   size: 127, 463
   orig: 512, 512
   offset: 188, 42
   index: 7
 player/engine-on-fire/Fire
-  rotate: false
-  xy: 902, 1
+  rotate: true
+  xy: 823, 1
   size: 126, 464
   orig: 512, 512
   offset: 188, 40
   index: 8
 player/engine-on-fire/Fire
   rotate: false
-  xy: 632, 940
+  xy: 390, 1412
   size: 128, 466
   orig: 512, 512
   offset: 188, 37
   index: 9
 player/engine-on-fire/Fire
   rotate: false
-  xy: 502, 942
+  xy: 379, 1
   size: 128, 467
   orig: 512, 512
   offset: 189, 35
   index: 10
 player/engine-on-fire/Fire
   rotate: false
-  xy: 393, 472
+  xy: 131, 1424
   size: 129, 468
   orig: 512, 512
   offset: 188, 34
   index: 11
 player/engine-on-fire/Fire
   rotate: false
-  xy: 388, 1
+  xy: 1, 1430
   size: 128, 469
   orig: 512, 512
   offset: 188, 33
   index: 12
 player/engine-on-fire/Fire
   rotate: false
-  xy: 518, 1
+  xy: 252, 953
   size: 126, 468
   orig: 512, 512
   offset: 189, 34
   index: 13
 player/engine-on-fire/Fire
   rotate: false
-  xy: 524, 471
+  xy: 262, 1423
   size: 126, 467
   orig: 512, 512
   offset: 190, 32
   index: 14
 player/engine-on-fire/Fire
   rotate: false
-  xy: 773, 1
-  size: 127, 465
-  orig: 512, 512
-  offset: 191, 32
-  index: 15
-player/engine-on-fire/Fire
-  rotate: false
-  xy: 636, 1408
+  xy: 508, 470
   size: 126, 465
   orig: 512, 512
   offset: 192, 32
   index: 16
 player/engine-on-fire/Fire
   rotate: false
-  xy: 762, 938
+  xy: 509, 1
   size: 125, 465
   orig: 512, 512
   offset: 193, 36
   index: 17
 player/engine-on-fire/Fire
   rotate: false
-  xy: 646, 1
+  xy: 380, 943
   size: 125, 467
   orig: 512, 512
   offset: 194, 34
   index: 18
 player/engine-on-fire/Fire
   rotate: false
-  xy: 377, 947
+  xy: 127, 953
   size: 123, 469
   orig: 512, 512
   offset: 195, 32
   index: 19
 player/engine-on-fire/Fire
   rotate: false
-  xy: 387, 1418
+  xy: 259, 473
   size: 122, 468
   orig: 512, 512
   offset: 195, 31
   index: 20
 player/engine-on-fire/Fire
   rotate: false
-  xy: 511, 1411
+  xy: 383, 470
   size: 123, 467
   orig: 512, 512
   offset: 194, 28
   index: 21
 player/engine-on-fire/Fire
   rotate: false
-  xy: 252, 959
+  xy: 125, 1
   size: 123, 471
   orig: 512, 512
   offset: 194, 26
   index: 22
 player/engine-on-fire/Fire
-  rotate: true
-  xy: 1, 1923
+  rotate: false
+  xy: 1, 955
   size: 124, 473
   orig: 512, 512
   offset: 193, 24
   index: 23
 player/engine-on-fire/Fire
   rotate: false
-  xy: 1, 1443
-  size: 123, 478
-  orig: 512, 512
-  offset: 193, 22
-  index: 24
-player/engine-on-fire/Fire
-  rotate: false
-  xy: 253, 1
+  xy: 124, 479
   size: 133, 472
   orig: 512, 512
   offset: 190, 26
   index: 33
 player/engine-on-fire/Fire
   rotate: false
-  xy: 128, 482
-  size: 134, 475
-  orig: 512, 512
-  offset: 190, 23
-  index: 34
-player/engine-on-fire/Fire
-  rotate: false
-  xy: 251, 1442
-  size: 134, 476
-  orig: 512, 512
-  offset: 191, 21
-  index: 35
-player/engine-on-fire/Fire
-  rotate: false
-  xy: 130, 1
+  xy: 1, 479
   size: 121, 474
   orig: 512, 512
   offset: 194, 27
   index: 56
 player/engine-on-fire/Fire
   rotate: false
-  xy: 126, 1443
-  size: 123, 477
+  xy: 1, 1
+  size: 122, 476
   orig: 512, 512
-  offset: 192, 24
-  index: 58
-player/engine-on-fire/Fire
+  offset: 193, 25
+  index: 57
+player/turn-right/TurnRight
   rotate: false
-  xy: 127, 963
-  size: 123, 477
+  xy: 1753, 1
+  size: 290, 433
   orig: 512, 512
-  offset: 192, 23
-  index: 59
-player/engine-on-fire/Fire
-  rotate: false
-  xy: 1, 963
-  size: 124, 478
-  orig: 512, 512
-  offset: 190, 24
-  index: 60
+  offset: 92, 31
+  index: 6
 power_ups/shield/ShieldPowerUp
   rotate: false
-  xy: 1793, 443
+  xy: 1707, 436
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 0
 power_ups/shield/ShieldPowerUp
   rotate: false
-  xy: 1793, 443
+  xy: 636, 1012
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 1
+power_ups/shield/ShieldPowerUp
+  rotate: false
+  xy: 868, 1012
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 2
+power_ups/shield/ShieldPowerUp
+  rotate: true
+  xy: 823, 1816
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 3
+power_ups/shield/ShieldPowerUp
+  rotate: false
+  xy: 1100, 1012
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 4
+power_ups/shield/ShieldPowerUp
+  rotate: false
+  xy: 1332, 1011
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 5
+power_ups/shield/ShieldPowerUp
+  rotate: false
+  xy: 1707, 436
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
@@ -2402,421 +2437,491 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+enemy/enemy
+  rotate: false
+  xy: 1087, 1755
+  size: 222, 285
+  orig: 512, 512
+  offset: 145, 115
+  index: -1
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1087, 1755
+  size: 222, 285
+  orig: 512, 512
+  offset: 145, 115
+  index: 0
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1087, 1755
+  size: 222, 285
+  orig: 512, 512
+  offset: 145, 115
+  index: 1
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1087, 1755
+  size: 222, 285
+  orig: 512, 512
+  offset: 145, 115
+  index: 2
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1087, 1755
+  size: 222, 285
+  orig: 512, 512
+  offset: 145, 115
+  index: 3
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1087, 1755
+  size: 222, 285
+  orig: 512, 512
+  offset: 145, 115
+  index: 4
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1087, 1755
+  size: 222, 285
+  orig: 512, 512
+  offset: 145, 115
+  index: 5
 enemy/explode/EnemyExplosion
   rotate: true
-  xy: 129, 1
+  xy: 1751, 1524
+  size: 222, 285
+  orig: 512, 512
+  offset: 145, 115
+  index: 6
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1, 1
   size: 440, 436
   orig: 512, 512
   offset: 33, 38
   index: 106
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 1, 1349
+  xy: 1, 439
   size: 435, 436
   orig: 512, 512
   offset: 38, 38
   index: 108
 enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 438, 1349
+  rotate: true
+  xy: 438, 443
   size: 435, 436
   orig: 512, 512
   offset: 38, 38
   index: 109
 enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 438, 1349
+  rotate: true
+  xy: 438, 443
   size: 435, 436
   orig: 512, 512
   offset: 38, 38
   index: 110
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 439, 907
+  xy: 1, 877
   size: 435, 436
   orig: 512, 512
   offset: 38, 38
   index: 111
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 442, 443
+  xy: 876, 443
   size: 435, 436
   orig: 512, 512
   offset: 38, 38
   index: 112
 enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 567, 1
+  rotate: true
+  xy: 881, 1
   size: 435, 436
   orig: 512, 512
   offset: 38, 38
   index: 113
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 875, 1345
+  xy: 438, 880
   size: 435, 436
   orig: 512, 512
   offset: 38, 38
   index: 114
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 875, 1345
+  xy: 438, 880
   size: 435, 436
   orig: 512, 512
   offset: 38, 38
   index: 115
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 876, 881
+  xy: 1, 1315
   size: 435, 436
   orig: 512, 512
   offset: 38, 38
   index: 116
 explosion/Explosion
   rotate: true
-  xy: 1449, 1757
+  xy: 1676, 1751
   size: 284, 318
   orig: 512, 512
   offset: 106, 96
   index: 8
 explosion/Explosion
   rotate: true
-  xy: 1, 465
-  size: 440, 439
-  orig: 512, 512
-  offset: 25, 34
-  index: 104
-explosion/Explosion
-  rotate: true
-  xy: 1, 465
-  size: 440, 439
-  orig: 512, 512
-  offset: 25, 34
-  index: 105
-explosion/Explosion
-  rotate: true
-  xy: 1, 907
+  xy: 443, 1
   size: 440, 436
   orig: 512, 512
   offset: 25, 37
   index: 106
 explosion/Explosion
-  rotate: false
-  xy: 879, 439
+  rotate: true
+  xy: 875, 881
   size: 435, 436
   orig: 512, 512
   offset: 30, 37
   index: 108
 explosion/Explosion
-  rotate: false
-  xy: 1004, 1
+  rotate: true
+  xy: 438, 1318
   size: 435, 436
   orig: 512, 512
   offset: 30, 37
   index: 109
 explosion/Explosion
-  rotate: false
-  xy: 1004, 1
+  rotate: true
+  xy: 438, 1318
   size: 435, 436
   orig: 512, 512
   offset: 30, 37
   index: 110
 explosion/Explosion
-  rotate: false
-  xy: 1312, 1319
+  rotate: true
+  xy: 876, 1318
   size: 435, 436
   orig: 512, 512
   offset: 30, 37
   index: 111
 explosion/Explosion
   rotate: false
-  xy: 1313, 877
+  xy: 1313, 438
   size: 435, 436
   orig: 512, 512
   offset: 30, 37
   index: 112
 explosion/Explosion
-  rotate: false
-  xy: 1316, 439
+  rotate: true
+  xy: 1319, 1
   size: 435, 436
   orig: 512, 512
   offset: 30, 37
   index: 113
 explosion/Explosion
-  rotate: false
-  xy: 1441, 1
+  rotate: true
+  xy: 1313, 876
   size: 435, 436
   orig: 512, 512
   offset: 30, 37
   index: 114
 explosion/Explosion
-  rotate: false
-  xy: 1441, 1
+  rotate: true
+  xy: 1313, 876
   size: 435, 436
   orig: 512, 512
   offset: 30, 37
   index: 115
-player/engine-on-fire/Fire
+explosion/Explosion
   rotate: false
-  xy: 1, 1
-  size: 126, 462
+  xy: 1314, 1313
+  size: 435, 436
   orig: 512, 512
-  offset: 188, 36
-  index: 3
+  offset: 30, 37
+  index: 116
 power_ups/shield/ShieldPowerUp
   rotate: true
-  xy: 1, 1787
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 1
-power_ups/shield/ShieldPowerUp
-  rotate: true
-  xy: 363, 1787
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 2
-power_ups/shield/ShieldPowerUp
-  rotate: true
-  xy: 725, 1787
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 3
-power_ups/shield/ShieldPowerUp
-  rotate: true
-  xy: 1087, 1783
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 4
-power_ups/shield/ShieldPowerUp
-  rotate: false
-  xy: 1769, 439
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 5
-power_ups/shield/ShieldPowerUp
-  rotate: false
-  xy: 1769, 801
+  xy: 1, 1753
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 6
 power_ups/shield/ShieldPowerUp
   rotate: false
-  xy: 1769, 1163
+  xy: 1750, 438
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 7
-
-textures-17.png
-size: 2048, 2048
-format: RGBA8888
-filter: Linear,Linear
-repeat: none
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1, 439
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 107
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 438, 1
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 117
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 439, 437
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 118
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 875, 437
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 119
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 875, 437
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 120
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 876, 1
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 121
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1311, 437
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 122
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1314, 1
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 123
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1, 875
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 124
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1, 875
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 125
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 439, 875
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 126
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 877, 1161
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 127
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1, 1311
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 128
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 439, 1311
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 129
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 439, 1311
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 130
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1315, 1161
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 131
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 875, 1597
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 132
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1311, 1599
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 133
-explosion/Explosion
-  rotate: false
-  xy: 1, 1
-  size: 435, 436
-  orig: 512, 512
-  offset: 30, 37
-  index: 116
 power_ups/shield/ShieldPowerUp
   rotate: false
-  xy: 1747, 437
+  xy: 1757, 1
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 8
 power_ups/shield/ShieldPowerUp
-  rotate: false
-  xy: 1752, 1
+  rotate: true
+  xy: 1314, 1751
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 9
 power_ups/shield/ShieldPowerUp
-  rotate: false
-  xy: 1747, 799
+  rotate: true
+  xy: 363, 1755
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 10
 power_ups/shield/ShieldPowerUp
   rotate: true
-  xy: 1, 1747
+  xy: 725, 1755
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 11
 power_ups/shield/ShieldPowerUp
-  rotate: true
-  xy: 363, 1749
+  rotate: false
+  xy: 1751, 800
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 12
 power_ups/shield/ShieldPowerUp
   rotate: false
-  xy: 1749, 1599
+  xy: 1751, 1162
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 13
-power_ups/shield/ShieldPowerUp
+
+textures-17.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+debris/Asteroid
   rotate: false
-  xy: 1751, 1161
+  xy: 1751, 1449
+  size: 231, 264
+  orig: 512, 512
+  offset: 147, 134
+  index: -1
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1087, 1749
+  size: 222, 285
+  orig: 512, 512
+  offset: 145, 115
+  index: 7
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1, 1
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 107
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1, 439
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 117
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 437, 1
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 118
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 439, 437
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 119
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 439, 437
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 120
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1, 875
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 121
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 439, 875
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 122
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 875, 1
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 123
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 875, 437
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 124
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 875, 437
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 125
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 877, 873
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 126
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1313, 1
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 127
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1313, 439
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 128
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1313, 877
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 129
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1313, 877
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 130
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1, 1311
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 131
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 439, 1311
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 132
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 877, 1311
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 133
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1313, 1315
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 134
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1313, 1315
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 135
+power_ups/shield/ShieldPowerUp
+  rotate: true
+  xy: 1, 1747
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 14
 power_ups/speed/SpeedPowerUp
   rotate: true
-  xy: 877, 875
+  xy: 363, 1747
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 0
 power_ups/speed/SpeedPowerUp
   rotate: true
-  xy: 1239, 875
+  xy: 725, 1749
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
   index: 1
 power_ups/speed/SpeedPowerUp
   rotate: true
-  xy: 877, 875
+  xy: 1311, 1751
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 2
+power_ups/speed/SpeedPowerUp
+  rotate: true
+  xy: 1673, 1751
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 3
+power_ups/speed/SpeedPowerUp
+  rotate: false
+  xy: 1749, 1
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 4
+power_ups/speed/SpeedPowerUp
+  rotate: false
+  xy: 1749, 363
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 5
+power_ups/speed/SpeedPowerUp
+  rotate: false
+  xy: 1749, 725
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 6
+power_ups/speed/SpeedPowerUp
+  rotate: false
+  xy: 1751, 1087
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 7
+power_ups/speed/SpeedPowerUp
+  rotate: true
+  xy: 363, 1747
   size: 230, 360
   orig: 512, 512
   offset: 141, 94
@@ -2827,418 +2932,299 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-enemy/enemy
-  rotate: false
-  xy: 1087, 1749
-  size: 222, 285
-  orig: 512, 512
-  offset: 145, 115
-  index: -1
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1087, 1749
-  size: 222, 285
-  orig: 512, 512
-  offset: 145, 115
-  index: 0
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1087, 1749
-  size: 222, 285
-  orig: 512, 512
-  offset: 145, 115
-  index: 1
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1087, 1749
-  size: 222, 285
-  orig: 512, 512
-  offset: 145, 115
-  index: 2
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1087, 1749
-  size: 222, 285
-  orig: 512, 512
-  offset: 145, 115
-  index: 3
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1087, 1749
-  size: 222, 285
-  orig: 512, 512
-  offset: 145, 115
-  index: 4
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1087, 1749
-  size: 222, 285
-  orig: 512, 512
-  offset: 145, 115
-  index: 5
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1749, 1087
-  size: 222, 285
-  orig: 512, 512
-  offset: 145, 115
-  index: 6
 enemy/explode/EnemyExplosion
   rotate: false
   xy: 1, 1
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 134
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1, 1
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 135
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1, 439
   size: 434, 436
   orig: 512, 512
   offset: 39, 38
   index: 136
 enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 437, 1
+  rotate: false
+  xy: 1, 439
   size: 434, 436
   orig: 512, 512
   offset: 39, 38
   index: 137
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 439, 437
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 138
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1, 875
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 139
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 439, 875
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 140
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 875, 1
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 141
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 875, 437
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 142
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 877, 873
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 143
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1313, 1
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 144
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1313, 439
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 145
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1313, 877
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 146
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1, 1311
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 147
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 439, 1311
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 148
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 877, 1311
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 149
-enemy/explode/EnemyExplosion
-  rotate: true
-  xy: 1313, 1315
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 150
-power_ups/speed/SpeedPowerUp
-  rotate: true
-  xy: 1, 1747
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 2
-power_ups/speed/SpeedPowerUp
-  rotate: true
-  xy: 363, 1747
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 3
-power_ups/speed/SpeedPowerUp
-  rotate: true
-  xy: 725, 1749
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 4
-power_ups/speed/SpeedPowerUp
-  rotate: true
-  xy: 1311, 1751
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 5
-power_ups/speed/SpeedPowerUp
-  rotate: true
-  xy: 1673, 1751
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 6
-power_ups/speed/SpeedPowerUp
-  rotate: false
-  xy: 1749, 1
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 7
-power_ups/speed/SpeedPowerUp
-  rotate: false
-  xy: 1749, 363
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 8
-power_ups/speed/SpeedPowerUp
-  rotate: false
-  xy: 1749, 725
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 9
-power_ups/speed/SpeedPowerUp
-  rotate: false
-  xy: 1751, 1311
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 10
-
-textures-19.png
-size: 2048, 2048
-format: RGBA8888
-filter: Linear,Linear
-repeat: none
-debris/Asteroid
-  rotate: false
-  xy: 225, 1753
-  size: 231, 264
-  orig: 512, 512
-  offset: 147, 134
-  index: -1
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1, 1753
-  size: 222, 285
-  orig: 512, 512
-  offset: 145, 115
-  index: 7
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1, 1
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 151
-enemy/explode/EnemyExplosion
-  rotate: false
-  xy: 1, 439
-  size: 434, 436
-  orig: 512, 512
-  offset: 39, 38
-  index: 152
-enemy/explode/EnemyExplosion
-  rotate: false
   xy: 1, 877
   size: 434, 436
   orig: 512, 512
   offset: 39, 38
-  index: 153
+  index: 138
 enemy/explode/EnemyExplosion
   rotate: false
   xy: 1, 1315
   size: 434, 436
   orig: 512, 512
   offset: 39, 38
-  index: 154
+  index: 139
 enemy/explode/EnemyExplosion
   rotate: true
-  xy: 458, 1
+  xy: 725, 1
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 140
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1163, 1
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 141
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1601, 1
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 142
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 437, 725
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 143
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 437, 1163
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 144
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 725, 1601
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 145
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1161, 437
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 146
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1599, 437
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 147
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 873, 1031
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 148
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1161, 1469
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 149
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1597, 873
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 150
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 1597, 1309
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 151
+power_ups/speed/SpeedPowerUp
+  rotate: true
+  xy: 1, 1753
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 8
+power_ups/speed/SpeedPowerUp
+  rotate: true
+  xy: 363, 1753
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 9
+power_ups/speed/SpeedPowerUp
+  rotate: false
+  xy: 437, 1
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 10
+power_ups/speed/SpeedPowerUp
+  rotate: false
+  xy: 437, 363
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 11
+power_ups/speed/SpeedPowerUp
+  rotate: true
+  xy: 669, 437
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 12
+power_ups/speed/SpeedPowerUp
+  rotate: false
+  xy: 873, 669
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 13
+power_ups/speed/SpeedPowerUp
+  rotate: false
+  xy: 1309, 873
+  size: 230, 360
+  orig: 512, 512
+  offset: 141, 94
+  index: 14
+
+textures-19.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1, 1
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 152
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1, 439
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 153
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1, 877
+  size: 434, 436
+  orig: 512, 512
+  offset: 39, 38
+  index: 154
+enemy/explode/EnemyExplosion
+  rotate: false
+  xy: 1, 1315
   size: 434, 436
   orig: 512, 512
   offset: 39, 38
   index: 155
 enemy/explode/EnemyExplosion
   rotate: true
-  xy: 896, 1
+  xy: 437, 1
   size: 434, 436
   orig: 512, 512
   offset: 39, 38
   index: 156
 enemy/explode/EnemyExplosion
   rotate: true
-  xy: 1334, 1
+  xy: 875, 1
   size: 434, 436
   orig: 512, 512
   offset: 39, 38
   index: 157
 explosion/Explosion
   rotate: false
-  xy: 1328, 1598
+  xy: 437, 872
   size: 396, 426
   orig: 512, 512
   offset: 50, 42
   index: 12
 explosion/Explosion
-  rotate: false
-  xy: 437, 725
+  rotate: true
+  xy: 1313, 1
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 107
 explosion/Explosion
-  rotate: false
-  xy: 437, 1163
+  rotate: true
+  xy: 1313, 436
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 117
 explosion/Explosion
-  rotate: false
-  xy: 458, 1601
+  rotate: true
+  xy: 437, 437
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 118
 explosion/Explosion
   rotate: true
-  xy: 1161, 437
+  xy: 875, 437
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 119
 explosion/Explosion
   rotate: true
-  xy: 1161, 437
+  xy: 875, 437
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 120
 explosion/Explosion
   rotate: true
-  xy: 1599, 725
+  xy: 1313, 871
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 121
 explosion/Explosion
   rotate: false
-  xy: 872, 1160
+  xy: 437, 1306
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 122
 explosion/Explosion
-  rotate: false
-  xy: 893, 1598
+  rotate: true
+  xy: 872, 872
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 123
 explosion/Explosion
-  rotate: false
-  xy: 1307, 1160
+  rotate: true
+  xy: 1310, 1306
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 124
 explosion/Explosion
-  rotate: false
-  xy: 1307, 1160
+  rotate: true
+  xy: 1310, 1306
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 125
-power_ups/speed/SpeedPowerUp
-  rotate: false
-  xy: 1772, 1
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 11
-power_ups/speed/SpeedPowerUp
-  rotate: false
-  xy: 1772, 363
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 12
-power_ups/speed/SpeedPowerUp
+explosion/Explosion
   rotate: true
-  xy: 437, 437
-  size: 230, 360
+  xy: 872, 1307
+  size: 433, 436
   orig: 512, 512
-  offset: 141, 94
-  index: 13
-power_ups/speed/SpeedPowerUp
-  rotate: true
-  xy: 799, 437
-  size: 230, 360
-  orig: 512, 512
-  offset: 141, 94
-  index: 14
+  offset: 32, 37
+  index: 126
 
 textures-20.png
 size: 2048, 2048
@@ -3251,135 +3237,149 @@ explosion/Explosion
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 126
+  index: 127
 explosion/Explosion
   rotate: false
   xy: 1, 439
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 127
+  index: 128
 explosion/Explosion
   rotate: false
   xy: 1, 877
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 128
-explosion/Explosion
-  rotate: false
-  xy: 1, 1315
-  size: 433, 436
-  orig: 512, 512
-  offset: 32, 37
   index: 129
 explosion/Explosion
   rotate: false
-  xy: 1, 1315
+  xy: 1, 877
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 130
 explosion/Explosion
-  rotate: true
-  xy: 436, 1
+  rotate: false
+  xy: 1, 1315
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 131
 explosion/Explosion
   rotate: true
-  xy: 874, 1
+  xy: 436, 1
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 132
 explosion/Explosion
   rotate: true
-  xy: 1312, 1
+  xy: 874, 1
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 133
 explosion/Explosion
-  rotate: false
-  xy: 436, 436
+  rotate: true
+  xy: 1312, 1
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 134
 explosion/Explosion
-  rotate: false
-  xy: 436, 436
+  rotate: true
+  xy: 1312, 1
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 135
 explosion/Explosion
   rotate: false
-  xy: 436, 874
+  xy: 436, 436
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 136
 explosion/Explosion
   rotate: false
-  xy: 436, 1312
+  xy: 436, 874
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 137
 explosion/Explosion
-  rotate: true
-  xy: 871, 436
+  rotate: false
+  xy: 436, 1312
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 138
 explosion/Explosion
   rotate: true
-  xy: 1309, 436
+  xy: 871, 436
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 139
 explosion/Explosion
-  rotate: false
-  xy: 871, 871
+  rotate: true
+  xy: 1309, 436
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 140
 explosion/Explosion
   rotate: false
-  xy: 871, 1309
+  xy: 871, 871
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
   index: 141
+explosion/Explosion
+  rotate: false
+  xy: 871, 1309
+  size: 433, 436
+  orig: 512, 512
+  offset: 32, 37
+  index: 142
 explosion/Explosion
   rotate: true
   xy: 1306, 871
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 142
+  index: 143
 explosion/Explosion
   rotate: false
   xy: 1306, 1306
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 143
+  index: 144
 
 textures-21.png
 size: 2048, 2048
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-explosion/Explosion
+enemy/explode/EnemyExplosion
+  rotate: true
+  xy: 871, 1718
+  size: 322, 352
+  orig: 512, 512
+  offset: 95, 80
+  index: 9
+enemy/explode/EnemyExplosion
   rotate: false
-  xy: 1715, 871
+  xy: 1668, 871
+  size: 374, 402
+  orig: 512, 512
+  offset: 69, 55
+  index: 11
+explosion/Explosion
+  rotate: true
+  xy: 1225, 1718
   size: 322, 352
   orig: 512, 512
   offset: 87, 79
@@ -3390,122 +3390,122 @@ explosion/Explosion
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 144
+  index: 145
 explosion/Explosion
   rotate: false
   xy: 1, 439
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 145
+  index: 146
 explosion/Explosion
   rotate: false
   xy: 1, 877
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 146
+  index: 147
 explosion/Explosion
   rotate: false
   xy: 1, 1315
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 147
+  index: 148
 explosion/Explosion
   rotate: true
   xy: 436, 1
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 148
+  index: 149
 explosion/Explosion
   rotate: true
   xy: 874, 1
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 149
+  index: 150
 explosion/Explosion
   rotate: true
   xy: 1312, 1
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 150
+  index: 151
 explosion/Explosion
   rotate: false
   xy: 436, 436
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 151
+  index: 152
 explosion/Explosion
   rotate: false
   xy: 436, 874
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 152
+  index: 153
 explosion/Explosion
   rotate: false
   xy: 436, 1312
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 153
+  index: 154
 explosion/Explosion
   rotate: true
   xy: 871, 436
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 154
+  index: 155
 explosion/Explosion
   rotate: true
   xy: 1309, 436
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 155
+  index: 156
 explosion/Explosion
   rotate: false
   xy: 871, 871
   size: 433, 436
   orig: 512, 512
   offset: 32, 37
-  index: 156
-explosion/Explosion
-  rotate: false
-  xy: 871, 1309
-  size: 433, 436
-  orig: 512, 512
-  offset: 32, 37
   index: 157
 power_ups/triple_shot/TripleShotPowerUp
-  rotate: false
-  xy: 1306, 871
+  rotate: true
+  xy: 871, 1309
+  size: 407, 360
+  orig: 512, 512
+  offset: 53, 94
+  index: 5
+power_ups/triple_shot/TripleShotPowerUp
+  rotate: true
+  xy: 1233, 1309
   size: 407, 360
   orig: 512, 512
   offset: 53, 94
   index: 6
 power_ups/triple_shot/TripleShotPowerUp
-  rotate: false
-  xy: 1306, 1233
+  rotate: true
+  xy: 1306, 871
   size: 407, 360
   orig: 512, 512
   offset: 53, 94
   index: 7
 power_ups/triple_shot/TripleShotPowerUp
   rotate: true
-  xy: 1306, 1595
+  xy: 1668, 1275
   size: 407, 360
   orig: 512, 512
   offset: 53, 94
   index: 8
 power_ups/triple_shot/TripleShotPowerUp
-  rotate: true
-  xy: 1668, 1595
+  rotate: false
+  xy: 1595, 1684
   size: 407, 360
   orig: 512, 512
   offset: 53, 94
@@ -3518,21 +3518,21 @@ filter: Linear,Linear
 repeat: none
 enemy/explode/EnemyExplosion
   rotate: false
-  xy: 1, 363
-  size: 374, 402
+  xy: 1, 767
+  size: 348, 378
   orig: 512, 512
-  offset: 69, 55
-  index: 11
+  offset: 82, 67
+  index: 10
 explosion/Explosion
   rotate: false
-  xy: 1, 1171
+  xy: 1, 1147
   size: 348, 378
   orig: 512, 512
   offset: 74, 66
   index: 10
 explosion/Explosion
   rotate: false
-  xy: 1, 767
+  xy: 1, 363
   size: 374, 402
   orig: 512, 512
   offset: 61, 54
