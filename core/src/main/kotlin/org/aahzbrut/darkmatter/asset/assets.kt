@@ -1,8 +1,10 @@
 package org.aahzbrut.darkmatter.asset
 
 import com.badlogic.gdx.assets.AssetDescriptor
+import com.badlogic.gdx.assets.loaders.BitmapFontLoader
 import com.badlogic.gdx.audio.Music
 import com.badlogic.gdx.audio.Sound
+import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.utils.Disposable
 
@@ -12,7 +14,7 @@ open class BaseAsset<T : Disposable>(
         fileName: String,
         asset: Class<T>) {
 
-    val descriptor: AssetDescriptor<T> = AssetDescriptor("$directory/$fileName", asset)
+    open val descriptor: AssetDescriptor<T> = AssetDescriptor("$directory/$fileName", asset)
 }
 
 class BaseAtlasAsset(
@@ -32,3 +34,9 @@ class BaseMusicAsset(
         fileName: String,
         asset: Class<Music> = Music::class.java
 ) : BaseAsset<Music>(directory, fileName = fileName, asset = asset)
+
+class BaseBitmapFontAsset(
+        directory: String = "fonts",
+        fileName: String,
+        asset: Class<BitmapFont> = BitmapFont::class.java
+) : BaseAsset<BitmapFont>(directory, fileName = fileName, asset = asset)

@@ -12,4 +12,7 @@ dependencies {
     api "io.github.libktx:ktx-ashley:$libKtxVersion"
     api "io.github.libktx:ktx-collections:$libKtxVersion"
     api "io.github.libktx:ktx-assets-async:$libKtxVersion"
+    api "io.github.libktx:ktx-style:$libKtxVersion"
+    api "io.github.libktx:ktx-scene2d:$libKtxVersion"
+    api "io.github.libktx:ktx-actors:$libKtxVersion"
 }

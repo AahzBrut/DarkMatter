@@ -529,6 +529,7 @@
             <key type="filename">../../raw/assets/textures/explosion/Explosion_00155.png</key>
             <key type="filename">../../raw/assets/textures/explosion/Explosion_00156.png</key>
             <key type="filename">../../raw/assets/textures/explosion/Explosion_00157.png</key>
+            <key type="filename">../../raw/assets/textures/fonts/font.png</key>
             <key type="filename">../../raw/assets/textures/player/engine-on-fire/Fire_00000.png</key>
             <key type="filename">../../raw/assets/textures/player/engine-on-fire/Fire_00001.png</key>
             <key type="filename">../../raw/assets/textures/player/engine-on-fire/Fire_00002.png</key>

@@ -61,7 +61,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
             addSystem(AnimationSystem(spriteCache))
             addSystem(RenderSystem(batch, gameViewport))
             addSystem(BoundingBoxRenderingSystem(gameViewport, shapeRenderer))
-            addSystem(UIRenderSystem(batch, uiViewport, spriteCache))
+            addSystem(UIRenderSystem(batch, uiViewport, spriteCache, assetStorage))
             addSystem(WeaponSystem(spriteCache, audioService))
             addSystem(ProjectileSystem())
             addSystem(PowerUpEffectSystem())

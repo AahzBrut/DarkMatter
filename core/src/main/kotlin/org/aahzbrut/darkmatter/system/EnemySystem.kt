@@ -14,7 +14,7 @@ import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.audio.AudioService
 import org.aahzbrut.darkmatter.component.*
 import org.aahzbrut.darkmatter.event.GameEventManagers
-import org.aahzbrut.darkmatter.event.PlayerDamageEvent
+import org.aahzbrut.darkmatter.event.ScoreEvent
 import org.aahzbrut.darkmatter.factory.EnemyFactory
 
 @Suppress("UNUSED")
@@ -32,7 +32,7 @@ class EnemySystem(
                         BoundingBoxComponent::class)
                         .exclude(RemoveComponent::class).get()) {
 
-    private val damageEventManager = GameEventManagers[PlayerDamageEvent::class]
+    private val scoreEventManager = GameEventManagers[ScoreEvent::class]
     private val playerBoundingRect = Rectangle()
     private val enemyBoundingRect = Rectangle()
     private val projectileBoundingRect = Rectangle()
@@ -146,11 +146,16 @@ class EnemySystem(
         player[PlayerComponent.mapper]?.let {
             it.score += ENEMY_KILL_SCORE
             it.enemiesKilled++
+            scoreEventManager.dispatchEvent {
+                numLivesLeft = it.numLives
+                score = it.score
+            }
 
             if (player.has(ShieldComponent.mapper)) return
 
-            damageEventManager.dispatchEvent {
+            scoreEventManager.dispatchEvent {
                 this.numLivesLeft = --it.numLives
+                this.score = it.score
             }
 
             if (it.numLives > 0) {
@@ -204,6 +209,17 @@ class EnemySystem(
             audioService.play(SoundAsset.EXPLOSION, pitch = MathUtils.random(.5f, 2f))
         } else {
             enemy.addComponent<RemoveComponent>(engine)
+        }
+    }
+
+    private fun playerScore(player: Entity, score: Int) {
+        player[PlayerComponent.mapper]?.let {
+            it.score += score
+            it.enemiesKilled++
+            scoreEventManager.dispatchEvent {
+                this.numLivesLeft = it.numLives
+                this.score = it.score
+            }
         }
     }
 }
