@@ -22,21 +22,17 @@ class UIRenderSystem(
         assetStorage: AssetStorage
 ) : EntitySystem() {
 
-    private class ScoreEventListener(private val receiver: UIRenderSystem) : GameEventListener<ScoreEvent> {
-        override fun onEvent(event: ScoreEvent) {
-            receiver.score = event.score
-        }
-    }
-
-    private class PlayerDamageEventListener(private val receiver: UIRenderSystem) : GameEventListener<PlayerDamageEvent> {
+    private val playerDamageEventListener = object: GameEventListener<PlayerDamageEvent> {
         override fun onEvent(event: PlayerDamageEvent) {
-            receiver.numLives = event.numLivesLeft
+            this@UIRenderSystem.numLives = event.numLivesLeft
         }
     }
 
-    private val scoreEventListener = ScoreEventListener(this)
-
-    private val playerDamageEventListener = PlayerDamageEventListener(this)
+    private val scoreEventListener = object: GameEventListener<ScoreEvent> {
+        override fun onEvent(event: ScoreEvent) {
+            this@UIRenderSystem.score = event.score
+        }
+    }
 
     private val playerLivesUI = spriteCache.getSprites("player/lives/LivesIndicator")
 
