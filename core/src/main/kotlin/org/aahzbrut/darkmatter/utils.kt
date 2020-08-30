@@ -15,12 +15,6 @@ fun Rectangle.set(transform: TransformComponent, boundingBox: BoundingBoxCompone
     height = boundingBox.boundingBox.height
 }
 
-inline fun <T> Pool<T>.pooled(block: (T) -> Unit) {
-    val element = obtain()
-    block(element)
-    free(element)
-}
-
 fun playerScore(player: Entity, score: Int) {
     player[PlayerComponent.mapper]?.let {
         it.score += score

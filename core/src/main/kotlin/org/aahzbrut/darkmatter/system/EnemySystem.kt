@@ -13,6 +13,8 @@ import org.aahzbrut.darkmatter.asset.SoundAsset
 import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.audio.AudioService
 import org.aahzbrut.darkmatter.component.*
+import org.aahzbrut.darkmatter.event.GameEventManagers
+import org.aahzbrut.darkmatter.event.PlayerDamageEvent
 import org.aahzbrut.darkmatter.factory.EnemyFactory
 
 @Suppress("UNUSED")
@@ -30,6 +32,7 @@ class EnemySystem(
                         BoundingBoxComponent::class)
                         .exclude(RemoveComponent::class).get()) {
 
+    private val damageEventManager = GameEventManagers[PlayerDamageEvent::class]
     private val playerBoundingRect = Rectangle()
     private val enemyBoundingRect = Rectangle()
     private val projectileBoundingRect = Rectangle()
@@ -142,10 +145,14 @@ class EnemySystem(
 
         player[PlayerComponent.mapper]?.let {
             it.score += ENEMY_KILL_SCORE
-            it.numLives--
             it.enemiesKilled++
 
             if (player.has(ShieldComponent.mapper)) return
+
+            damageEventManager.dispatchEvent {
+                this.player = player
+                this.numLivesLeft = --it.numLives
+            }
 
             if (it.numLives > 0) {
                 addEngineOnFireAnimation(player, it.numLives)
