@@ -13,12 +13,10 @@ interface GameEventListener<T : GameEvent> {
 }
 
 data class PlayerDamageEvent(
-        var player: Entity = NonEntity,
         var numLivesLeft: Int = 0
 ) : GameEvent() {
 
     override fun reset() {
-        player = NonEntity
         numLivesLeft = 0
     }
 }

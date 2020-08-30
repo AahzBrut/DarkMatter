@@ -150,7 +150,6 @@ class EnemySystem(
             if (player.has(ShieldComponent.mapper)) return
 
             damageEventManager.dispatchEvent {
-                this.player = player
                 this.numLivesLeft = --it.numLives
             }
 
