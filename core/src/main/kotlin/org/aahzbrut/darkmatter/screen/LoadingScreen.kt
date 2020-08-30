@@ -7,6 +7,7 @@ import ktx.collections.gdxArrayOf
 import ktx.log.debug
 import ktx.log.logger
 import org.aahzbrut.darkmatter.DarkMatter
+import org.aahzbrut.darkmatter.asset.BitmapFontAsset
 import org.aahzbrut.darkmatter.asset.SoundAsset
 import org.aahzbrut.darkmatter.asset.TextureAtlasAsset
 
@@ -20,7 +21,8 @@ class LoadingScreen(game: DarkMatter) : BaseScreen(game) {
 
         val assetRefs = gdxArrayOf(
                 TextureAtlasAsset.values().map { assetStorage.loadAsync(it.descriptor) },
-                SoundAsset.values().map { assetStorage.loadAsync(it.descriptor) }
+                SoundAsset.values().map { assetStorage.loadAsync(it.descriptor) },
+                BitmapFontAsset.values().map { assetStorage.loadAsync(it.descriptor) }
         ).flatten()
 
         KtxAsync.launch {
