@@ -41,7 +41,7 @@ class GameScreen(
     override fun render(delta: Float) {
         engine.update(min(MAX_DELTA_TIME, delta))
         game.audioService.update()
-        // fpsLogger.log()
+        fpsLogger.log()
     }
 
     override fun dispose() {

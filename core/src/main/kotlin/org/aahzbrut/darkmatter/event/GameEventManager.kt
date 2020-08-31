@@ -3,7 +3,6 @@ package org.aahzbrut.darkmatter.event
 import com.badlogic.gdx.utils.Pool
 import com.badlogic.gdx.utils.Pools
 import ktx.collections.GdxSet
-import ktx.log.debug
 import ktx.log.logger
 import kotlin.reflect.KClass
 
@@ -23,7 +22,6 @@ class GameEventManager<T : GameEvent>(type: KClass<T>) {
     inline fun dispatchEvent(block: T.() -> Unit) {
         eventPool.pooled { event ->
             event.block()
-            LOG.debug { "Dispatching event $event" }
             listeners.forEach { it.onEvent(event) }
         }
     }
