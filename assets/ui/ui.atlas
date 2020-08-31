@@ -1,0 +1,61 @@
+ui-0.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Exit_BTN
+  rotate: false
+  xy: 1004, 376
+  size: 410, 121
+  orig: 410, 121
+  offset: 0, 0
+  index: -1
+GoodTiming
+  rotate: false
+  xy: 1, 1
+  size: 2043, 373
+  orig: 2048, 512
+  offset: 1, 139
+  index: -1
+LoadingBar
+  rotate: false
+  xy: 600, 429
+  size: 50, 40
+  orig: 50, 40
+  offset: 0, 0
+  index: -1
+LoadingBarTable
+  rotate: false
+  xy: 1, 376
+  size: 1001, 51
+  orig: 1001, 51
+  offset: 0, 0
+  index: -1
+Rating_BTN
+  rotate: false
+  xy: 1828, 376
+  size: 210, 210
+  orig: 210, 210
+  offset: 0, 0
+  index: -1
+Settings_BTN
+  rotate: false
+  xy: 388, 429
+  size: 210, 210
+  orig: 210, 210
+  offset: 0, 0
+  index: -1
+Start_BTN
+  rotate: false
+  xy: 1416, 376
+  size: 410, 121
+  orig: 410, 121
+  offset: 0, 0
+  index: -1
+WindowBackground
+  rotate: false
+  xy: 1, 429
+  size: 385, 501
+  orig: 385, 501
+  offset: 0, 0
+  index: -1

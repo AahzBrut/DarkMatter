@@ -39,14 +39,15 @@ class BaseMusicAsset(
 class BaseBitmapFontAsset(
         directory: String = "fonts",
         fileName: String,
-        asset: Class<BitmapFont> = BitmapFont::class.java
+        asset: Class<BitmapFont> = BitmapFont::class.java,
+        fontAtlasName: String
 ) : BaseAsset<BitmapFont>(directory, fileName = fileName, asset = asset) {
 
     override val descriptor: AssetDescriptor<BitmapFont> = AssetDescriptor(
             "$directory/$fileName",
             asset,
             BitmapFontLoader.BitmapFontParameter().apply {
-                atlasName = TEXTURE_ATLAS.descriptor.fileName
+                atlasName = fontAtlasName
             }
     )
 }

@@ -1,5 +1,6 @@
 package org.aahzbrut.darkmatter.screen
 
+import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.Viewport
 import ktx.app.KtxScreen
 import ktx.assets.async.AssetStorage
@@ -9,7 +10,8 @@ abstract class BaseScreen(
         val game: DarkMatter,
         val gameViewport: Viewport = game.gameViewport,
         private val uiViewport: Viewport = game.uiViewport,
-        val assetStorage : AssetStorage =  game.assetStorage
+        val assetStorage : AssetStorage =  game.assetStorage,
+        val stage: Stage = game.stage
 ) : KtxScreen {
 
     override fun resize(width: Int, height: Int) {
