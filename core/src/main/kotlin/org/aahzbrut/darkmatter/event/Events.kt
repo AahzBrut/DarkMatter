@@ -9,11 +9,6 @@ sealed class GameEvent : Pool.Poolable
 @Suppress("UNUSED")
 object NonEntity : Entity()
 
-interface GameEventListener<T : GameEvent> {
-    fun onEvent(event: T)
-}
-
-
 data class PlayerDamageEvent(
         var numLivesLeft: Int = 0
 ) : GameEvent() {
@@ -22,7 +17,6 @@ data class PlayerDamageEvent(
         numLivesLeft = 0
     }
 }
-
 
 data class ScoreEvent(
         var score: Int = 0

@@ -8,21 +8,21 @@ import kotlin.reflect.KClass
 
 class GameEventManager<T : GameEvent>(type: KClass<T>) {
 
-    val listeners = GdxSet<GameEventListener<T>>()
+    val listeners = GdxSet<(T) -> Unit>()
     val eventPool: Pool<T> = Pools.get(type.java)
 
-    fun addEventListener(listener: GameEventListener<T>) {
+    fun addEventListener(listener: (T) -> Unit) {
         listeners.add(listener)
     }
 
-    fun removeEventListener(listener: GameEventListener<T>) {
+    fun removeEventListener(listener: (T) -> Unit) {
         listeners.remove(listener)
     }
 
     inline fun dispatchEvent(block: T.() -> Unit) {
         eventPool.pooled { event ->
             event.block()
-            listeners.forEach { it.onEvent(event) }
+            listeners.forEach { it(event) }
         }
     }
 
