@@ -18,6 +18,7 @@ import ktx.collections.gdxArrayOf
 import ktx.log.debug
 import ktx.log.logger
 import org.aahzbrut.darkmatter.asset.BitmapFontAsset
+import org.aahzbrut.darkmatter.asset.ShaderProgramAsset
 import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.asset.TextureAtlasAsset
 import org.aahzbrut.darkmatter.audio.AudioService
@@ -71,7 +72,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
             addSystem(PlayerAnimationSystem(spriteCache))
             addSystem(AttachmentSystem())
             addSystem(AnimationSystem(spriteCache))
-            addSystem(RenderSystem(batch, gameViewport))
+            addSystem(RenderSystem(batch, gameViewport, assetStorage[ShaderProgramAsset.SHOCKWAVE_SHADER.descriptor]))
             addSystem(BoundingBoxRenderingSystem(gameViewport, shapeRenderer))
             addSystem(UIRenderSystem(batch, uiViewport, spriteCache, assetStorage))
             addSystem(WeaponSystem(spriteCache, audioService))

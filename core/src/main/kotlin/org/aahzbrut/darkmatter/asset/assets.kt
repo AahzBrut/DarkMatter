@@ -2,12 +2,13 @@ package org.aahzbrut.darkmatter.asset
 
 import com.badlogic.gdx.assets.AssetDescriptor
 import com.badlogic.gdx.assets.loaders.BitmapFontLoader
+import com.badlogic.gdx.assets.loaders.ShaderProgramLoader
 import com.badlogic.gdx.audio.Music
 import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
+import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.utils.Disposable
-import org.aahzbrut.darkmatter.asset.TextureAtlasAsset.*
 
 
 open class BaseAsset<T : Disposable>(
@@ -50,4 +51,23 @@ class BaseBitmapFontAsset(
                 atlasName = fontAtlasName
             }
     )
+}
+
+class BaseShaderProgramAsset(
+        directory: String = "shaders",
+        fileName: String,
+        asset: Class<ShaderProgram> = ShaderProgram::class.java,
+        fragmentFileName: String,
+) : BaseAsset<ShaderProgram>(directory, fileName, asset) {
+
+    override val descriptor: AssetDescriptor<ShaderProgram> = AssetDescriptor(
+            "$directory/$fileName/$fragmentFileName",
+            ShaderProgram::class.java,
+            ShaderProgramLoader.ShaderProgramParameter().apply {
+                vertexFile = "$directory/$fileName"
+                fragmentFile = "$directory/$fragmentFileName"
+            }
+
+    )
+
 }

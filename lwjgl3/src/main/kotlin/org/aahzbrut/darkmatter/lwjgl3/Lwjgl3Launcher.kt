@@ -15,7 +15,8 @@ object Lwjgl3Launcher {
                 DarkMatter(),
                 Lwjgl3ApplicationConfiguration().apply {
                     setTitle("DarkMatter")
-                    setFullscreenMode(getDisplayMode())
+                    //setFullscreenMode(getDisplayMode())
+                    setWindowedMode(1600, 900)
                     useVsync(false)
                     setWindowIcon("libgdx128.png", "libgdx64.png", "libgdx32.png", "libgdx16.png")
                 })

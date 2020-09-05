@@ -6,7 +6,6 @@ import com.badlogic.gdx.math.MathUtils.clamp
 import com.badlogic.gdx.math.MathUtils.lerp
 import com.badlogic.gdx.math.Vector2
 import ktx.ashley.allOf
-import ktx.ashley.exclude
 import ktx.ashley.get
 import ktx.ashley.has
 import ktx.log.logger
@@ -23,8 +22,6 @@ class MoveSystem :
                 allOf(
                         TransformComponent::class,
                         MoveComponent::class)
-                        .exclude(
-                                RemoveComponent::class)
                         .get()) {
 
     private var timeSinceLastUpdate = 0f
@@ -138,5 +135,8 @@ class MoveSystem :
                     WORLD_HEIGHT - transform.size.y)
         else
             transform.position.y + move.velocity.y * deltaTime
+
+        // Accelerate entity
+        move.velocity.set(move.velocity.x, move.velocity.y * move.acceleration.y)
     }
 }

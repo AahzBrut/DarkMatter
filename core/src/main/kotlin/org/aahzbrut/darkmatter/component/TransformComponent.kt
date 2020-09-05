@@ -20,6 +20,12 @@ class TransformComponent : Component, Pool.Poolable, Comparable<TransformCompone
         interpolatedPosition.set(x, y, z)
     }
 
+    fun setInitialPosition(position: Vector3) {
+        this.position.set(position)
+        this.prevPosition.set(position)
+        this.interpolatedPosition.set(position)
+    }
+
     override fun compareTo(other: TransformComponent) = position.z.compareTo(other.position.z)
 
     override fun reset() {
