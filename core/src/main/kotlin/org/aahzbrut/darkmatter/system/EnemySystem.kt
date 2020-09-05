@@ -5,6 +5,7 @@ import com.badlogic.ashley.systems.IteratingSystem
 import com.badlogic.ashley.utils.ImmutableArray
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Rectangle
+import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.Array
 import ktx.ashley.*
 import ktx.log.logger
@@ -17,6 +18,7 @@ import org.aahzbrut.darkmatter.event.GameEventManagers
 import org.aahzbrut.darkmatter.event.PlayerDamageEvent
 import org.aahzbrut.darkmatter.event.ScoreEvent
 import org.aahzbrut.darkmatter.factory.EnemyFactory
+import org.aahzbrut.darkmatter.factory.ExplosionFactory
 
 @Suppress("UNUSED")
 private val LOG = logger<EnemySystem>()
@@ -49,11 +51,18 @@ class EnemySystem(
         EnemyFactory(engine, spriteCache)
     }
 
+    private val explosionFactory by lazy {
+        ExplosionFactory(engine, spriteCache)
+    }
+
+
     private var projectiles: ImmutableArray<Entity> = EmptyEntityArray
 
     private var timer = 0f
     private var spawnAccelTimer = 0f
     private var spawnDelay = ENEMY_SPAWN_DELAY
+    private val explosionSize = Vector2(ENEMY_SIZE, ENEMY_SIZE)
+    private val explosionAcceleration = Vector2(1f, .99f)
 
     override fun update(deltaTime: Float) {
         cacheProjectiles()
@@ -200,12 +209,14 @@ class EnemySystem(
 
     private fun destroyEnemy(enemy: Entity, withExplosion: Boolean) {
         if (withExplosion) {
+            val transform = requireNotNull(enemy[TransformComponent.mapper])
+            val move = requireNotNull(enemy[MoveComponent.mapper])
+
             enemy.addComponent<RemoveComponent>(engine) {
-                delay = 3f
+                delay = 1f
             }
-            enemy.addComponent<AnimationComponent>(engine) {
-                type = AnimationType.ENEMY_EXPLOSION
-            }
+            enemy.addComponent<ShockWaveComponent>(engine)
+            explosionFactory.spawn(transform.interpolatedPosition, explosionSize, move.velocity, explosionAcceleration)
             audioService.play(SoundAsset.EXPLOSION, pitch = MathUtils.random(.5f, 2f))
         } else {
             enemy.addComponent<RemoveComponent>(engine)
