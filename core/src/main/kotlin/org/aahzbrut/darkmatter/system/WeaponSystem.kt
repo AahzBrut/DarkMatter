@@ -1,5 +1,6 @@
 package org.aahzbrut.darkmatter.system
 
+import box2dLight.RayHandler
 import com.badlogic.ashley.core.Entity
 import com.badlogic.ashley.systems.IteratingSystem
 import ktx.ashley.allOf
@@ -17,7 +18,8 @@ import org.aahzbrut.darkmatter.factory.ProjectileFactory
 private val LOG = logger<WeaponSystem>()
 
 class WeaponSystem(private val spriteCache: SpriteCache,
-                   private val audioService: AudioService) :
+                   private val audioService: AudioService,
+                   private val rayHandler: RayHandler) :
         IteratingSystem(
                 allOf(
                         PlayerComponent::class,
@@ -28,7 +30,7 @@ class WeaponSystem(private val spriteCache: SpriteCache,
                         .get()) {
 
     private val projectileFactory by lazy {
-        ProjectileFactory(engine, spriteCache)
+        ProjectileFactory(engine, spriteCache, rayHandler)
     }
 
     override fun processEntity(entity: Entity, deltaTime: Float) {
@@ -49,7 +51,7 @@ class WeaponSystem(private val spriteCache: SpriteCache,
                 transform.position.y + weapon.mainGunPosition.y,
                 0f)
 
-        if (player.has(TripleShotComponent.mapper)){
+        if (player.has(TripleShotComponent.mapper)) {
             projectileFactory.spawn(
                     transform.position.x + weapon.leftGunPosition.x,
                     transform.position.y + weapon.leftGunPosition.y,

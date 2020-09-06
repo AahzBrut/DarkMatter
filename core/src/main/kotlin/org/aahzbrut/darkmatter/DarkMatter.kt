@@ -1,11 +1,14 @@
 package org.aahzbrut.darkmatter
 
+import box2dLight.RayHandler
 import com.badlogic.ashley.core.PooledEngine
 import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.badlogic.gdx.physics.box2d.Box2D
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.FitViewport
 import kotlinx.coroutines.joinAll
@@ -14,6 +17,7 @@ import ktx.app.KtxGame
 import ktx.assets.async.AssetStorage
 import ktx.async.KtxAsync
 import ktx.async.newAsyncContext
+import ktx.box2d.createWorld
 import ktx.collections.gdxArrayOf
 import ktx.log.debug
 import ktx.log.logger
@@ -47,6 +51,17 @@ class DarkMatter : KtxGame<BaseScreen>() {
         AssetStorage(newAsyncContext(ASSET_STORAGE_LOADER_THREAD_NUMBER, "AssetStorage-Thread"))
     }
 
+    private val world by lazy {
+        Box2D.init()
+        createWorld()
+    }
+
+    val rayHandler by lazy {
+        RayHandler(world).apply {
+            setAmbientLight(0f, 0f, 0f, 0.5f)
+        }
+    }
+
     val audioService: AudioService by lazy { DefaultAudioService(assetStorage) }
 
     val spriteCache by lazy {
@@ -74,8 +89,9 @@ class DarkMatter : KtxGame<BaseScreen>() {
             addSystem(AnimationSystem(spriteCache))
             addSystem(RenderSystem(batch, gameViewport, assetStorage[ShaderProgramAsset.SHOCKWAVE_SHADER.descriptor]))
             addSystem(BoundingBoxRenderingSystem(gameViewport, shapeRenderer))
+            addSystem(LightSystem(rayHandler, gameViewport.camera as OrthographicCamera))
             addSystem(UIRenderSystem(batch, uiViewport, spriteCache, assetStorage))
-            addSystem(WeaponSystem(spriteCache, audioService))
+            addSystem(WeaponSystem(spriteCache, audioService, rayHandler))
             addSystem(ProjectileSystem())
             addSystem(PowerUpEffectSystem())
             addSystem(RemoveSystem())
@@ -107,5 +123,7 @@ class DarkMatter : KtxGame<BaseScreen>() {
         shapeRenderer.dispose()
         graphicsAtlas.dispose()
         stage.dispose()
+        rayHandler.dispose()
+        world.dispose()
     }
 }

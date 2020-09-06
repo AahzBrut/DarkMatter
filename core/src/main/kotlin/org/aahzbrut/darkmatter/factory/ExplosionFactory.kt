@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.math.Vector3
 import ktx.ashley.entity
 import ktx.ashley.with
+import org.aahzbrut.darkmatter.EXPLOSION_TIME
 import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.component.*
 
@@ -30,7 +31,7 @@ class ExplosionFactory(private val engine: Engine,
                 resetSprite(spriteCache.getSprite("debris/Asteroid"))
             }
             with<RemoveComponent> {
-                delay = 3f
+                delay = EXPLOSION_TIME
             }
         }
     }
