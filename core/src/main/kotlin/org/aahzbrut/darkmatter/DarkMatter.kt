@@ -89,7 +89,12 @@ class DarkMatter : KtxGame<BaseScreen>() {
             addSystem(AnimationSystem(spriteCache))
             addSystem(RenderSystem(batch, gameViewport, assetStorage[ShaderProgramAsset.SHOCKWAVE_SHADER.descriptor]))
             addSystem(BoundingBoxRenderingSystem(gameViewport, shapeRenderer))
+
+            // Light system must be added last, to work correctly,
+            // all drawings after light system completes its work will be unaffected by lights
             addSystem(LightSystem(rayHandler, gameViewport.camera as OrthographicCamera))
+
+            // UI drawings unaffected by light system
             addSystem(UIRenderSystem(batch, uiViewport, spriteCache, assetStorage))
             addSystem(WeaponSystem(spriteCache, audioService, rayHandler))
             addSystem(ProjectileSystem())
