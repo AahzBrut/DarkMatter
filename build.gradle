@@ -23,6 +23,11 @@ configure(subprojects) {
     compileJava {
         options.incremental = true
     }
+    compileKotlin{
+        kotlinOptions{
+            jvmTarget = "14"
+        }
+    }
 }
 
 subprojects {

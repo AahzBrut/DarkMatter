@@ -1,14 +1,18 @@
 package org.aahzbrut.darkmatter.factory
 
+import box2dLight.PointLight
+import box2dLight.RayHandler
 import com.badlogic.ashley.core.Engine
+import com.badlogic.gdx.graphics.Color
 import ktx.ashley.entity
 import ktx.ashley.with
+import org.aahzbrut.darkmatter.MAX_RAY_NUMBER
 import org.aahzbrut.darkmatter.asset.SpriteCache
 import org.aahzbrut.darkmatter.component.*
 
 class ProjectileFactory(private val engine: Engine,
-                        private val spriteCache: SpriteCache) {
-
+                        private val spriteCache: SpriteCache,
+                        private val rayHandler: RayHandler) {
     fun spawn(x: Float, y: Float, z: Float) {
 
         engine.entity {
@@ -26,6 +30,15 @@ class ProjectileFactory(private val engine: Engine,
                 resetSprite(spriteCache.getSprite("projectiles/laser"))
             }
             with<ProjectileComponent> {}
+            with<LightComponent> {
+                light = PointLight(rayHandler, MAX_RAY_NUMBER)
+                light.color = Color(.8f,0f,0f,.6f)
+                light.distance = 4f
+                light.isActive = true
+                light.isXray = true
+                light.isStaticLight = true
+            }
+
         }
 
     }

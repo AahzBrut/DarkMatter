@@ -17,5 +17,6 @@ abstract class BaseScreen(
     override fun resize(width: Int, height: Int) {
         gameViewport.update(width, height, true)
         uiViewport.update(width, height, true)
+        game.rayHandler.useCustomViewport(gameViewport.screenX, gameViewport.screenY, gameViewport.screenWidth, gameViewport.screenHeight)
     }
 }

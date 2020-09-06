@@ -26,7 +26,7 @@ class GameScreen(
     }
 
     private val playerFactory by lazy {
-        PlayerFactory(engine, game.spriteCache)
+        PlayerFactory(engine, game.spriteCache, game.rayHandler)
     }
 
     override fun show() {
